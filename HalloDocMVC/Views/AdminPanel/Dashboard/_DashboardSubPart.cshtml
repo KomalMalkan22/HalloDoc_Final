@@ -1,0 +1,175 @@
+﻿<form id="filterForm" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
+      asp-action="_SearchResult" asp-controller="Dashboard" novalidate="novalidate">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Status" id="hiddenfirst" />
+    <div class="mx-sm-1 mx-md-2 mx-xxl-4 mt-0 bg-light">
+        <!--Status of requests-->
+        <div class="row mb-2" style="--bs-gutter-x: 0rem;">
+            <div class="col-md-2 col-sm-4 col-4 ">
+                <button type="submit" name="Status" value="1" class="btn text-start shadow-none w-100">
+                    <div class="p-1 rounded new ps-2 pt-3">
+                        <div class="d-inline-flex fw-bold">
+                            <i class="fa-solid fa-circle-plus me-2 align-self-center d-none d-sm-block"></i>
+                            NEW
+                        </div>
+                        <div class="mt-2">
+                            <span class="h4 fw-bold">@Model.NewRequest</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-4 position-relative">
+                <button type="submit" name="Status" value="2" class="btn text-start shadow-none w-100">
+                    <div class="p-1 rounded pending ps-2 pt-3">
+                        <div class="d-inline-flex fw-bold">
+                            <i class="fa-solid fa-user-clock me-2 align-self-center d-none d-sm-block"></i>
+                            PENDING
+                        </div>
+                        <div class="mt-2">
+                            <span class="h4 fw-bold">@Model.PendingRequest</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-4 position-relative">
+                <button type="submit" name="Status" value="3" class="btn text-start shadow-none w-100">
+                    <div class="p-1 rounded active ps-2 pt-3">
+                        <div class="d-inline-flex fw-bold">
+                            <i class="fa-solid fa-circle-check me-2 align-self-center d-none d-sm-block"></i>
+                            ACTIVE
+                        </div>
+                        <div class="mt-2">
+                            <span class="h4 fw-bold">@Model.ActiveRequest</span>
+                        </div>
+                    </div>
+                </button>
+
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-4 position-relative">
+                <button type="submit" name="Status" value="4" class="btn text-start shadow-none w-100">
+                    <div class="p-1 rounded conclude ps-2 pt-3">
+                        <div class="d-inline-flex fw-bold">
+                            <i class="fa-solid fa-clock-rotate-left me-2 align-self-center d-none d-sm-block"></i>
+                            CONCLUDE
+                        </div>
+                        <div class="mt-2">
+                            <span class="h4 fw-bold">@Model.ConcludeRequest</span>
+                        </div>
+                    </div>
+                </button>
+
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-4 position-relative">
+                <button type="submit" name="Status" value="5" class="btn text-start shadow-none w-100">
+                    <div class="p-1 rounded toClose ps-2 pt-3">
+                        <div class="d-inline-flex fw-bold">
+                            <i class="fa-solid fa-user-xmark me-2 align-self-center d-none d-sm-block"></i>
+                            TO CLOSE
+                        </div>
+                        <div class="mt-2">
+                            <span class="h4 fw-bold">@Model.ToCloseRequest</span>
+                        </div>
+                    </div>
+                </button>
+
+            </div>
+
+            <div class="col-md-2 col-sm-4 col-4 position-relative">
+                <button type="submit" name="Status" value="6" class="btn text-start shadow-none w-100">
+                    <div class="p-1 rounded unpaid ps-2 pt-3">
+                        <div class="d-inline-flex fw-bold">
+                            <i class="fa-solid fa-circle-dollar-to-slot me-2 align-self-center d-none d-sm-block"></i>
+                            UNPAID
+                        </div>
+                        <div class="mt-2">
+                            <span class="h4 fw-bold">@Model.UnpaidRequest</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <!--End Status of requests-->
+        <!--Important links-->
+        <div class="d-flex justify-content-between mx-2">
+            <div>
+                <strong class="fs-6">Patients</strong> <small>(Status)</small>
+            </div>
+            <div>
+                <button class="btn btn-info text-white shadow-none mb-2">
+                    <small>
+                        <i class="bi bi-send"></i>
+                        <span class="adminIcon">Send Link</span>
+                    </small>
+                </button>
+                <button class="btn btn-info text-white shadow-none mb-2">
+                    <small>
+                        <i class="bi bi-file-earmark-plus"></i>
+                        <span class="adminIcon">Create Requests</span>
+                    </small>
+                </button>
+                <button class="btn btn-info text-white shadow-none mb-2">
+                    <small>
+                        <i class="fa-solid fa-share"></i>
+                        <span class="adminIcon">Export</span>
+                    </small>
+                </button>
+                <button class="btn btn-info text-white shadow-none mb-2">
+                    <small>
+                        <i class="fa-solid fa-share-from-square"></i>
+                        <span class="adminIcon">Export All</span>
+                    </small>
+                </button>
+                <button class="btn btn-info text-white shadow-none mb-2">
+                    <small>
+                        <i class="fa-solid fa-user-nurse"></i>
+                        <span class="adminIcon">Request DIY Support</span>
+                    </small>
+                </button>
+            </div>
+        </div>
+        <!--End Important links-->
+        <!--Searchbar-->
+        <div class="mt-2 mx-2 bg-white">
+            <div class="searchBar px-2">
+                <div class="searchPatientRegion py-2">
+                    <div class="search m-1">
+                        <i class="fa fa-search"></i>
+                        <input type="text" class="form-control" placeholder="Search Patients">
+                    </div>
+                    <div class="search m-1">
+                        <i class="fa fa-search"></i>
+                        <select class="form-select shadow-none" id="floatingSelectGrid">
+                            <option selected class="text-secondary">All Regions</option>
+                            <option value="1">Maryland</option>
+                            <option value="2">New York</option>
+                            <option value="3">Virginia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="requestType">
+                    <div class="me-3">
+                        <i class="fa-solid fa-circle fa-xs" style="color:#5fbc61;"></i>
+                        <small>Patient</small>
+                    </div>
+                    <div class="me-3">
+                        <i class="fa-solid fa-circle fa-xs" style="color:#ed9124;"></i>
+                        <small>Family / Friend</small>
+                    </div>
+                    <div class="me-3">
+                        <i class="fa-solid fa-circle fa-xs" style="color:#cd697b;"></i>
+                        <small>Business</small>
+                    </div>
+                    <div class="me-2">
+                        <i class="fa-solid fa-circle fa-xs" style="color:#0a7cb9;"></i>
+                        <small>Concierge</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Searchbar-->
+    </div>
+</form>

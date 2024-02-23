@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class="container-fluid p-3">
+    <partial name="_DashboardSubPart.cshtml" />
+    <div id="SearchResult">
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var val=1;
+        $("#hiddenfirst").val(val);
+        $("#filterForm").submit();
+    });
+</script>
