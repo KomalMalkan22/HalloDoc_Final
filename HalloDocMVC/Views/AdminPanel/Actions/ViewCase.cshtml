@@ -1,0 +1,141 @@
+﻿<div class="container">
+    <div class="card bg-transparent border-0">
+        <div class="card-header  border-0  bg-transparent text-end">
+            <div class="text-start d-flex justify-content-between">
+                <div>
+                    <h4 class="form-title fw-bold mt-2 mx-2">New Request</h4>
+
+                </div>
+                <div>
+                    <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info shadow-none">
+                        <strong class="text-info">
+                            <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+                        </strong>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card-body rounded shadow mb-5">
+
+            <strong class="fs-5">Patient Information</strong>
+
+            <form method="post" asp-action="" asp-controller="" enctype="multipart/form-data">
+                <div class="col-md-12 mt-3">
+                    <p class="text-secondary fs-6 pt-4">Confirmation Number</p>
+                    <p class="text-info fw-bold fs-5 text-break">MD120523PASA0002</p>
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Notes" style="height: 100px"></textarea>
+                            <label for="Notes">Patient Notes</label>
+                        </div>
+                    </div>
+                </div>
+                <hr class="dashed-h" />
+                <div class="row mt-2">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name" autocomplete="off">
+                            <label for="FirstName">First Name</label>
+                        </div>
+                    </div>
+                    @*<input type="hidden" value="@Model.RequestID" />*@
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name" autocomplete="off">
+                            <label for="LastName">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth" autocomplete="off">
+                            <label for="DateOfBirth">Date of Birth</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3 d-flex">                            
+                            <div class="form-floating h-100 w-100">
+                                <input type="tel" class="form-control shadow-none" id="phone" autocomplete="off">
+                            </div>
+                            <button class="btn border border-info text-info mx-2 " style="height:3.5rem;width:4rem">
+                                <i class="bi bi-telephone-fill"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-floating mb-3">
+                            <input type="email" id="email" class="form-control shadow-none" placeholder="name@example.com" autocomplete="off">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    @*<div class="col-md-6">
+                        <div class=" mb-3">
+                            <div class=" p-0  d-flex">
+                                <a onclick="enable_disable()" id="edit" class="btn btn-sm border border-info text-info btn-submit p-3" style="height:3.8rem;width:4rem">
+                                    Edit
+                                </a>
+                                <button type="submit" id="save" class="btn btn-sm border border-info text-info btn-submit mx-2 p-3">
+                                    Save
+                                </button>
+                                <a id="cancel" asp-action="ViewCase" asp-controller="Action" class="btn btn-sm border border-danger text-danger p-3">
+                                    Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+
+                <strong class="form-title mt-2 fs-5">Location Information</strong>
+
+                <div class="row mt-2">
+                    <div class="col-md-6 col-sm-12 col-xs-12 mt-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="Region" class="form-control shadow-none" placeholder="Enter Region" autocomplete="off">
+                            <label for="Region">Region</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-md-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="form-floating w-100">
+                                <input type="text" id="Business" class="form-control shadow-none" placeholder="Enter Business Name / Address" autocomplete="off">
+                                <label for="Business"><small>Business Name / Address</small></label>
+                            </div>
+                            <a class="btn border border-info mx-2 text-info map-btn p-2 " style="height:3.5rem;width:4rem" id="map-button">
+                                <i class="bi bi-geo-alt-fill mx-3"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="Room" class="form-control shadow-none" placeholder="Enter Room" autocomplete="off">
+                            <label for="Room">Room</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer border-0 bg-transparent text-end">
+                    <a class="btn btn-info text-white mb-2" asp-action="" onclick="model_Case()" asp-controller="" data-bs-toggle="modal" data-bs-target="#Assigncase">Assign Case</a>
+                    <a  class="btn btn-info text-white btn-submit mb-2">
+                        View Notes
+                    </a>
+                    <a class="btn btn-danger btn-cancel mb-2">
+                        Cancel
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>

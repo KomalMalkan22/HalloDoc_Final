@@ -25,8 +25,8 @@
     <header class="shadow">
         <div class="d-flex justify-content-between bg-white rounded-0 border-bottom">
             <div class="d-inline-flex">
-                <a class="text-decoration-none align-self-center" data-bs-toggle="offcanvas" href="#offcanvasExample">
-                    <i class="fa-solid fa-bars text-info border rounded border-info d-block d-md-none my-3 p-2"></i>
+                <a class="text-decoration-none align-self-center" id="offCanvasIcon" data-bs-toggle="offcanvas" href="#offcanvasExample">
+                    <i class="fa-solid fa-bars text-info border rounded border-info my-3 p-2"></i>
                 </a>
                 <img id="halloDocLogo" class="img-fluid img-responsive p-3" src="~/images/Fig56. Patient site 1.png" />
             </div>
@@ -39,43 +39,43 @@
                 <a href=""><i class="fas fa-moon text-info border rounded border-info my-3 p-2"></i></a>
             </div>
         </div>
-        <div class="navbar px-3 navbar-expand-sm bg-white mb-5 d-none d-sm-block">
+        <div class="navbar px-3 navbar-expand-sm bg-white mb-5">
             <div class="container-fluid">
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link px- text-dark @(path.StartsWith("/") ? "activeNavItem" : "")" aria-current="page">
-                                Dashboard
+                                <small>Dashboard</small>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                Provider Location
+                                <small>Provider Location</small>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                My Profile
+                                <small>My Profile</small>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                Providers
+                                <small>Providers</small>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                Parteners
+                                <small>Parteners</small>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                Access
+                                <small>Access</small>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                Records
+                                <small>Records</small>
                             </a>
                         </li>
                     </ul>
@@ -115,9 +115,11 @@
         </div>
     </header>
 
-    @RenderBody()
+    <div class="mb-5">
+        @RenderBody()
+    </div>
 
-    <div class="bg-dark d-flex justify-content-end mt-5 p-1 text-white fixed-bottom">
+    <div class="bg-dark d-flex justify-content-end p-1 text-white fixed-bottom">
         <a href="#" class="text-white text-decoration-none m-3 h6">Terms of condition</a>
         <a href="#" class="text-white text-decoration-none m-3 h6">Privacy Policy</a>
     </div>

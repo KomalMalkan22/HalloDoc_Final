@@ -159,6 +159,22 @@
     background-color: #e1f4fa;
 }
 
+.navbar {
+    display: block;
+}
+
+#offCanvasIcon {
+    display: none;
+}
+
+@media (max-width : 776px){
+    .navbar{
+        display:none;
+    }
+    #offCanvasIcon {
+        display: block;
+    }
+}
 
 
 @media (max-width : 925px) {
