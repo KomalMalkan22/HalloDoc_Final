@@ -15,5 +15,14 @@ namespace HalloDocMVC.DBEntity.ViewModels
             Family,
             Concierge
         }
+        public enum AdminDashboardStatus
+        {
+            New = 1,
+            Pending,
+            Active,
+            Conclude,
+            ToClose,
+            Unpaid
+        }
     }
 }

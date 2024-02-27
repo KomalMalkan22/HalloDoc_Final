@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0mlsvUW+vPaRzAJg8olm95Q7T4hLFQeil72ADjP99WbhhlPfBzg36fSsrf7DATuSSCyUynr96FV+Vr7W572u2A==",
+  "dgSpecHash": "ME1UW7ABZYOQT0QEJ18Hbc86YWCSK9wgyq8cM4Rq22cm63e3BOE3LKywxRInjhScNfQxZ0WVvH7e5gm0n1iwpw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pct30\\source\\repos\\HalloDocMVC\\HalloDocMVC.csproj",
+  "projectFilePath": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\HalloDocMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pct30\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.16\\microsoft.entityframeworkcore.7.0.16.nupkg.sha512",

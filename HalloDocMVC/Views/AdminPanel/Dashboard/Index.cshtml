@@ -1,17 +1,19 @@
 ﻿@{
     Layout = "_Layout";
 }
-<div class="container-fluid p-3">
-    <partial name="_DashboardSubPart.cshtml" />
+<div class="mx-sm-1 mx-md-2 mx-xxl-3 mt-0 bg-light">
+    <div id="PartialViewContainer">
+        <partial name="DashboardSubPart.cshtml" />
+    </div>
     <div id="SearchResult">
 
     </div>
 </div>
 
-<script>
-    $(function () {
-        var val=1;
-        $("#hiddenfirst").val(val);
+@*<script>
+    $(function (){
+        var val = "1";
+        $("#Hidden").val(val);
         $("#filterForm").submit();
     });
-</script>
+</script>*@

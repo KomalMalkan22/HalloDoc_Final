@@ -677,11 +677,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pct30\\source\\repos\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
+      "projectUniqueName": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
       "projectName": "HalloDocMVC.DBEntity",
-      "projectPath": "C:\\Users\\pct30\\source\\repos\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
+      "projectPath": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
       "packagesPath": "C:\\Users\\pct30\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pct30\\source\\repos\\HalloDocMVC.DBEntity\\obj\\",
+      "outputPath": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC.DBEntity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pct30\\AppData\\Roaming\\NuGet\\NuGet.Config",

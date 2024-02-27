@@ -31,8 +31,9 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 UnpaidRequest = _context.Requests.Where(r => r.Status == 9).Count()
             };
         }
-        public List<AdminDashboardList> GetRequests(short Status)
+        public List<AdminDashboardList> GetRequests(string Status)
         {
+            List<int> status = Status.Split(',').Select(int.Parse).ToList();
             List<AdminDashboardList> allData = (from req in _context.Requests
                                                     join reqClient in _context.Requestclients
                                                     on req.Requestid equals reqClient.Requestid into reqClientGroup
@@ -43,7 +44,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                     join reg in _context.Regions
                                                     on rc.Regionid equals reg.Regionid into RegGroup
                                                     from rg in RegGroup.DefaultIfEmpty()
-                                                    where req.Status == Status
+                                                    where status.Contains(req.Status)
                                                     orderby req.Createddate descending
                                                     select new AdminDashboardList
                                                    {
@@ -55,12 +56,12 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                        RequestedDate = req.Createddate,
                                                        Email = rc.Email,
 
-                                                       //Region = rg.Name,
-                                                       // ProviderName = p.Firstname + " " + p.Lastname,
+                                                       Region = rg.Name,
+                                                       ProviderName = p.Firstname + " " + p.Lastname,
                                                        PatientPhoneNumber = rc.Phonenumber,
                                                        Address = rc.Address + " " + rc.Street + " " + rc.City + " " + rc.State + " " + rc.Zipcode,
                                                        Notes = rc.Notes,
-                                                       //ProviderId = (int)req.Physicianid,
+                                                       ProviderId = (int)req.Physicianid,
                                                        RequestorPhoneNumber = req.Phonenumber
                                                    })
                                                    .ToList();

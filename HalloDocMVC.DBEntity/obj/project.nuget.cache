@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XFM9gE9d+mS+9ZaRuuUCoL/+xwI0oKjHGaMnH4wR0BbqFMBoIgclQlWC1bTl4CQKwpdOlzrFBQ4nU537zLZA1A==",
+  "dgSpecHash": "PRhPbW5N1i/xB77xkIczXYZTYaF9qgAxnseP9OHHHehwprAK1m7HiebJ1cBizUytppfKK/LqBd258HchJE1Z7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pct30\\source\\repos\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
+  "projectFilePath": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
