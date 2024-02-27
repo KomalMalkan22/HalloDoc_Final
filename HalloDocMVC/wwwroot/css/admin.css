@@ -13,8 +13,8 @@
 
 .new {
     border: solid thin #063982;
-    color: #334585;
-    background-color: #e9eaef;
+    color: #063982;
+    background-color: #cfe2ff;
     height: 100px;
 }
 
@@ -25,8 +25,8 @@
 
 .pending {
     border: solid thin #0AA2C0;
-    color: #70c9e7;
-    background-color: #e5f2f8;
+    color: #0aa2c0;
+    background-color: #d1f7ff;
     height: 100px;
 }
 
@@ -37,7 +37,7 @@
 
 .active {
     border: solid thin #198754;
-    color: #338038;
+    color: #198754;
     background-color: #e9f0e8;
     height: 100px;
 }
@@ -49,38 +49,50 @@
 
 .conclude {
     border: solid thin #AB296A;
-    color: #b32379;
-    background-color: #f7e6ee;
+    color: #ab296a;
+    background-color: #ffdded;
     height: 100px;
 }
 
 .conclude:hover {
-    background-color: #da0f82;
+    background-color: #ab296a;
     color: white;
 }
 
 .toClose {
     border: solid thin #0A58CA;
-    color: #246cb3;
-    background-color: #e5eef5;
+    color: #0a58ca;
+    background-color: #cfe2ff;
     height: 100px;
 }
 
-    .toClose:hover {
-        background-color: #0370d7;
-        color: white;
-    }
+.toClose:hover {
+    background-color: #0370d7;
+    color: white;
+}
 
 .unpaid {
     border: solid thin #8C68CD;
-    color: #956eba;
-    background-color: #efeef4;
+    color: #8c68cd;
+    background-color: #e2d9f3;
     height: 100px;
 }
 
 .unpaid:hover {
     background-color: #9966cd;
     color: white;
+}
+
+.img_2 {
+    display: none;
+}
+
+.thumbnail:hover .img_1 {
+    display: none;
+}
+
+.thumbnail:hover .img_2 {
+    display: block;
 }
 
 .search {
@@ -144,7 +156,7 @@
 }
 
 .txt-Business {
-    color: #0a7cb9;
+    color: #cd697b;
 }
 
 .txt-Family {
@@ -152,11 +164,16 @@
 }
 
 .txt-Concierge {
-    color: #cd697b;
+    color: #0a7cb9;
 }
 
 .btn-i {
     background-color: #e1f4fa;
+}
+
+.requestTypeIcon{
+    height:25px;
+    width:25px;
 }
 
 .navbar {

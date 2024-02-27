@@ -19,6 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 </head>
 <body class="bg-light">
@@ -39,7 +40,7 @@
                 <a href=""><i class="fas fa-moon text-info border rounded border-info my-3 p-2"></i></a>
             </div>
         </div>
-        <div class="navbar px-3 navbar-expand-sm bg-white mb-5">
+        <div class="navbar px-3 navbar-expand-sm bg-white mb-3">
             <div class="container-fluid">
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -115,7 +116,7 @@
         </div>
     </header>
 
-    <div class="mb-5">
+    <div class="mb-5 bg-light">
         @RenderBody()
     </div>
 
@@ -126,7 +127,7 @@
     <script src="@Url.Content("~/plugins/mvc-jquery-ajax/jquery.unobtrusive-ajax.js")"></script>
     <script src="@Url.Content("~/plugins/mvc-jquery-validate/jquery.validate.js")"></script>
     <script src="@Url.Content("~/plugins/mvc-jquery-validate/jquery.validate.unobtrusive.js")"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+   
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

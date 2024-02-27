@@ -21,6 +21,54 @@
       "PackagePath": "staticwebassets\\images\\Fig56. Patient site 1.png"
     },
     {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\active.png",
+      "PackagePath": "staticwebassets\\images\\active.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\active_active.png",
+      "PackagePath": "staticwebassets\\images\\active_active.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\conclude.png",
+      "PackagePath": "staticwebassets\\images\\conclude.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\conclude_active.png",
+      "PackagePath": "staticwebassets\\images\\conclude_active.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\new.png",
+      "PackagePath": "staticwebassets\\images\\new.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\new_active.png",
+      "PackagePath": "staticwebassets\\images\\new_active.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\pending.png",
+      "PackagePath": "staticwebassets\\images\\pending.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\pending_active.png",
+      "PackagePath": "staticwebassets\\images\\pending_active.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\toclose.png",
+      "PackagePath": "staticwebassets\\images\\toclose.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\toclose_active.png",
+      "PackagePath": "staticwebassets\\images\\toclose_active.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\unpaid.png",
+      "PackagePath": "staticwebassets\\images\\unpaid.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\unpaid_active.png",
+      "PackagePath": "staticwebassets\\images\\unpaid_active.png"
+    },
+    {
       "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

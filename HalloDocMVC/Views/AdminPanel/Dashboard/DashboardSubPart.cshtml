@@ -1,4 +1,4 @@
-﻿@using static HalloDocMVC.DBEntity.ViewModels.CountStatusWiseRequestModel;
+﻿@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.CountStatusWiseRequestModel;
 
 <form id="filterForm" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
       asp-action="_SearchResult" asp-controller="Dashboard" novalidate="novalidate">
@@ -7,9 +7,16 @@
         <div class="row mb-2" style="--bs-gutter-x: 0rem;">
             <div class="col-md-2 col-sm-4 col-4 ">
                 <button type="submit" name="Status" value="1" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded new ps-2 pt-3">
+                    <div class="p-1 rounded new ps-2 pt-3 thumbnail">
                         <div class="d-inline-flex fw-bold">
-                            <i class="fa-solid fa-circle-plus me-2 align-self-center d-none d-sm-block"></i>
+                            <div class="d-none d-md-block">
+                                <div class="img_1">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/new.png" />
+                                </div>
+                                <div class="img_2">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/new_active.png" />
+                                </div>
+                            </div>
                             NEW
                         </div>
                         <div class="mt-2">
@@ -21,9 +28,16 @@
 
             <div class="col-md-2 col-sm-4 col-4 position-relative">
                 <button type="submit" name="Status" value="2" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded pending ps-2 pt-3">
+                    <div class="p-1 rounded pending ps-2 pt-3 thumbnail">
                         <div class="d-inline-flex fw-bold">
-                            <i class="fa-solid fa-user-clock me-2 align-self-center d-none d-sm-block"></i>
+                            <div class="d-none d-md-block">
+                                <div class="img_1">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/pending.png" />
+                                </div>
+                                <div class="img_2">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/pending_active.png" />
+                                </div>
+                            </div>
                             PENDING
                         </div>
                         <div class="mt-2">
@@ -35,9 +49,16 @@
 
             <div class="col-md-2 col-sm-4 col-4 position-relative">
                 <button type="submit" name="Status" value="4,5" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded active ps-2 pt-3">
+                    <div class="p-1 rounded active ps-2 pt-3 thumbnail">
                         <div class="d-inline-flex fw-bold">
-                            <i class="fa-solid fa-circle-check me-2 align-self-center d-none d-sm-block"></i>
+                            <div class="d-none d-md-block">
+                                <div class="img_1">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/active.png" />
+                                </div>
+                                <div class="img_2">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/active_active.png" />
+                                </div>
+                            </div>
                             ACTIVE
                         </div>
                         <div class="mt-2">
@@ -50,9 +71,16 @@
 
             <div class="col-md-2 col-sm-4 col-4 position-relative">
                 <button type="submit" name="Status" value="6" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded conclude ps-2 pt-3">
+                    <div class="p-1 rounded conclude ps-2 pt-3 thumbnail">
                         <div class="d-inline-flex fw-bold">
-                            <i class="fa-solid fa-clock-rotate-left me-2 align-self-center d-none d-sm-block"></i>
+                            <div class="d-none d-md-block">
+                                <div class="img_1">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/conclude.png" />
+                                </div>
+                                <div class="img_2">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/conclude_active.png" />
+                                </div>
+                            </div>
                             CONCLUDE
                         </div>
                         <div class="mt-2">
@@ -65,9 +93,16 @@
 
             <div class="col-md-2 col-sm-4 col-4 position-relative">
                 <button type="submit" name="Status" value="3,7,8" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded toClose ps-2 pt-3">
+                    <div class="p-1 rounded toClose ps-2 pt-3 thumbnail">
                         <div class="d-inline-flex fw-bold">
-                            <i class="fa-solid fa-user-xmark me-2 align-self-center d-none d-sm-block"></i>
+                            <div class="d-none d-md-block">
+                                <div class="img_1">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/toclose.png" />
+                                </div>
+                                <div class="img_2">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/toclose_active.png" />
+                                </div>
+                            </div>
                             TO CLOSE
                         </div>
                         <div class="mt-2">
@@ -80,9 +115,16 @@
 
             <div class="col-md-2 col-sm-4 col-4 position-relative">
                 <button type="submit" name="Status" value="9" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded unpaid ps-2 pt-3">
+                    <div class="p-1 rounded unpaid ps-2 pt-3 thumbnail">
                         <div class="d-inline-flex fw-bold">
-                            <i class="fa-solid fa-circle-dollar-to-slot me-2 align-self-center d-none d-sm-block"></i>
+                            <div class="d-none d-md-block">
+                                <div class="img_1">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/unpaid.png" />
+                                </div>
+                                <div class="img_2">
+                                    <img class="requestTypeIcon d-flex align-self-center me-2" src="~/images/unpaid_active.png" />
+                                </div>
+                            </div>
                             UNPAID
                         </div>
                         <div class="mt-2">

@@ -1,5 +1,4 @@
 ﻿using HalloDocMVC.DBEntity.DataContext;
-using HalloDocMVC.DBEntity.ViewModels;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Globalization;
+using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 
 namespace HalloDocMVC.Repositories.Admin.Repository
 {

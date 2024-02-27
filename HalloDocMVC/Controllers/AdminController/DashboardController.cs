@@ -1,5 +1,5 @@
 ﻿using HalloDocMVC.DBEntity.DataContext;
-using HalloDocMVC.DBEntity.ViewModels;
+using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +31,27 @@ namespace HalloDocMVC.Controllers.AdminController
             }
 
             List<AdminDashboardList> contacts = _IAdminDashboard.GetRequests(Status);
-           
+            switch (Status)
+            {
+                case "1":
+                    TempData["CurrentStatus"] = "New";
+                    break;
+                case "2":
+                    TempData["CurrentStatus"] = "Pending";
+                    break;
+                case "4,5":
+                    TempData["CurrentStatus"] = "Active";
+                    break;
+                case "6":
+                    TempData["CurrentStatus"] = "Conclude";
+                    break;
+                case "3,7,8":
+                    TempData["CurrentStatus"] = "To Close";
+                    break;
+                case "9":
+                    TempData["CurrentStatus"] = "Unpaid";
+                    break;
+            }
             switch (Status)
             {
                 case "1":
@@ -54,34 +74,7 @@ namespace HalloDocMVC.Controllers.AdminController
                     break;
             }
 
-            switch (Status)
-            {
-                case "1":
-                    TempData["CurrentStatus"] = "New";
-
-
-                    break;
-                case "2":
-                    TempData["CurrentStatus"] = "Panding";
-
-                    break;
-                case "4,5":
-                    TempData["CurrentStatus"] = "Active";
-
-                    break;
-                case "6":
-                    TempData["CurrentStatus"] = "Conclude";
-
-                    break;
-                case "3,7,8":
-                    TempData["CurrentStatus"] = "To Close";
-
-                    break;
-                case "9":
-                    TempData["CurrentStatus"] = "Unpaid";
-
-                    break;
-            }
+      
             return PartialView("");
         }
     }

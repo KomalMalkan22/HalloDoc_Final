@@ -1,10 +1,9 @@
 ﻿<div class="container mb-5">
-    <div class="card bg-transparent border-0">
-        <div class="card-header  border-0  bg-transparent text-end">
+    <div class="card bg-light border-0">
+        <div class="card-header  border-0  bg-light text-end">
             <div class="text-start d-flex justify-content-between">
                 <div>
-                    <h4 class="form-title fw-bold mt-2 mx-2">New Request</h4>
-
+                    <h4 class="form-title fw-bold mt-2 mx-2">Notes</h4>
                 </div>
                 <div>
                     <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info shadow-none">
@@ -16,8 +15,60 @@
             </div>
 
         </div>
-        <div class="card-body rounded shadow">
-            
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12 mb-3">
+                    <div class="d-flex p-2 bg-white shadow">
+                        <div class="p-2">
+                            <i class="fa-solid fa-right-left"></i>
+                        </div>
+                        <div class="ms-2 d-flex flex-column p-2">
+                            <strong class="fs-6">Transfer Notes</strong>
+                            <p>-</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 mb-3">
+                    <div class="d-flex p-2 bg-white shadow">
+                        <div class="p-2">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <div class="ms-2 d-flex flex-column p-2">
+                            <strong class="fs-6">Physician Notes</strong>
+                            <p>-</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 mb-3">
+                    <div class="d-flex p-2 bg-white shadow">
+                        <div class="p-2">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="ms-2 d-flex flex-column p-2">
+                            <strong class="fs-6">Admin Notes</strong>
+                            <p>-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="bg-white shadow p-2">
+                        <form>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="AdminNotes" style="height: 100px"></textarea>
+                                    <label for="AdminNotes">Admin Notes</label>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a class="btn btn-info text-white">Save Changes</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+

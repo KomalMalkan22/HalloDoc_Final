@@ -1,4 +1,4 @@
-﻿using HalloDocMVC.DBEntity.ViewModels;
+﻿using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

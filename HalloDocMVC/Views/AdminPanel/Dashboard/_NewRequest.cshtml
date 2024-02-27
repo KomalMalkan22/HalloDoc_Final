@@ -1,8 +1,8 @@
-﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminDashboardList>;
-@using static HalloDocMVC.DBEntity.ViewModels.Constant;
+﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminPanel.AdminDashboardList>;
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
 
 <!--Desktop Screen View of table-->
-<div class="table-responsive m-2 mb-5 d-none d-sm-block">
+<div class="table-responsive m-2 d-none d-sm-block">
     <table class="w-100">
         <thead style="height:50px;">
             <tr>
@@ -104,7 +104,7 @@
                                 </a>
                                 </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="ViewNotes" class="dropdown-item">
                                     <i class="fa-regular fa-file-lines me-2"></i>
                                     View Notes
                                 </a>
@@ -125,7 +125,7 @@
 </div>
 <!--End Desktop Screen View of table-->
 <!--Mobile Screen View of table-->
-<div class="accordion mt-3 d-block d-sm-none mb-5" id="accordionExample">
+<div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
     <div class="dBlock">
         @foreach (var item in Model)
         {
@@ -188,9 +188,9 @@
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <a asp-controller="Actions" asp-action="ViewNotes" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>View Notes</small>
-                                </button>
+                                </a>
                             </div>
                             <div class="col-6 mb-3">
                                 <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #e42929;">

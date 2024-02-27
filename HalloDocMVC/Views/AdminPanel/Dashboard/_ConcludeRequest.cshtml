@@ -1,8 +1,8 @@
-﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminDashboardList>;
-@using static HalloDocMVC.DBEntity.ViewModels.Constant;
+﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminPanel.AdminDashboardList>;
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
 
 <!--Desktop Screen View of table-->
-<div class="table-responsive m-2 mb-5 d-none d-sm-block">
+<div class="table-responsive m-2 d-none d-sm-block">
     <table class="w-100">
         <thead style="height:50px;">
             <tr>
@@ -132,7 +132,7 @@
 </div>
 <!--End Desktop Screen View of table-->
 <!--Mobile Screen View of table-->
-<div class="accordion mt-3 d-block d-sm-none mb-5" id="accordionExample">
+<div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
     <div class="dBlock">
         @foreach (var item in Model)
         {
