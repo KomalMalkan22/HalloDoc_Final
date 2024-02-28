@@ -19,5 +19,6 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
         public string? Address { get; set; }
         public string? Region { get; set; }
         public string? Room { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

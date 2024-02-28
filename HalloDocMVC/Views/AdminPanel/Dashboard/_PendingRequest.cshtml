@@ -95,7 +95,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a @*asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId"*@ class="dropdown-item" href="#">
                                     <i class="fa-solid fa-file-pen me-1"></i>
                                     View Case
                                 </a>
@@ -170,9 +170,9 @@
                 <div id="flush-@item.RequestId" class="accordion-collapse collapse mb-3 border-top" data-bs-parent="#accordionExample">
                     <div class="accordion-body container-fluid">
                         <div class="d-flex justify-content-end me-2">
-                            <button id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
+                            <a @*asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId"*@ id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
                                 <small>View Case</small>
-                            </button>
+                            </a>
                         </div>
                         <p> 
                             <i class="fa fa-calendar border border-info rounded-pill p-1 me-2" aria-hidden="true"></i>

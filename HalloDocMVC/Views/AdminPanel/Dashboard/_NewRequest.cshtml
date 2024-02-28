@@ -92,13 +92,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#CancelCase" class="dropdown-item">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Cancel Case
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a asp-controller="Actions" asp-action="ViewCase" class="dropdown-item">
+                                <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" class="dropdown-item">
                                     <i class="fa-solid fa-file-pen me-1"></i>
                                     View Case
                                 </a>
@@ -155,7 +155,7 @@
                 <div id="flush-@item.RequestId" class="accordion-collapse collapse mb-3 border-top" data-bs-parent="#accordionExample">
                     <div class="accordion-body container-fluid">
                         <div class="d-flex justify-content-end me-2">
-                            <a asp-controller="Actions" asp-action="ViewCase" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
+                            <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
                                 <small>View Case</small>
                             </a>
                         </div>

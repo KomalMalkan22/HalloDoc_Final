@@ -57,11 +57,11 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                        Email = rc.Email,
 
                                                        Region = rg.Name,
+                                                       ProviderId = req.Physicianid,
                                                        ProviderName = p.Firstname + " " + p.Lastname,
                                                        PatientPhoneNumber = rc.Phonenumber,
                                                        Address = rc.Address + " " + rc.Street + " " + rc.City + " " + rc.State + " " + rc.Zipcode,
                                                        Notes = rc.Notes,
-                                                       ProviderId = (int)req.Physicianid,
                                                        RequestorPhoneNumber = req.Phonenumber
                                                    })
                                                    .ToList();

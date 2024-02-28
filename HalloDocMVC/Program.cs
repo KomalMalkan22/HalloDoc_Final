@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<HalloDocContext>();
 builder.Services.AddScoped<IAdminDashboard, AdminDashboard>();
+builder.Services.AddScoped<IActions, Actions>();
 
 var app = builder.Build();
 
