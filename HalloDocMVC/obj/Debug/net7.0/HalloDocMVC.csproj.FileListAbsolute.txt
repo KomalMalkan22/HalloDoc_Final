@@ -86,3 +86,7 @@ C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\obj\Debug\net7.0\refint\H
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\obj\Debug\net7.0\HalloDocMVC.pdb
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\obj\Debug\net7.0\HalloDocMVC.genruntimeconfig.cache
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\obj\Debug\net7.0\ref\HalloDocMVC.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\AspNetCoreHero.ToastNotification.Views.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\AspNetCoreHero.ToastNotification.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\obj\Debug\net7.0\HalloDocMVC.MvcApplicationPartsAssemblyInfo.cs

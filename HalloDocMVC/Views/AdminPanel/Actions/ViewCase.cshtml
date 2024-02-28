@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="card-footer border-0 bg-transparent text-end">
-                    <a class="btn btn-info text-white mb-2" asp-action="" asp-controller="" data-bs-toggle="modal">Assign Case</a>
+                    <a class="btn btn-info text-white mb-2" onclick="model_Case(@Model.RequestId)" data-bs-target="#AssignCase" data-bs-toggle="modal" data-bs-requestid="@Model.RequestId" data-bs-patientname="@Model.FirstName">Assign Case</a>
                     <a class="btn btn-info text-white btn-submit mb-2">
                         View Notes
                     </a>
@@ -124,6 +124,8 @@
         </div>
     </div>
 </div>
+
+<partial name="./Modals/_AssignCase.cshtml" />
 
 <script>
     window.onload = function (e) {
@@ -146,4 +148,17 @@
             editprofile.style.display = "none";
         }
     }
+
+    function model_Case(id) {
+        console.log(id);
+        var modeldata = @Html.Raw(Json.Serialize(Model))
+        //document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].patientName;
+        //document.getElementById('RequestID_Input_ModelCancelCase').value = modeldata[id].requestID;
+        console.log(document.getElementById('RequestID_Input_ModelAssignCase').value);
+        document.getElementById('RequestID_Input_ModelAssignCase').value = id;
+        console.log(document.getElementById('RequestID_Input_ModelAssignCase').value);
+        //document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata[id].requestID;
+        //document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;
+    }
+
 </script>

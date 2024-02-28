@@ -14,11 +14,15 @@ namespace HalloDocMVC.Repositories.Admin.Repository
 {
     public class Actions : IActions
     {
+        #region Configuration
         private readonly HalloDocContext _context;
         public Actions(HalloDocContext context)
         {
             _context = context;
         }
+        #endregion Configuration
+
+        #region GetRequestForViewCase
         public ViewCaseModel GetRequestForViewCase(int id)
         {
             var n = _context.Requests.FirstOrDefault(E => E.Requestid == id);
@@ -44,7 +48,9 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             };
             return requestforviewcase;
         }
+        #endregion GetRequestForViewCase
 
+        #region EditCase
         public bool EditCase(ViewCaseModel model)
         {
             try
@@ -84,5 +90,34 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 return false;
             }
         }
+        #endregion EditCase
+
+        #region AssignProvider
+        public async Task<bool> AssignProvider(int RequestId, int ProviderId, string notes)
+        {
+
+            var request = await _context.Requests.FirstOrDefaultAsync(req => req.Requestid == RequestId);
+            request.Physicianid = ProviderId;
+            request.Status = 2;
+            _context.Requests.Update(request);
+            _context.SaveChanges();
+
+            Requeststatuslog rsl = new Requeststatuslog
+            {
+                Requestid = RequestId,
+                Physicianid = ProviderId,
+                Notes = notes,
+
+                Createddate = DateTime.Now,
+                Status = 2
+            };
+            _context.Requeststatuslogs.Update(rsl);
+            _context.SaveChanges();
+
+            return true;
+
+
+        }
+        #endregion AssignProvider
     }
 }

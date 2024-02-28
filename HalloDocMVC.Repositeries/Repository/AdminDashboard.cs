@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Globalization;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+using HalloDocMVC.DBEntity.DataModels;
 
 namespace HalloDocMVC.Repositories.Admin.Repository
 {
@@ -66,6 +67,32 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                    })
                                                    .ToList();
             return allData;
+        }
+
+        public async Task<bool> AssignProvider(int RequestId, int ProviderId, string notes)
+        {
+
+            var request = await _context.Requests.FirstOrDefaultAsync(req => req.Requestid == RequestId);
+            request.Physicianid = ProviderId;
+            request.Status = 2;
+            _context.Requests.Update(request);
+            _context.SaveChanges();
+
+            Requeststatuslog rsl = new()
+            {
+                Requestid = RequestId,
+                Physicianid = ProviderId,
+                Notes = notes,
+
+                Createddate = DateTime.Now,
+                Status = 2
+            };
+            _context.Requeststatuslogs.Update(rsl);
+            _context.SaveChanges();
+
+            return true;
+
+
         }
     }
 }

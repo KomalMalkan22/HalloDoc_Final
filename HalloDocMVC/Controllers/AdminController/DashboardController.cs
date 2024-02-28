@@ -8,19 +8,31 @@ namespace HalloDocMVC.Controllers.AdminController
 {
     public class DashboardController : Controller
     {
+        #region Configuration
         private readonly HalloDocContext _context;
         private readonly IAdminDashboard _IAdminDashboard;
-        public DashboardController(HalloDocContext context, IAdminDashboard IAdminDashboard)
+        private readonly IComboBox _IComboBox;
+        private readonly ILogger<DashboardController> _Logger;
+        public DashboardController(HalloDocContext context, IAdminDashboard IAdminDashboard, IAdminDashboard iAdminDashboard, IComboBox iComboBox)
         {
             _context = context;
             _IAdminDashboard = IAdminDashboard;
+            _IAdminDashboard = iAdminDashboard;
+            _IComboBox = iComboBox;
         }
-        public IActionResult Index()
+        #endregion Configuration
+
+        #region Index
+        public async Task<IActionResult> Index()
         {
+            ViewBag.ComboBoxRegion = await _IComboBox.ComboBoxRegions();
+            ViewBag.ComboBoxCaseReason = await _IComboBox.ComboBoxCaseReasons();
             var countRequest = _IAdminDashboard.CardData();
             return View("~/Views/AdminPanel/Dashboard/Index.cshtml", countRequest);
         }
+        #endregion Index
 
+        #region _SearchResult
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> _SearchResult(string Status)
@@ -77,5 +89,8 @@ namespace HalloDocMVC.Controllers.AdminController
       
             return PartialView("");
         }
+        #endregion _SearchResult
+
+
     }
 }
