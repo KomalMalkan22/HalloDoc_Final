@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody class="bg-white mb-5">
-            @foreach (var item in Model)
+            @foreach (var (item, index) in Model.Select((item, index) => (item, index)))
             {
                 <tr class="@Enum.GetName(typeof(RequestType), item.RequestTypeId) text-white border-bottom border-white">
                     <td><small>@item.PatientName</small></td>
@@ -86,23 +86,23 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a data-bs-toggle="modal" data-bs-target="#AssignCase" class="dropdown-item" onclick="model_Case(@item.RequestId)" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
+                                <a class="dropdown-item" onclick="model_Case(@item.RequestId)" data-bs-toggle="modal" data-bs-target="#AssignCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
                                     <i class="fa-solid fa-file-circle-check me-1"></i>
                                     Assign Case
                                 </a>
                             </li>
                             <li>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#CancelCase" class="dropdown-item">
+                                <a class="dropdown-item " onclick="model_Case(@item.RequestId)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Cancel Case
-                                </button>
+                                </a>
                             </li>
                             <li>
                                 <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" class="dropdown-item">
                                     <i class="fa-solid fa-file-pen me-1"></i>
                                     View Case
                                 </a>
-                                </li>
+                            </li>
                             <li>
                                 <a asp-controller="Actions" asp-action="ViewNotes" class="dropdown-item">
                                     <i class="fa-regular fa-file-lines me-2"></i>
@@ -110,13 +110,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-ban me-1"></i>
+                                <a class="dropdown-item " asp-action="" onclick="model_Case(@item.RequestId)" id="CancelCase_@item.RequestId" asp-controller="" data-bs-toggle="modal" data-bs-target="#BlockCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
+                                    <i class="bi bi-ban me-1"></i>
                                     Block Patient
                                 </a>
                             </li>
                         </ul>
-
                     </td>
                 </tr>
             }
@@ -202,28 +201,6 @@
                                     <small>Email</small>
                                 </button>
                             </div>
-                            @*<div class="col-6 mb-3">
-                                <button class="btn btn-success text-white rounded-pill 2px w-100">
-                                    <small>Doctors Note</small>
-                                </button>
-                            </div>
-
-                            <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #3ecc4e;">
-                                    <small>View Uploads</small>
-                                </button>
-                            </div>*@
-                            @*<div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #3ecc4e;">
-                                    <small>Encounter</small>
-                                </button>
-                            </div>*@
-                            @*<div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #FFD43B;">
-                                    <small>Orders</small>
-                                </button>
-                            </div>*@
-                            
                         </div>
                         <div class="text-end d-md-flex justify-content-md-end">
                             <span>Chat With:</span>
@@ -246,10 +223,14 @@
         console.log(id);
         var modeldata = @Html.Raw(Json.Serialize(Model))
             console.log(modeldata[id])
-        //document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].patientName;
-        //document.getElementById('RequestID_Input_ModelCancelCase').value = modeldata[id].requestID;
+        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].PatientName;
+        document.getElementById('RequestID_Input_ModelCancelCase').value = id;
         document.getElementById('RequestID_Input_ModelAssignCase').value = id;
-        //document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata[id].requestID;
-        //document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;
+        document.getElementById('RequestID_Input_ModelBlockCase').value = id;
+        document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].PatientName;
+        console.log(
+            document.getElementById('RequestID_Input_ModelCancelCase').value);
+        console.log(
+            document.getElementById('RequestID_Input_ModelBlockCase').value);
     }
 </script>

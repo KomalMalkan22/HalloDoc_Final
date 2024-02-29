@@ -58,7 +58,7 @@ namespace HalloDocMVC.Controllers.AdminController
             {
                 _INotyfService.Error("Physician Not Assigned...");
             }
-            return RedirectToAction("Index", "DashBoard");
+            return RedirectToAction("Index", "Dashboard");
         }
         #endregion
 
@@ -69,6 +69,40 @@ namespace HalloDocMVC.Controllers.AdminController
             return Json(data);
         }
         #endregion ProviderbyRegion
+
+        #region CancelCase
+        public IActionResult CancelCase(int RequestID, string Note, string CaseTag)
+        {
+            bool CancelCase = _IActions.CancelCase(RequestID, Note, CaseTag);
+            if (CancelCase)
+            {
+                _INotyfService.Success("Case Cancelled Successfully");
+
+            }
+            else
+            {
+                _INotyfService.Error("Case Not Cancelled");
+
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        #endregion CancelCase
+
+        #region BlockCase
+        public IActionResult BlockCase(int RequestID, string Note)
+        {
+            bool BlockCase = _IActions.BlockCase(RequestID, Note);
+            if (BlockCase)
+            {
+                _INotyfService.Success("Case Blocked Successfully");
+            }
+            else
+            {
+                _INotyfService.Error("Case Not Blocked");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        #endregion BlockCase
 
         public async Task<IActionResult> ViewNotes()
         {

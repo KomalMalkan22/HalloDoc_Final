@@ -102,7 +102,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             _context.Requests.Update(request);
             _context.SaveChanges();
 
-            Requeststatuslog rsl = new Requeststatuslog
+            Requeststatuslog rsl = new()
             {
                 Requestid = RequestId,
                 Physicianid = ProviderId,
@@ -119,5 +119,73 @@ namespace HalloDocMVC.Repositories.Admin.Repository
 
         }
         #endregion AssignProvider
+
+        #region CancelCase
+        public bool CancelCase(int RequestId, string Note, string CaseTag)
+        {
+            try
+            {
+                var requestData = _context.Requests.FirstOrDefault(e => e.Requestid == RequestId);
+                if (requestData != null)
+                {
+                    requestData.Casetag = CaseTag;
+                    requestData.Status = 8;
+                    _context.Requests.Update(requestData);
+                    _context.SaveChanges();
+                    Requeststatuslog rsl = new Requeststatuslog
+                    {
+                        Requestid = RequestId,
+                        Notes = Note,
+                        Status = 8,
+                        Createddate = DateTime.Now
+                    };
+                    _context.Requeststatuslogs.Add(rsl);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion CancelCase
+
+        #region BlockCase
+        public bool BlockCase(int RequestID, string Note)
+        {
+            try
+            {
+                var requestData = _context.Requests.FirstOrDefault(e => e.Requestid == RequestID);
+                if (requestData != null)
+                {
+                    requestData.Status = 11;
+                    _context.Requests.Update(requestData);
+                    _context.SaveChanges();
+                    Blockrequest blc = new Blockrequest
+                    {
+                        Requestid = requestData.Requestid.ToString(),
+                        Phonenumber = requestData.Phonenumber,
+                        Email = requestData.Email,
+                        Reason = Note,
+                        Createddate = DateTime.Now,
+                        Modifieddate = DateTime.Now
+                    };
+                    _context.Blockrequests.Add(blc);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion BlockCase
     }
 }

@@ -6,28 +6,29 @@
                 <h5 class="modal-title" id="exampleModalLongTitle">Confirm Cancellation</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <div class="modal-body">
-                <p class="text-secondary">
-                    Patient name : 
-                    <span class="text-info"> Test Test</span>
-                </p>
-                <div class="form-floating mb-3">
-                    <select class="form-select form-control shadow-none" id="ContactType">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <label for="ContactType">Reasons for Cancellation</label>
+            <form asp-controller="Actions" asp-action="CancelCase">
+                <input type="hidden" value="" id="RequestID_Input_ModelCancelCase" name="requestid" />
+                <div class="modal-body">
+                    <p class="text-secondary">
+                        Patient name :
+                        <span class="text-info"> Test Test</span>
+                    </p>
+                    <div class="form-floating mb-3">
+                        <select name="CaseTag" asp-items="@(new SelectList(ViewBag.ComboBoxCaseReason,"CaseReasonId","CaseReasonName"))" required class="form-select form-control shadow-none" id="CancelType" data-allow-clear="true" tabindex="-1">
+                            <option>Cancel Reason</option>
+                        </select>
+                        <label for="CancelType">Reasons for Cancellation</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea name="Note" class="form-control shadow-none" placeholder="Leave a comment here" id="AdminNotes" style="height: 100px"></textarea>
+                        <label for="AdminNotes">Provide Additional Notes</label>
+                    </div>
                 </div>
-                <div class="form-floating mb-3">
-                    <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="AdminNotes" style="height: 100px"></textarea>
-                    <label for="AdminNotes">Provide Additional Notes</label>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info text-white shadow-none">Confirm</button>
+                    <button type="button" class="btn border border-info text-info shadow-none" data-bs-dismiss="modal">Cancel</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info text-white shadow-none">Confirm</button>
-                <button type="button" class="btn border border-info text-info shadow-none" data-bs-dismiss="modal">Cancel</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
