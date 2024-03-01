@@ -11,7 +11,7 @@
                 <div class="modal-body">
                     <p class="text-secondary">
                         Patient name :
-                        <span class="text-info"> Test Test</span>
+                        <span id="PatientName_ModelCancelCase" class="text-info"></span>
                     </p>
                     <div class="form-floating mb-3">
                         <select name="CaseTag" asp-items="@(new SelectList(ViewBag.ComboBoxCaseReason,"CaseReasonId","CaseReasonName"))" required class="form-select form-control shadow-none" id="CancelType" data-allow-clear="true" tabindex="-1">
