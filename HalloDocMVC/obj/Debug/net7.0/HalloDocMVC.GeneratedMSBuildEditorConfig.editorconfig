@@ -28,12 +28,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE1vZGFsc1xfQ2FuY2VsQ2FzZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/AdminPanel/Actions/Modals/_ClearCase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE1vZGFsc1xfQ2xlYXJDYXNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/AdminPanel/Actions/Modals/_SendAgreement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE1vZGFsc1xfU2VuZEFncmVlbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/AdminPanel/Actions/Modals/_TransferRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE1vZGFsc1xfVHJhbnNmZXJSZXF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/AdminPanel/Actions/Orders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE9yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/AdminPanel/Actions/ViewCase.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXFZpZXdDYXNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/AdminPanel/Actions/ViewNotes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXFZpZXdOb3Rlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/AdminPanel/Actions/ViewUpload.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXFZpZXdVcGxvYWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/AdminPanel/Dashboard/DashboardSubPart.cshtml]

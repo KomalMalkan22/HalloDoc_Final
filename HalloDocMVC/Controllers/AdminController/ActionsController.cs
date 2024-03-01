@@ -108,5 +108,13 @@ namespace HalloDocMVC.Controllers.AdminController
         {
             return View("~/Views/AdminPanel/Actions/ViewNotes.cshtml");
         }
+        public async Task<IActionResult> ViewUpload()
+        {
+            return View("~/Views/AdminPanel/Actions/ViewUpload.cshtml");
+        }
+        public async Task<IActionResult> Orders()
+        {
+            return View("~/Views/AdminPanel/Actions/Orders.cshtml");
+        }
     }
 }

@@ -1,0 +1,39 @@
+﻿<!-- Modal -->
+<div class="modal fade" id="TransferRequest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="exampleModalLongTitle">Transfer Request</h5>
+                <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
+            </div>
+            <form asp-controller="" asp-action="">
+                <div class="modal-body">
+                    <small class="text-secondary">
+                        To transfer this request, search and select another Physician
+                    </small>
+                    @*<input type="hidden" name="requestid" id="RequestID_Input_ModelAssignCase" />*@
+                    <div class="form-floating my-3">
+                        <select name="region" class="form-select form-control shadow-none" id="region" required data-allow-clear="true" tabindex="-1">
+                            <option>All Region</option>
+                        </select>
+                        <label for="Region">Narrow search by Region</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select name="ProviderId" class="form-select form-control shadow-none" id="provider" required data-allow-clear="true" tabindex="-1">
+                            <option>Select Physician</option>
+                        </select>
+                        <label for="provider">Select Physician</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea name="Notes" class="form-control shadow-none" placeholder="Leave a comment here" id="Description" style="height: 100px"></textarea>
+                        <label for="Description">Description</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info text-white shadow-none">Submit</button>
+                    <button type="button" class="btn border border-info text-info shadow-none" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
