@@ -40,7 +40,7 @@
             </tr>
         </thead>
         <tbody class="bg-white mb-5">
-            @foreach (var item in Model)
+            @foreach (var (item, index) in Model.Select((item, index) => (item, index)))
             {
                 <tr class="@Enum.GetName(typeof(RequestType), item.RequestTypeId) text-white border-bottom border-white">
                     <td><small>@item.PatientName</small></td>
@@ -113,10 +113,10 @@
                                 </a>
                             </li>
                             <li>
-                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#TransferRequest">
+                                <a onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#TransferRequest" data-bs-requestid="@item.RequestId">
                                     <i class="fa-regular fa-rectangle-list me-1"></i>
                                     Transfer
-                                </button>
+                                </a>
                             </li>
                             <li>
                                 <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ClearCase">
@@ -247,3 +247,10 @@
     </div>
 </div>
 <!--End Mobile Screen View of table-->
+
+<script>
+    function modal_Case(id){
+        var modaldata = @Html.Raw(Json.Serialize(Model))
+        document.getElementById('RequestID_Input_ModalTransferPhysician').value = modaldata[id].requestId;
+    }
+</script>

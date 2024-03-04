@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using HalloDocMVC.DBEntity.DataModels;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
@@ -103,6 +104,21 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("Index", "Dashboard");
         }
         #endregion BlockCase
+
+        #region TransferPhysician
+        public async Task<IActionResult> TransferPhysician(int RequestId, int ProviderId, string Note)
+        {
+            if (await _IActions.TransferPhysician(RequestId, ProviderId, Note))
+            {
+                _INotyfService.Success("Physician Transferred Successfully.");
+            }
+            else
+            {
+                _INotyfService.Error("Physician Not Transferred.");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        #endregion TransferPhysician
 
         public async Task<IActionResult> ViewNotes()
         {

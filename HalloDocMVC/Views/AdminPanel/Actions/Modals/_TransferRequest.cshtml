@@ -6,26 +6,26 @@
                 <h5 class="modal-title" id="exampleModalLongTitle">Transfer Request</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form asp-controller="" asp-action="">
+            <form asp-controller="Actions" asp-action="TransferPhysician">
                 <div class="modal-body">
                     <small class="text-secondary">
                         To transfer this request, search and select another Physician
                     </small>
-                    @*<input type="hidden" name="requestid" id="RequestID_Input_ModelAssignCase" />*@
+                    <input type="hidden" name="requestid" id="RequestID_Input_ModalTransferPhysician" value="" />
                     <div class="form-floating my-3">
-                        <select name="region" class="form-select form-control shadow-none" id="region" required data-allow-clear="true" tabindex="-1">
+                        <select name="region" class="form-select form-control shadow-none" id="regionName" required data-allow-clear="true" tabindex="-1" onchange="myFunction()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
                             <option>All Region</option>
                         </select>
-                        <label for="Region">Narrow search by Region</label>
+                        <label for="regionName">Narrow search by Region</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <select name="ProviderId" class="form-select form-control shadow-none" id="provider" required data-allow-clear="true" tabindex="-1">
+                        <select name="ProviderId" class="form-select form-control shadow-none" id="providerName" required data-allow-clear="true" tabindex="-1">
                             <option>Select Physician</option>
                         </select>
-                        <label for="provider">Select Physician</label>
+                        <label for="providerName">Select Physician</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea name="Notes" class="form-control shadow-none" placeholder="Leave a comment here" id="Description" style="height: 100px"></textarea>
+                        <textarea name="Note" class="form-control shadow-none" placeholder="Leave a comment here" id="Description" style="height: 100px"></textarea>
                         <label for="Description">Description</label>
                     </div>
                 </div>
@@ -37,3 +37,26 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function myFunction() {
+        var region = $("#regionName").val();
+        console.log(region);
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ProviderbyRegion", "Actions")?Regionid=' + region,
+            cache: false,
+            success: function (response) {
+                console.log(response);
+                var s = '<option value="-1">Please Select</option>';
+                for (var i = 0; i < response.length; i++) {
+                    s += '<option value="' + response[i].physicianid + '">' + response[i].firstname + ' ' + response[i].lastname + '</option>';
+                }
+                $("#providerName").html(s);
+            },
+            error: function () {
+                alert("Error while checking Physician.");
+            }
+        });
+    }
+</script>
