@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\css\\admin.css"
     },
     {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
       "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -67,6 +79,18 @@
     {
       "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\images\\unpaid_active.png",
       "PackagePath": "staticwebassets\\images\\unpaid_active.png"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
     },
     {
       "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\site.js",
