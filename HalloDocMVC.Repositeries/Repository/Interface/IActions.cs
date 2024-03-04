@@ -15,5 +15,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
         public bool CancelCase(int RequestID, string Note, string CaseTag);
         public bool BlockCase(int RequestID, string Note);
         public Task<bool> TransferPhysician(int RequestId, int ProviderId, string Note);
+        public bool ClearCase(int RequestID);
     }
 }

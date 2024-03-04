@@ -120,6 +120,22 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion TransferPhysician
 
+        #region ClearCase
+        public IActionResult ClearCase(int RequestID)
+        {
+            bool ClearCase = _IActions.ClearCase(RequestID);
+            if(ClearCase)
+            {
+                _INotyfService.Success("Case Cleared Successfully.");
+            }
+            else
+            {
+                _INotyfService.Error("Case Not Cleared");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        #endregion ClearCase
+
         public async Task<IActionResult> ViewNotes()
         {
             return View("~/Views/AdminPanel/Actions/ViewNotes.cshtml");

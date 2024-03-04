@@ -211,5 +211,39 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             return true;
         }
         #endregion TransferPhysician
+
+        #region ClearCase
+        public bool ClearCase(int RequestID)
+        {
+            try
+            {
+                var request = _context.Requests.FirstOrDefault(req => req.Requestid == RequestID);
+                if (request != null)
+                {
+                    request.Status = 10;
+                    _context.Requests.Update(request);
+                    _context.SaveChanges();
+
+                    Requeststatuslog rsl = new()
+                    {
+                        Requestid = RequestID,
+                        Status = 10,
+                        Createddate= DateTime.Now
+                    };
+                    _context.Requeststatuslogs.Add(rsl);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion ClearCase
     }
 }

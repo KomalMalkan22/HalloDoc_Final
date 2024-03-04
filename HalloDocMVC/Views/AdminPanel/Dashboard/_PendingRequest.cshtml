@@ -113,13 +113,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#TransferRequest" data-bs-requestid="@item.RequestId">
+                                <button onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#TransferRequest" data-bs-requestid="@item.RequestId">
                                     <i class="fa-regular fa-rectangle-list me-1"></i>
                                     Transfer
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ClearCase">
+                                <button onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ClearCase">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Clear Case
                                 </button>
@@ -252,5 +252,6 @@
     function modal_Case(id){
         var modaldata = @Html.Raw(Json.Serialize(Model))
         document.getElementById('RequestID_Input_ModalTransferPhysician').value = modaldata[id].requestId;
+        document.getElementById('RequestID_Input_ModalClearCase').value = modaldata[id].requestId;
     }
 </script>
