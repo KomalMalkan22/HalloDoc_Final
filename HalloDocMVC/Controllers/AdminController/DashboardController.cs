@@ -32,10 +32,10 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion Index
 
-        #region _SearchResult
+        #region SearchResult
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> _SearchResult(string Status)
+        public async Task<IActionResult> SearchResult(string Status)
         {
             if (Status == null)
             {
@@ -89,7 +89,7 @@ namespace HalloDocMVC.Controllers.AdminController
       
             return PartialView("");
         }
-        #endregion _SearchResult
+        #endregion SearchResult
 
 
     }

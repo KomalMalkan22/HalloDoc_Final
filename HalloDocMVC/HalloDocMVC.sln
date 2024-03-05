@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HalloDocMVC.DBEntity", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HalloDocMVC.Repositories.Admin", "..\HalloDocMVC.Repositeries\HalloDocMVC.Repositories.Admin.csproj", "{F5001A61-4878-45D2-B4BB-7E44612FCE56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalloDocMVC.Repositeries.Patient", "..\HalloDocMVC.Repositeries.Patient\HalloDocMVC.Repositeries.Patient.csproj", "{9634E7F9-BBCE-41A9-BF0E-2DFBF657FBE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F5001A61-4878-45D2-B4BB-7E44612FCE56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5001A61-4878-45D2-B4BB-7E44612FCE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5001A61-4878-45D2-B4BB-7E44612FCE56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9634E7F9-BBCE-41A9-BF0E-2DFBF657FBE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9634E7F9-BBCE-41A9-BF0E-2DFBF657FBE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9634E7F9-BBCE-41A9-BF0E-2DFBF657FBE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9634E7F9-BBCE-41A9-BF0E-2DFBF657FBE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

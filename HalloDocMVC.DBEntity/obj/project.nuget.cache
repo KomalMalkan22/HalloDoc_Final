@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "PRhPbW5N1i/xB77xkIczXYZTYaF9qgAxnseP9OHHHehwprAK1m7HiebJ1cBizUytppfKK/LqBd258HchJE1Z7w==",
+  "dgSpecHash": "sET50rP6Nsd06tP8X0gYdL0BpIyf1zBQRSbOgVhCoJEk5pr8RgjpBAX45VMEMV1yHRTuDwSiO1P99RqyjlIJlw==",
   "success": true,
   "projectFilePath": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pct30\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.11\\microsoft.entityframeworkcore.analyzers.7.0.11.nupkg.sha512",
@@ -18,7 +19,8 @@
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
-    "C:\\Users\\pct30\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512"
+    "C:\\Users\\pct30\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
+    "C:\\Users\\pct30\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
   ],
   "logs": []
 }

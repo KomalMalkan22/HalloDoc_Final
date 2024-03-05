@@ -19,7 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HalloDocMVC.Repositeries.Patient\HalloDocMVC.Repositeries.Patient.csproj" />
     <ProjectReference Include="..\HalloDocMVC.Repositeries\HalloDocMVC.Repositories.Admin.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\PatientController\" />
+    <Folder Include="Views\PatientPanel\" />
   </ItemGroup>
 
 </Project>
