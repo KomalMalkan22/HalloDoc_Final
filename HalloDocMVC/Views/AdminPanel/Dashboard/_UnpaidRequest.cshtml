@@ -93,7 +93,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@item.RequestId" class="dropdown-item">
                                     <i class="fa-regular fa-file-lines me-2"></i>
                                     View Notes
                                 </a>
@@ -160,9 +160,9 @@
                         </p>
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>View Notes</small>
-                                </button>
+                                </a>
                             </div>
                             <div class="col-6 mb-3">
                                 <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">

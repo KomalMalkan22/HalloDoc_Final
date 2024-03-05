@@ -24,5 +24,20 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
             ToClose,
             Unpaid
         }
+        public enum Status
+        {
+            Unassigne = 1,
+            Accepted, 
+            Cancelled, 
+            MDEnRoute, 
+            MDONSite, 
+            Conclude, 
+            CancelledByPatients, 
+            Closed, 
+            Unpaid, 
+            Clear,
+            Block
+
+        }
     }
 }

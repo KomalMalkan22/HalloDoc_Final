@@ -136,10 +136,39 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion ClearCase
 
-        public async Task<IActionResult> ViewNotes()
+        #region ViewNotes
+        public IActionResult ViewNotes(int id)
         {
-            return View("~/Views/AdminPanel/Actions/ViewNotes.cshtml");
+            ViewNotesModel vnm = _IActions.GetNotes(id);
+            return View("~/Views/AdminPanel/Actions/ViewNotes.cshtml", vnm);
         }
+        #endregion ViewNotes
+
+        #region EditViewNotes
+        public IActionResult EditViewNotes(string? AdminNotes, string? PhysicianNotes, int RequestId)
+        {
+            if(AdminNotes != null || PhysicianNotes != null)
+            {
+                bool result = _IActions.EditNotes(AdminNotes, PhysicianNotes, RequestId);
+                if (result)
+                {
+                    _INotyfService.Success("Notes Updated Successfully.");
+                    return RedirectToAction("ViewNotes", new { id = RequestId });
+                }
+                else
+                {
+                    _INotyfService.Error("Notes Not Updated.");
+                    return View("../Actions/ViewNotes");
+                }
+            }
+            else
+            {
+                _INotyfService.Information("Please Select one of the note!!");
+                return RedirectToAction("ViewNotes", new { id = RequestId });
+            }
+        }
+        #endregion EditViewNotes
+
         public async Task<IActionResult> ViewUpload()
         {
             return View("~/Views/AdminPanel/Actions/ViewUpload.cshtml");

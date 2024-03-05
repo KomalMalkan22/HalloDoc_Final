@@ -92,6 +92,189 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         }
         #endregion EditCase
 
+        #region GetNotes
+        public ViewNotesModel GetNotes(int id)
+        {
+            var request = _context.Requests.FirstOrDefault(req => req.Requestid == id);
+            var symptoms = _context.Requestclients.FirstOrDefault(req => req.Requestid == id);
+
+            var transfer =
+                (
+                    from rsl in _context.Requeststatuslogs
+                    join phy in _context.Physicians
+                    on rsl.Physicianid equals phy.Physicianid into phyGroup
+                    from phy in phyGroup.DefaultIfEmpty()
+                    join p in _context.Physicians
+                    on rsl.Transtophysicianid equals p.Physicianid into pGroup
+                    from p in pGroup.DefaultIfEmpty()
+                    join adm in _context.Admins
+                    on rsl.Adminid equals adm.Adminid into admGroup
+                    from adm in admGroup.DefaultIfEmpty()
+                    where rsl.Requestid == id && rsl.Status == 2
+
+                    select new TransferNotesModel
+                    {
+                        TransToPhysician = p.Firstname,
+                        Admin = adm.Firstname + " " + adm.Lastname,
+                        Physician = phy.Firstname,
+                        RequestId = rsl.Requestid,
+                        Notes = rsl.Notes,
+                        Status = rsl.Status,
+                        PhysicianId = rsl.Physicianid,
+                        CreatedDate = rsl.Createddate,
+                        RequestStatusLogId = rsl.Requeststatuslogid,
+                        TransToAdmin = rsl.Transtoadmin,
+                        TransToPhysicianId = rsl.Transtophysicianid
+                    }
+                ).ToList();
+
+            // cbp : Cancel By Provider
+            var cbp = _context.Requeststatuslogs.Where(rsl => rsl.Requestid == id && (rsl.Transtoadmin != null));
+            // cap : Cancel By admin or Patient
+            var cap = _context.Requeststatuslogs.Where(rsl => rsl.Requestid == id && (rsl.Status == 3 || rsl.Status == 7));
+            // notes : Admin and Provider Notes
+            var notes = _context.Requestnotes.FirstOrDefault(rsl => rsl.Requestid == id);
+
+            ViewNotesModel vdm = new ViewNotesModel();
+            vdm.RequestId = id;
+            vdm.PatientNotes = symptoms.Notes;
+
+            if (notes == null)
+            {
+                vdm.AdminNotes = "-";
+                vdm.PhysicianNotes = "-";
+            }
+            else
+            {
+                vdm.Status = request.Status;
+                vdm.RequestNotesId = notes.Requestnotesid;
+                vdm.PhysicianNotes = notes.Physiciannotes ?? "-";
+                vdm.AdminNotes = notes.Adminnotes ?? "-";
+            }
+
+            List<TransferNotesModel> trans = new List<TransferNotesModel>();
+            foreach(var item in transfer)
+            {
+                trans.Add(new TransferNotesModel
+                {
+                    TransToPhysician = item.TransToPhysician,
+                    Admin = item.Admin,
+                    Physician = item.Physician,
+                    RequestId = item.RequestId,
+                    Notes = item.Notes ?? "-",
+                    Status = item.Status,
+                    PhysicianId = item.PhysicianId,
+                    CreatedDate = item.CreatedDate,
+                    RequestStatusLogId = item.RequestStatusLogId,
+                    TransToAdmin = item.TransToAdmin,
+                    TransToPhysicianId = item.TransToPhysicianId
+                });
+            }
+            vdm.transfernotes = trans;
+
+            List<TransferNotesModel> cancelProvider = new List<TransferNotesModel>();
+            foreach(var item in cbp)
+            {
+                cancelProvider.Add(new TransferNotesModel
+                {
+                    RequestId = item.Requestid,
+                    Notes = item.Notes ?? "-",
+                    Status = item.Status,
+                    PhysicianId = item.Physicianid,
+                    CreatedDate = item.Createddate,
+                    RequestStatusLogId = item.Requeststatuslogid,
+                    TransToAdmin = item.Transtoadmin,
+                    TransToPhysicianId = item.Transtophysicianid
+                });
+            }
+            vdm.cancelbyphysician = cancelProvider;
+
+            List<TransferNotesModel> cancelRequest = new List<TransferNotesModel>();
+            foreach(var item in cap)
+            {
+                cancelRequest.Add(new TransferNotesModel
+                {
+                    RequestId = item.Requestid,
+                    Notes = item.Notes ?? "-",
+                    Status = item.Status,
+                    PhysicianId = item.Physicianid,
+                    CreatedDate = item.Createddate,
+                    RequestStatusLogId = item.Requeststatuslogid,
+                    TransToAdmin = item.Transtoadmin,
+                    TransToPhysicianId = item.Transtophysicianid,
+                });
+            }
+            vdm.cancel = cancelRequest;
+
+            return vdm;
+        }
+        #endregion GetNotes
+
+        #region EditNotes
+        public bool EditNotes(string? AdminNotes, string? PhysicianNotes, int RequestId)
+        {
+            try
+            {
+                Requestnote note = _context.Requestnotes.FirstOrDefault(req => req.Requestid == RequestId);
+                if(note != null)
+                {
+                    if(PhysicianNotes != null)
+                    {
+                        if(note != null)
+                        {
+                            note.Physiciannotes = PhysicianNotes;
+                            note.Modifieddate = DateTime.Now;
+                            _context.Requestnotes.Update(note);
+                            _context.SaveChanges();
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else if(AdminNotes != null)
+                    {
+                        if(note != null)
+                        {
+                            note.Adminnotes = AdminNotes;
+                            note.Modifieddate = DateTime.Now;
+                            _context.Requestnotes.Update(note);
+                            _context.SaveChanges();
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    Requestnote requestnote = new Requestnote
+                    {
+                        Requestid = RequestId,
+                        Adminnotes = AdminNotes,
+                        Physiciannotes = PhysicianNotes,
+                        Createddate = DateTime.Now,
+                        Createdby = "02ae2720-3e7c-4fff-b83f-038f29013420"
+                    };
+                    _context.Requestnotes.Add(requestnote);
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion EditNotes
+
         #region AssignProvider
         public async Task<bool> AssignProvider(int RequestId, int ProviderId, string notes)
         {
@@ -192,21 +375,22 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         public async Task<bool> TransferPhysician(int RequestId, int ProviderId, string Note)
         {
             var request = await _context.Requests.FirstOrDefaultAsync(req => req.Requestid == RequestId);
-            request.Physicianid = ProviderId;
-            request.Status = 2;
-            _context.Requests.Update(request);
-            _context.SaveChanges();
-
+            
             Requeststatuslog rsl = new()
             {
                 Requestid = RequestId,
                 Status = 2,
-                Physicianid = ProviderId,
+                Physicianid = request.Physicianid,
                 Transtophysicianid = ProviderId,
                 Notes = Note,
                 Createddate = DateTime.Now
             };
             _context.Requeststatuslogs.Update(rsl);
+            _context.SaveChanges();
+
+            request.Physicianid = ProviderId;
+            request.Status = 2;
+            _context.Requests.Update(request);
             _context.SaveChanges();
             return true;
         }
