@@ -22,6 +22,7 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion Configuration
 
+        [CheckAdminAccess]
         #region Index
         public async Task<IActionResult> Index()
         {

@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<HalloDocContext>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession();
 builder.Services.AddScoped<IAdminDashboard, AdminDashboard>();
 builder.Services.AddScoped<IActions, Actions>();
 builder.Services.AddScoped<IComboBox, ComboBox>();
@@ -29,7 +31,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseNotyf();
@@ -38,6 +40,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();

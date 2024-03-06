@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HalloDocMVC.DBEntity\HalloDocMVC.DBEntity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\Interface\" />
+  </ItemGroup>
+
 </Project>

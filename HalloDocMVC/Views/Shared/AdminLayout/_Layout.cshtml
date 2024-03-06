@@ -1,0 +1,85 @@
+﻿﻿@{
+    string path = Context.Request.Path;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+    <script src="~/js/main.js" asp-append-version="true"></script>
+</head>
+<body class="bg-light">
+    <header class="shadow">
+        <div class="d-flex justify-content-between bg-white rounded-0 border-bottom">
+            <div class="d-inline-flex">
+                <a class="text-decoration-none align-self-center" id="offCanvasIcon" data-bs-toggle="offcanvas" href="#offcanvasExample">
+                    <i class="fa-solid fa-bars text-info border rounded border-info my-3 p-2"></i>
+                </a>
+                <img id="halloDocLogo" class="img-fluid img-responsive p-3" src="~/images/Fig56. Patient site 1.png" />
+            </div>
+            <div class="d-inline-flex align-items-center p-3">
+                <label class="d-none d-sm-block">Welcome <strong>Admin</strong></label>
+                <a class="text-decoration-none">
+                    <i class="d-block d-sm-none fa-solid fa-arrow-right-from-bracket text-info border rounded border-info mx-3 mx-xs-2 my-3 p-2"></i>
+                </a>
+                <a asp-controller="Login" asp-action="Logout" class="d-none d-sm-block btn border border-info text-info mx-3  mx-xs-2">Logout</a>
+                <a asp-controller="Login" asp-action="Logout"><i class="fas fa-moon text-info border rounded border-info my-3 p-2"></i></a>
+            </div>
+        </div>
+
+        <partial name="../AdminPanel/Dashboard/_SubNav"/>
+
+        <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <strong class="offcanvas-title" id="offcanvasExampleLabel">Welcome, Admin</strong>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav">
+                    <li class="nav-item mt-2 @(path.StartsWith("/") ? "activeNavItemOffcanvas" : "")">
+                        <a>Dashboard</a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a>Provider Location</a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a>My Profile</a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a>Providers</a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a>Parteners</a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a>Access</a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a>Records</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="mb-5 bg-light">
+        @RenderBody()
+    </div>
+
+    <div class="bg-dark d-flex justify-content-end p-1 text-white fixed-bottom mt-5">
+        <a href="#" class="text-white text-decoration-none m-3 h6">Terms of condition</a>
+        <a href="#" class="text-white text-decoration-none m-3 h6">Privacy Policy</a>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="@Url.Content("~/plugins/mvc-jquery-ajax/jquery.unobtrusive-ajax.js")"></script>
+    <script src="@Url.Content("~/plugins/mvc-jquery-validate/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/plugins/mvc-jquery-validate/jquery.validate.unobtrusive.js")"></script>
+
+    @await Component.InvokeAsync("Notyf")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

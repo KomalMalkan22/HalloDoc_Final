@@ -1,0 +1,15 @@
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\bin\Debug\net7.0\HalloDocMVC.Repositeries.Patient.deps.json
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\bin\Debug\net7.0\HalloDocMVC.Repositeries.Patient.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\bin\Debug\net7.0\HalloDocMVC.Repositeries.Patient.pdb
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\bin\Debug\net7.0\HalloDocMVC.DBEntity.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\bin\Debug\net7.0\HalloDocMVC.DBEntity.pdb
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\HalloDocMVC.Repositeries.Patient.csproj.AssemblyReference.cache
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\HalloDocMVC.Repositeries.Patient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\HalloDocMVC.Repositeries.Patient.AssemblyInfoInputs.cache
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\HalloDocMVC.Repositeries.Patient.AssemblyInfo.cs
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\HalloDocMVC.Repositeries.Patient.csproj.CoreCompileInputs.cache
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\HalloDocMVC.Repositeries.Patient.csproj.CopyComplete
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\HalloDocMVC.Repositeries.Patient.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\refint\HalloDocMVC.Repositeries.Patient.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\HalloDocMVC.Repositeries.Patient.pdb
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC.Repositeries.Patient\obj\Debug\net7.0\ref\HalloDocMVC.Repositeries.Patient.dll

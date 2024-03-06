@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "../Shared/AdminLayout/_LayoutLogin";
+    ViewData["Title"] = "Platform Login";
+}
+
+<div class="align-self-center col-md-6 col-xs-10">
+    <h3 class="py-3">Login To Your Account</h3>
+    <strong class="text-danger">@ViewData["error"]</strong>
+    <form asp-controller="Login" asp-action="Validate" method="post">
+        <div class="form-floating mb-4 email">
+            <input name="Email" type="email" class="form-control shadow-none " id="Email" placeholder="name@example.com">
+            <label class="bg-transparent" for="Email">Email</label>
+            <button type="button" class="btn btn-light">
+                <i class="icon fa-solid fa-user field-icon position-relative"></i>
+            </button>
+        </div>
+        <div class="form-floating mb-4 password">
+            <input name="Passwordhash" type="password" class="form-control shadow-none eyehide " id="Password" placeholder="Password">
+            <label for="Password">Password</label>
+            <button type="button" class="btn btn-light" onclick="passtoggle()">
+                <i class="showImg fa fa-eye-slash"></i>
+                <i class="fa fa-eye"></i>
+            </button>
+        </div>
+        <button type="submit" class="btn btn-info text-white w-100 mb-4 p-2" role="button">
+            Login
+        </button>
+    </form>
+    <a asp-controller="Login" asp-action="ForgotPassword" class="text-decoration-none d-flex justify-content-center">
+        <strong class="text-info">Forgot Password?</strong>
+    </a>
+</div>
+
+<script>
+    function passtoggle() {
+        var x = document.getElementById("Password");
+        if (x.type == "password") {
+            x.type = "text";
+            document.querySelectorAll("i.fa.fa-eye-slash").forEach(i => i.style.display = "none");
+            document.querySelectorAll("i.fa.fa-eye").forEach(i => i.style.display = "block");
+        }
+        else {
+            x.type = "password";
+            document.querySelectorAll("i.fa.fa-eye-slash").forEach(i => i.style.display = "block");
+            document.querySelectorAll("i.fa.fa-eye").forEach(i => i.style.display = "none");
+        }
+    }
+</script>

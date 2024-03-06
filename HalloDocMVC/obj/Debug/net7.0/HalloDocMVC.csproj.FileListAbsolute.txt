@@ -90,3 +90,5 @@ C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\AspNetCo
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\AspNetCoreHero.ToastNotification.dll
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\obj\Debug\net7.0\HalloDocMVC.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\HalloDocMVC.Repositeries.Patient.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\HalloDocMVC.Repositeries.Patient.pdb

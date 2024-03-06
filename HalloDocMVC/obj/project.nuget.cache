@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "NlJN5pMHoHlMMLThZSocXfsyoaPCSk+ugTm4Oxpd3wLyZPR8q7WzD0TiJyIWnFK1yIULWN22Y3mvwXTKgqeB9A==",
+  "dgSpecHash": "Vml0QKlsCpITvWgQaOVhEmGyP1lZIwqLp4tmxa1Nv+xB3g+p0U28u+sXmJ/XBriMmyUKTRfhZ/FWkTpspG0fEw==",
   "success": true,
   "projectFilePath": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\HalloDocMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pct30\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\pct30\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.16\\microsoft.entityframeworkcore.7.0.16.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.16\\microsoft.entityframeworkcore.abstractions.7.0.16.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.16\\microsoft.entityframeworkcore.analyzers.7.0.16.nupkg.sha512",
@@ -27,6 +28,7 @@
     "C:\\Users\\pct30\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\pct30\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\pct30\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],

@@ -25,8 +25,8 @@ $("#files").change(function () {
 /* Password */
 
 function passtoggle() {
-    var x = document.getElementById("floatingPassword");
-    if (x.type === "password") {
+    var x = document.getElementById("Password");
+    if (x.type == "password") {
         x.type = "text";
         document.querySelectorAll("i.fa.fa-eye-slash").forEach(i => i.style.display = "none");
         document.querySelectorAll("i.fa.fa-eye").forEach(i => i.style.display = "block");
