@@ -26,6 +26,7 @@
   <ItemGroup>
     <Folder Include="Controllers\PatientController\" />
     <Folder Include="Views\PatientPanel\" />
+    <Folder Include="wwwroot\Upload\100\" />
   </ItemGroup>
 
 </Project>

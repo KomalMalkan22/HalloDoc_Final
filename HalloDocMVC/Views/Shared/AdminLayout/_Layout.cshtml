@@ -10,6 +10,7 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
     <script src="~/js/main.js" asp-append-version="true"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-light">
     <header class="shadow">
@@ -21,7 +22,7 @@
                 <img id="halloDocLogo" class="img-fluid img-responsive p-3" src="~/images/Fig56. Patient site 1.png" />
             </div>
             <div class="d-inline-flex align-items-center p-3">
-                <label class="d-none d-sm-block">Welcome <strong>Admin</strong></label>
+                <label class="d-none d-sm-block">Welcome <strong>@CV.UserName()</strong></label>
                 <a class="text-decoration-none">
                     <i class="d-block d-sm-none fa-solid fa-arrow-right-from-bracket text-info border rounded border-info mx-3 mx-xs-2 my-3 p-2"></i>
                 </a>
@@ -30,11 +31,9 @@
             </div>
         </div>
 
-        <partial name="../AdminPanel/Dashboard/_SubNav"/>
-
         <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <strong class="offcanvas-title" id="offcanvasExampleLabel">Welcome, Admin</strong>
+                <strong class="offcanvas-title" id="offcanvasExampleLabel">Welcome, @CV.UserName()</strong>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -63,6 +62,8 @@
                 </ul>
             </div>
         </div>
+
+        <partial name="../AdminPanel/Dashboard/_SubNav" />
     </header>
 
     <div class="mb-5 bg-light">

@@ -6,7 +6,7 @@
         <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a asp-controller="Dashboard" asp-action="Index" class="nav-link px- text-dark @(path.StartsWith("/Dashboard") ? "activeNavItem" : "")" aria-current="page">
+                    <a asp-controller="Dashboard" asp-action="Index" class="nav-link px- text-dark @(path.StartsWith("/Dashboard") || path.StartsWith("/Actions") ? "activeNavItem" : "")" aria-current="page">
                         <small>Dashboard</small>
                     </a>
                 </li>

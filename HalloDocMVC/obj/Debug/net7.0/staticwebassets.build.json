@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dDyuRHXjHuWO92CU4HHXi/eTK6HEVw7F7HrFdY/OXos=",
+  "Hash": "tvn5jeDwEMvMqzHA2E9FwKKunq8SwxNCOXpmBo623Fk=",
   "Source": "HalloDocMVC",
   "BasePath": "_content/HalloDocMVC",
   "Mode": "Default",
@@ -3262,6 +3262,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\plugins\\mvc-jquery-validate\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\Upload\\100\\11116016_415-20240307043640.png",
+      "SourceId": "HalloDocMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\",
+      "BasePath": "_content/HalloDocMVC",
+      "RelativePath": "Upload/100/11116016_415-20240307043640.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\100\\11116016_415-20240307043640.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\Upload\\100\\active-20240307043747.png",
+      "SourceId": "HalloDocMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\",
+      "BasePath": "_content/HalloDocMVC",
+      "RelativePath": "Upload/100/active-20240307043747.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\100\\active-20240307043747.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\Upload\\100\\conclude_active-20240307043847.png",
+      "SourceId": "HalloDocMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\",
+      "BasePath": "_content/HalloDocMVC",
+      "RelativePath": "Upload/100/conclude_active-20240307043847.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\100\\conclude_active-20240307043847.png"
     }
   ]
 }

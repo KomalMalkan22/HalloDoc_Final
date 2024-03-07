@@ -1,4 +1,5 @@
 ﻿using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
         public bool BlockCase(int RequestID, string Note);
         public Task<bool> TransferPhysician(int RequestId, int ProviderId, string Note);
         public bool ClearCase(int RequestID);
+        Task<ViewUploadModel> GetDocuments(int? id);
+        public Boolean UploadDocuments(int Requestid, IFormFile file);
     }
 }

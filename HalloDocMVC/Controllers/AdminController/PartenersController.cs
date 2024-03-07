@@ -2,6 +2,7 @@
 
 namespace HalloDocMVC.Controllers.AdminController
 {
+    [CheckAdminAccess]
     public class PartenersController : Controller
     {
         public IActionResult Index()

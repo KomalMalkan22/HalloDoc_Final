@@ -169,10 +169,25 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion EditViewNotes
 
-        public async Task<IActionResult> ViewUpload()
+        #region ViewUpload
+        public async Task<IActionResult> ViewUpload(int? id)
         {
-            return View("~/Views/AdminPanel/Actions/ViewUpload.cshtml");
+            ViewUploadModel v = await _IActions.GetDocuments(id);
+            return View("~/Views/AdminPanel/Actions/ViewUpload.cshtml", v);
         }
+        #endregion ViewUpload
+
+        #region UploadDocuments
+        public IActionResult UploadDocuments(int Requestid, IFormFile file)
+        {
+            if (_IActions.UploadDocuments(Requestid, file))
+            {
+                _INotyfService.Success("File Uploaded Successfully.");
+            }
+            return RedirectToAction("ViewUpload", "Actions", new { id = Requestid });
+        }
+        #endregion UploadDocuments
+
         public async Task<IActionResult> Orders()
         {
             return View("~/Views/AdminPanel/Actions/Orders.cshtml");
