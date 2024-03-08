@@ -184,11 +184,8 @@
                     </div>
                     <div class="search m-1">
                         <i class="fa fa-search"></i>
-                        <select class="form-select shadow-none" id="floatingSelectGrid">
+                        <select asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))" class="form-select shadow-none" id="floatingSelectGrid">
                             <option selected class="text-secondary">All Regions</option>
-                            <option value="1">Maryland</option>
-                            <option value="2">New York</option>
-                            <option value="3">Virginia</option>
                         </select>
                     </div>
                 </div>

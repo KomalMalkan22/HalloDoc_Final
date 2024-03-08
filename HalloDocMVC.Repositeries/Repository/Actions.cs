@@ -469,9 +469,9 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                 Uploader = item.Uploader,
                                 isDeleted = item.isDeleted,
                                 RequestwiseFilesId = item.RequestwisefilesId,
-                                Status = item.Status,
-                                CreatedDate = item.CreatedDate,
-                                Filename = item.filename
+                                //Status = item.Status,
+                                //CreatedDate = item.CreatedDate,
+                                //Filename = item.filename
                             });
                         }
             upload.documents = doclist;

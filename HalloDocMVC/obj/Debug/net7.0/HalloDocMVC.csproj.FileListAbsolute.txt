@@ -92,3 +92,11 @@ C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Newtonso
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\obj\Debug\net7.0\HalloDocMVC.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\HalloDocMVC.Repositeries.Patient.dll
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\HalloDocMVC.Repositeries.Patient.pdb
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

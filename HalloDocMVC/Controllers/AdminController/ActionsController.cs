@@ -184,6 +184,10 @@ namespace HalloDocMVC.Controllers.AdminController
             {
                 _INotyfService.Success("File Uploaded Successfully.");
             }
+            else
+            {
+                _INotyfService.Error("File not uploaded.");
+            }
             return RedirectToAction("ViewUpload", "Actions", new { id = Requestid });
         }
         #endregion UploadDocuments

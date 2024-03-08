@@ -16,7 +16,8 @@ builder.Services.AddSession();
 builder.Services.AddScoped<IAdminDashboard, AdminDashboard>();
 builder.Services.AddScoped<IActions, Actions>();
 builder.Services.AddScoped<IComboBox, ComboBox>();
-
+builder.Services.AddScoped<ILogin, Login>();
+builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddNotyf(config => { config.DurationInSeconds = 3; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
 
 var app = builder.Build();
