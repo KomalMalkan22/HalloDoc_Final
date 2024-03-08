@@ -24,6 +24,8 @@ public partial class HalloDocContext : DbContext
 
     public virtual DbSet<Aspnetuser> Aspnetusers { get; set; }
 
+    public virtual DbSet<Aspnetuserrole> Aspnetuserroles { get; set; }
+
     public virtual DbSet<Blockrequest> Blockrequests { get; set; }
 
     public virtual DbSet<Business> Businesses { get; set; }
@@ -116,29 +118,15 @@ public partial class HalloDocContext : DbContext
         modelBuilder.Entity<Aspnetuser>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("aspnetusers_pkey");
+        });
 
-            entity.HasMany(d => d.Roles).WithMany(p => p.Users)
-                .UsingEntity<Dictionary<string, object>>(
-                    "Aspnetuserrole",
-                    r => r.HasOne<Aspnetrole>().WithMany()
-                        .HasForeignKey("Roleid")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("aspnetuserroles_roleid_fkey"),
-                    l => l.HasOne<Aspnetuser>().WithMany()
-                        .HasForeignKey("Userid")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("aspnetuserroles_userid_fkey"),
-                    j =>
-                    {
-                        j.HasKey("Userid", "Roleid").HasName("aspnetuserroles_pkey");
-                        j.ToTable("aspnetuserroles");
-                        j.IndexerProperty<string>("Userid")
-                            .HasMaxLength(128)
-                            .HasColumnName("userid");
-                        j.IndexerProperty<string>("Roleid")
-                            .HasMaxLength(128)
-                            .HasColumnName("roleid");
-                    });
+        modelBuilder.Entity<Aspnetuserrole>(entity =>
+        {
+            entity.HasKey(e => new { e.Userid, e.Roleid }).HasName("aspnetuserroles_pkey");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Aspnetuserroles)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("aspnetuserroles_userid_fkey");
         });
 
         modelBuilder.Entity<Blockrequest>(entity =>

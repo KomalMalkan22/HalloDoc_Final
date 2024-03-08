@@ -92,10 +92,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item " onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
+                                <button class="dropdown-item " onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Cancel Case
-                                </a>
+                                </button>
                             </li>
                             <li>
                                 <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" class="dropdown-item">
@@ -110,10 +110,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item " onclick="model_Case(@index)" id="CancelCase_@item.RequestId" data-bs-toggle="modal" data-bs-target="#BlockCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
+                                <button class="dropdown-item " onclick="model_Case(@index)" id="CancelCase_@item.RequestId" data-bs-toggle="modal" data-bs-target="#BlockCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
                                     <i class="bi bi-ban me-1"></i>
                                     Block Patient
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </td>

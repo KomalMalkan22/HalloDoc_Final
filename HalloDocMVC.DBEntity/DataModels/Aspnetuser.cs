@@ -40,6 +40,9 @@ public partial class Aspnetuser
     [Column("modifieddate", TypeName = "timestamp without time zone")]
     public DateTime? Modifieddate { get; set; }
 
+    [InverseProperty("User")]
+    public virtual ICollection<Aspnetuserrole> Aspnetuserroles { get; set; } = new List<Aspnetuserrole>();
+
     [InverseProperty("CreatedbyNavigation")]
     public virtual ICollection<Business> BusinessCreatedbyNavigations { get; set; } = new List<Business>();
 
@@ -63,8 +66,4 @@ public partial class Aspnetuser
 
     [InverseProperty("Aspnetuser")]
     public virtual ICollection<User> Users { get; set; } = new List<User>();
-
-    [ForeignKey("Userid")]
-    [InverseProperty("Users")]
-    public virtual ICollection<Aspnetrole> Roles { get; set; } = new List<Aspnetrole>();
 }
