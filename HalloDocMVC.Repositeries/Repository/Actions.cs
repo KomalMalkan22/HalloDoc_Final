@@ -316,14 +316,14 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 if (requestData != null)
                 {
                     requestData.Casetag = CaseTag;
-                    requestData.Status = 8;
+                    requestData.Status = 3;
                     _context.Requests.Update(requestData);
                     _context.SaveChanges();
                     Requeststatuslog rsl = new Requeststatuslog
                     {
                         Requestid = RequestId,
                         Notes = Note,
-                        Status = 8,
+                        Status = 3,
                         Createddate = DateTime.Now
                     };
                     _context.Requeststatuslogs.Add(rsl);
@@ -469,9 +469,9 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                 Uploader = item.Uploader,
                                 isDeleted = item.isDeleted,
                                 RequestwiseFilesId = item.RequestwisefilesId,
-                                //Status = item.Status,
-                                //CreatedDate = item.CreatedDate,
-                                //Filename = item.filename
+                                Status = item.Status,
+                                CreatedDate = item.CreatedDate,
+                                FileName = item.filename
                             });
                         }
             upload.documents = doclist;
@@ -496,5 +496,30 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             return true;
         }
         #endregion UploadDocuments
+
+        #region DeleteDocuments
+        public async Task<bool> DeleteDocuments(string ids)
+        {
+            List<int> delete = ids.Split(',').Select(int.Parse).ToList();
+            foreach (int item in delete)
+            {
+                if (item > 0)
+                {
+                    var data = await _context.Requestwisefiles.Where(e => e.Requestwisefileid == item).FirstOrDefaultAsync();
+                    if (data != null)
+                    {
+                        data.Isdeleted[0] = true;
+                        _context.Requestwisefiles.Update(data);
+                        _context.SaveChanges();
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        #endregion DeleteDocuments
     }
 }

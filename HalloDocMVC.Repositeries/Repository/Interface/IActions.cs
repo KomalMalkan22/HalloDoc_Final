@@ -21,5 +21,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
         public bool ClearCase(int RequestID);
         Task<ViewUploadModel> GetDocuments(int? id);
         public Boolean UploadDocuments(int Requestid, IFormFile file);
+        Task<bool> DeleteDocuments(string ids);
     }
 }

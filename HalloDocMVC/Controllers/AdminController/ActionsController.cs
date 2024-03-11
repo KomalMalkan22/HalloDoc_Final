@@ -192,6 +192,36 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion UploadDocuments
 
+        #region DeleteFile
+        public async Task<IActionResult> DeleteFile(int? id, int Requestid)
+        {
+            if (await _IActions.DeleteDocuments(id.ToString()))
+            {
+                _INotyfService.Success("File Deleted Successfully");
+            }
+            else
+            {
+                _INotyfService.Error("File Not Deleted");
+            }
+            return RedirectToAction("ViewUpload", "Actions", new { id = Requestid });
+        }
+        #endregion DeleteFile
+
+        #region DeleteAllFiles
+        public async Task<IActionResult> DeleteAllFiles(string deleteids, int Requestid)
+        {
+            if (await _IActions.DeleteDocuments(deleteids))
+            {
+                _INotyfService.Success("All Files are Deleted Successfully");
+            }
+            else
+            {
+                _INotyfService.Error("All Selected Files are Not Deleted");
+            }
+            return RedirectToAction("ViewUpload", "Actions", new { id = Requestid });
+        }
+        #endregion DeleteAllFiles
+
         public async Task<IActionResult> Orders()
         {
             return View("~/Views/AdminPanel/Actions/Orders.cshtml");

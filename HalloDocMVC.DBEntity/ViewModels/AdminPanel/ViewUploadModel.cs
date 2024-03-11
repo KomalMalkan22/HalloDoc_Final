@@ -18,6 +18,9 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
             public string? Uploader { get; set; }
             public int? RequestwiseFilesId { get; set; }
             public string isDeleted { get; set; }
+            public int? Status { get; set; }
+            public string? FileName { get; set; }
+            public DateTime CreatedDate { get; set; }
         }
     }
 }
