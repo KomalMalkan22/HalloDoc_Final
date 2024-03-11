@@ -15,7 +15,7 @@
                         <small>My Profile</small>
                     </a>
                 </li>
-                @if (CV.RoleID() == "1")
+                @if (CV.role() == "1")
                 {
                     <li class="nav-item">
                         <a asp-controller="ProviderLocation" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/ProviderLocation") ? "activeNavItem" : "")">
@@ -44,7 +44,7 @@
                     </li>
                 }
                 
-                @if(CV.RoleID() == "2")
+                @if(CV.role() == "2")
                 {
                     <li class="nav-item me-3">
                         <a class="nav-link text-dark @(path.StartsWith("/Chat") ? "activesbnav" : "")" asp-action="" asp-controller="">Chat</a>

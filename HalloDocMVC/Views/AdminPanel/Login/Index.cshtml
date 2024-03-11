@@ -3,19 +3,20 @@
     ViewData["Title"] = "Platform Login";
 }
 
+@model HalloDocMVC.DBEntity.DataModels.Aspnetuser;
 <div class="align-self-center col-md-6 col-xs-10">
     <h3 class="py-3">Login To Your Account</h3>
     <strong class="text-danger">@ViewData["error"]</strong>
     <form asp-controller="Login" asp-action="Validate" method="post">
         <div class="form-floating mb-4 email">
-            <input name="Email" type="email" class="form-control shadow-none " id="Email" placeholder="name@example.com">
+            <input asp-for="Email" type="email" class="form-control shadow-none " id="Email" placeholder="name@example.com">
             <label class="bg-transparent" for="Email">Email</label>
             <button type="button" class="btn btn-light">
                 <i class="icon fa-solid fa-user field-icon position-relative"></i>
             </button>
         </div>
         <div class="form-floating mb-4 password">
-            <input name="Passwordhash" type="password" class="form-control shadow-none eyehide " id="Password" placeholder="Password">
+            <input asp-for="Passwordhash" type="password" class="form-control shadow-none eyehide " id="Password" placeholder="Password">
             <label for="Password">Password</label>
             <button type="button" class="btn btn-light" onclick="passtoggle()">
                 <i class="showImg fa fa-eye-slash"></i>

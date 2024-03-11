@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using HalloDocMVC.DBEntity.DataModels;
+using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+using HalloDocMVC.Repositories.Admin.Repository.Interface;
+using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Data;
 
@@ -6,6 +10,30 @@ namespace HalloDocMVC.Controllers.AdminController
 {
     public class LoginController : Controller
     {
+        #region Configuration
+        private readonly IActions _IActions;
+        private readonly IComboBox _IComboBox;
+        private readonly INotyfService _INotyfService;
+        private readonly ILogger<ActionsController> _logger;
+        private readonly ILogin _ILogin;
+        private readonly IJwtService _IJwtService;
+
+        public LoginController(ILogger<ActionsController> logger,
+                                      IComboBox ComboBox,
+                                      IActions Actions,
+                                      INotyfService NotyfService,
+                                      ILogin Login,
+                                      IJwtService JwtService)
+        {
+            _IComboBox = ComboBox;
+            _IActions = Actions;
+            _INotyfService = NotyfService;
+            _logger = logger;
+            _ILogin = Login;
+            _IJwtService = JwtService;
+        }
+        #endregion Configuration
+
         public IActionResult Index()
         {
             return View("../../Views/AdminPanel/Login/Index");
@@ -18,28 +46,17 @@ namespace HalloDocMVC.Controllers.AdminController
         {
             return View("../../Views/AdminPanel/Login/ResetPassword");
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Validate(string Email, string Passwordhash)
+        public async Task<IActionResult> Validate(Aspnetuser aspNetUser)
         {
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Database=HalloDoc;User Id=postgres;Password=komal123;Include Error Detail=True");
-            string Query = "select * from aspnetusers au inner join aspnetuserroles aur on au.id = aur.userid inner join aspnetroles roles on aur.roleid = roles.id where email=@Email and passwordhash=@Passwordhash";
-            connection.Open();
-            NpgsqlCommand command = new NpgsqlCommand(Query, connection);
-            command.Parameters.AddWithValue("@Email", Email);
-            command.Parameters.AddWithValue("@Passwordhash", Passwordhash);
-            NpgsqlDataReader reader = command.ExecuteReader();
-            DataTable dataTable = new DataTable();
-            dataTable.Load(reader);
-            int numRows = dataTable.Rows.Count;
-            if (numRows > 0)
+            UserInformation u = await _ILogin.CheckAccessLogin(aspNetUser);
+
+            if (u != null)
             {
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    HttpContext.Session.SetString("UserName", row["username"].ToString());
-                    HttpContext.Session.SetString("UserID", row["Id"].ToString());
-                    HttpContext.Session.SetString("RoleId", row["roleid"].ToString());
-                }
+                var jwttoken = _IJwtService.GenerateJWTAuthetication(u);
+                Response.Cookies.Append("jwt", jwttoken);
                 return RedirectToAction("Index", "Dashboard");
             }
             else
@@ -48,14 +65,16 @@ namespace HalloDocMVC.Controllers.AdminController
                 return View("../AdminPanel/Login/Index");
             }
         }
-        public IActionResult Logout()
+        #region Logout
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Clear();
+            Response.Cookies.Delete("jwt");
             return RedirectToAction("Index", "Login");
         }
+        #endregion Logout
         public IActionResult AuthError()
         {
-            return View("../Admin/Home/AuthError");
+            return View("../AdminPanel/Login/AuthError");
         }
     }
 }
