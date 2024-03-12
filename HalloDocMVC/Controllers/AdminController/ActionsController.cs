@@ -222,9 +222,52 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion DeleteAllFiles
 
-        public async Task<IActionResult> Orders()
+        #region SendOrder
+
+        public async Task<IActionResult> Orders(int id)
         {
-            return View("~/Views/AdminPanel/Actions/Orders.cshtml");
+            List<ComboBoxHealthProfessionalType> hpt = await _IComboBox.ComboBoxHealthProfessionalType();
+            ViewBag.ProfessionType = hpt;
+            SendOrderModel data = new SendOrderModel
+            {
+                RequestId = id
+            };
+            return View("~/Views/AdminPanel/Actions/Orders.cshtml", data);
         }
+        
+        public Task<IActionResult> ProfessionByType(int HealthProfessionId)
+        {
+            var v = _IComboBox.ProfessionByType(HealthProfessionId);
+            return Task.FromResult<IActionResult>(Json(v));
+        }
+
+        public Task<IActionResult> SelectProfessionalById(int VendorId)
+        {
+            var v = _IActions.SelectProfessionalById(VendorId);
+            return Task.FromResult<IActionResult>(Json(v));
+        }
+        public IActionResult SendOrders(SendOrderModel som)
+        {
+            if (ModelState.IsValid)
+            {
+                bool data = _IActions.SendOrders(som);
+                if (data)
+                {
+                    _INotyfService.Success("Order Created  successfully...");
+                    //_INotyfService.Information("Mail is sended to Vendor successfully...");
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                else
+                {
+                    _INotyfService.Error("Order Not Created...");
+                    return View("../Actions/Orders", som);
+                }
+            }
+            else
+            {
+                return View("../Actions/Orders", som);
+            }
+        }
+        #endregion SendOrder
     }
 }

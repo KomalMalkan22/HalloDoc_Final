@@ -1,4 +1,5 @@
-﻿using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+﻿using HalloDocMVC.DBEntity.DataModels;
+using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -22,5 +23,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
         Task<ViewUploadModel> GetDocuments(int? id);
         public Boolean UploadDocuments(int Requestid, IFormFile file);
         Task<bool> DeleteDocuments(string ids);
+        public Healthprofessional SelectProfessionalById(int VendorId);
+        public bool SendOrders(SendOrderModel sendOrder);
     }
 }

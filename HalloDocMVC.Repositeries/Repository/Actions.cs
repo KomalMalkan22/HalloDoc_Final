@@ -521,5 +521,38 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             return true;
         }
         #endregion DeleteDocuments
+
+        #region SendOrder
+        public Healthprofessional SelectProfessionalById(int VendorId)
+        {
+            return _context.Healthprofessionals.FirstOrDefault(p => p.Vendorid == VendorId);
+        }
+        public bool SendOrders(SendOrderModel sendOrder)
+        {
+            try
+            {
+                Orderdetail od = new Orderdetail
+                {
+                    Requestid = sendOrder.RequestId,
+                    Vendorid = sendOrder.VendorId,
+                    Faxnumber = sendOrder.FaxNumber,
+                    Email = sendOrder.Email,
+                    Businesscontact = sendOrder.BusinessContact,
+                    Prescription = sendOrder.Prescription,
+                    Noofrefill = sendOrder.NoOfRefill,
+                    Createddate = DateTime.Now,
+                    Createdby = "02ae2720-3e7c-4fff-b83f-038f29013420"
+                };
+                _context.Orderdetails.Add(od);
+                _context.SaveChanges(true);
+                var req = _context.Requests.FirstOrDefault(e => e.Requestid == sendOrder.RequestId);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }
