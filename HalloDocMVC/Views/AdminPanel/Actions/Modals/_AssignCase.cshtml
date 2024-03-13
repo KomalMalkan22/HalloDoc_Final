@@ -11,7 +11,7 @@
                     <small class="text-secondary">
                         To assign this request, search and select another Physician
                     </small>
-                    <input type="hidden" name="requestid" id="RequestID_Input_ModelAssignCase" disabled="false"/>
+                    <input type="hidden" name="requestid" id="RequestID_Input_ModelAssignCase" />
                     <div class="form-floating my-3">
                         <select name="region" class="form-select form-control shadow-none" id="region" required data-allow-clear="true" tabindex="-1" onchange="myFunction()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
                             <option>All Region</option>
@@ -33,7 +33,7 @@
                     <button type="submit" class="btn btn-info text-white shadow-none">Submit</button>
                     <button type="button" class="btn border border-info text-info shadow-none" data-bs-dismiss="modal">Cancel</button>
                 </div>
-            </form>            
+            </form>
         </div>
     </div>
 </div>
@@ -41,6 +41,7 @@
 <script type="text/javascript">
     function myFunction() {
         var region = $("#region").val();
+        console.log(region);
         $.ajax({
             type: "POST",
             url: '@Url.Action("ProviderbyRegion", "Actions")?Regionid=' + region,

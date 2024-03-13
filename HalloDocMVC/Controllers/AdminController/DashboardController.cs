@@ -13,10 +13,9 @@ namespace HalloDocMVC.Controllers.AdminController
         private readonly IAdminDashboard _IAdminDashboard;
         private readonly IComboBox _IComboBox;
         private readonly ILogger<DashboardController> _Logger;
-        public DashboardController(HalloDocContext context, IAdminDashboard IAdminDashboard, IAdminDashboard iAdminDashboard, IComboBox iComboBox)
+        public DashboardController(HalloDocContext context, IAdminDashboard iAdminDashboard, IComboBox iComboBox)
         {
             _context = context;
-            _IAdminDashboard = IAdminDashboard;
             _IAdminDashboard = iAdminDashboard;
             _IComboBox = iComboBox;
         }

@@ -20,6 +20,6 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
         public string TransToPhysician { get; set; }
         public short Status { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string TransferNotes => $"{Admin} transferred <b> {Physician} </b> to <b> {TransToPhysician} </b> on {CreatedDate}: <b>{Notes}</b>";
+        public string TransferNotes => $"{Admin} transferred case from <b> {Physician} </b> to <b> {TransToPhysician} </b> on {CreatedDate}: <b>{Notes}</b>";
     }
 }

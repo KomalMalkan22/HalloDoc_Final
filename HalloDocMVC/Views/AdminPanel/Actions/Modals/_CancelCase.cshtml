@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="exampleModalLongTitle">Confirm Cancellation</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form asp-controller="Actions" asp-action="CancelCase">
+            <form method="post" asp-controller="Actions" asp-action="CancelCase">
                 <input type="hidden" value="" id="RequestID_Input_ModelCancelCase" name="requestid" />
                 <div class="modal-body">
                     <p class="text-secondary">

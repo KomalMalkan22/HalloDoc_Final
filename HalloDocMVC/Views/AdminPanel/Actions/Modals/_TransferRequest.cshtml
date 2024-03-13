@@ -13,7 +13,7 @@
                     </small>
                     <input type="hidden" name="requestid" id="RequestID_Input_ModalTransferPhysician" value="" />
                     <div class="form-floating my-3">
-                        <select name="region" class="form-select form-control shadow-none" id="regionName" required data-allow-clear="true" tabindex="-1" onchange="myFunction()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
+                        <select name="region" class="form-select form-control shadow-none" id="regionName" required data-allow-clear="true" tabindex="-1" onchange="GetRegion()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
                             <option>All Region</option>
                         </select>
                         <label for="regionName">Narrow search by Region</label>
@@ -39,7 +39,7 @@
 </div>
 
 <script type="text/javascript">
-    function myFunction() {
+    function GetRegion() {
         var region = $("#regionName").val();
         console.log(region);
         $.ajax({

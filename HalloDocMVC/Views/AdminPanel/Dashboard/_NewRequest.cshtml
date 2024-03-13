@@ -222,9 +222,10 @@
     function model_Case(id) {
         console.log(id);
         var modeldata = @Html.Raw(Json.Serialize(Model))
-        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].patientName;
-        document.getElementById('RequestID_Input_ModelCancelCase').value = modeldata[id].requestId;
+        //document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].patientName;
+        //document.getElementById('RequestID_Input_ModelCancelCase').value = modeldata[id].requestId;
         document.getElementById('RequestID_Input_ModelAssignCase').value = modeldata[id].requestId;
-        document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata[id].requestId;
-        document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;    }
+        //document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata[id].requestId;
+        //document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;    
+    }
 </script>
