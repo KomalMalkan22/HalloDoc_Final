@@ -269,5 +269,18 @@ namespace HalloDocMVC.Controllers.AdminController
             }
         }
         #endregion SendOrder
+
+        #region SendAgreement
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SendAgreementMail(int requestid)
+        {
+            if (_IActions.SendAgreement(requestid))
+            {
+                _INotyfService.Success("Mail Sent Successfully.");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        #endregion
     }
 }

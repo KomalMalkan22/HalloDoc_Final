@@ -125,7 +125,7 @@
                                 </button>
                             </li>
                             <li>
-                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SendAgreement">
+                                <button onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SendAgreement">
                                     <i class="fa-regular fa-pen-to-square me-1"></i>
                                     Send Agreement
                                 </button>
@@ -249,9 +249,14 @@
 <!--End Mobile Screen View of table-->
 
 <script>
-    function modal_Case(id){
+    function modal_Case(id) {
         var modaldata = @Html.Raw(Json.Serialize(Model))
+        console.log(modaldata);
         document.getElementById('RequestID_Input_ModalTransferPhysician').value = modaldata[id].requestId;
         document.getElementById('RequestID_Input_ModalClearCase').value = modaldata[id].requestId;
+        document.getElementById("RequestId_SendAgreement").value = modaldata[id].requestId;
+        document.getElementById("PhoneNumber_SendAgreement").value = modaldata[id].patientPhoneNumber;
+        document.getElementById("Email_SendAgreement").value = modaldata[id].email;
+
     }
 </script>

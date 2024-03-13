@@ -3,10 +3,10 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info text-white">
-                <h5 class="modal-title" id="exampleModalLongTitle">Assign Case</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Send Agreement</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form asp-controller="" asp-action="">
+            <form method="post" asp-controller="Actions" asp-action="SendAgreementMail">
                 <div class="modal-body">
                     <div class="me-3">
                         <i class="fa-solid fa-circle fa-xs" style="color:#5fbc61;"></i>
@@ -15,14 +15,14 @@
                     <small class="text-secondary">
                         To Send Agreement please make sure you are updating the correct contact information below for the responsible party.
                     </small>
-                    @*<input type="hidden" name="requestid" id="RequestID_Input_ModelAssignCase" disabled="false" />*@
+                    <input type="hidden" name="requestid" id="RequestId_SendAgreement" value="" />
                     <div class="form-floating my-3">
-                        <input type="tel" class="form-control shadow-none" id="PhoneNumber" placeholder="Enter Phone Number">
-                        <label for="PhoneNumber">Phone Number</label>
+                        <input name="PhoneNumber" type="tel" class="form-control shadow-none" id="PhoneNumber_SendAgreement" placeholder="Enter Phone Number">
+                        <label for="PhoneNumber_SendAgreement">Phone Number</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control shadow-none" id="Email" placeholder="Enter Email">
-                        <label for="Email">Email</label>
+                        <input name="Email" type="email" class="form-control shadow-none" id="Email_SendAgreement" placeholder="Enter Email">
+                        <label for="Email_SendAgreement">Email</label>
                     </div>
                 </div>
                 <div class="modal-footer">

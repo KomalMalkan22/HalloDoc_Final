@@ -100,3 +100,11 @@ C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsof
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\MailKit.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\MimeKit.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\System.Formats.Asn1.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\System.Text.Encoding.CodePages.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\pct30\source\repos\HalloDoc_Final\HalloDocMVC\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Text.Encoding.CodePages.dll
