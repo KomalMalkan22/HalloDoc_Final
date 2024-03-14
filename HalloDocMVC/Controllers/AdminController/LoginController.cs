@@ -38,6 +38,10 @@ namespace HalloDocMVC.Controllers.AdminController
         {
             return View("../../Views/AdminPanel/Login/Index");
         }
+        public IActionResult LandingPage()
+        {
+            return View("../../Views/AdminPanel/Login/LandingPage");
+        }
         public IActionResult ForgotPassword()
         {
             return View("../../Views/AdminPanel/Login/ForgotPassword");

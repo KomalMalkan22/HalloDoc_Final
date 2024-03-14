@@ -70,51 +70,51 @@ i.fa.fa-eye {
 
 .btnPatient {
     width: 280px;
-    background-color: #B6B5D8;
-    border-color: #9867C5;
-    color: #4C2882;
+    background-color: #e9eaef;
+    border-color: #e7e9f7;
+    color: #606ea4;
 }
 
-    .btnPatient:hover {
-        background-color: #9867C5;
-        color: #320377;
-    }
+.btnPatient:hover {
+    background-color: #e7e9f7;
+    color: #320377;
+}
 
 .btnFamilyFriend {
     width: 280px;
-    background-color: #D8F9FF;
-    border-color: #8AECFF;
-    color: #3CDFFF;
+    background-color: #e5f2f8;
+    border-color: #def3fa;
+    color: #489cc6;
 }
 
-    .btnFamilyFriend:hover {
-        background-color: #8AECFF;
-        color: #18859b;
-    }
+.btnFamilyFriend:hover {
+    background-color: #def3fa;
+    color: #18859b;
+}
 
 .btnConcierge {
     width: 280px;
-    background-color: #D0F0C0;
-    border-color: #90EE90;
+    background-color: #e9f0e8;
+    border-color: #dcedde;
+    color: #468045;
+}
+
+.btnConcierge:hover {
+    background-color: #dcedde;
     color: #2E8B57;
 }
 
-    .btnConcierge:hover {
-        background-color: #90EE90;
-        color: #2E8B57;
-    }
-
 .btnBusinessParteners {
     width: 280px;
-    background-color: #FEC5E5;
-    border-color: #F699CD;
-    color: #E11584;
+    background-color: #f7e6ee;
+    border-color: #fcc0e1;
+    color: #933d6f;
 }
 
-    .btnBusinessParteners:hover {
-        background-color: #F699CD;
-        color: #E11584;
-    }
+.btnBusinessParteners:hover {
+    background-color: #fcc0e1;
+    color: #E11584;
+}
 
 @media (min-width:768px) {
     .btnPatient, .btnFamilyFriend, .btnConcierge, .btnBusinessParteners, .btnPatient:hover, .btnFamilyFriend:hover, .btnConcierge:hover, .btnBusinessParteners:hover {

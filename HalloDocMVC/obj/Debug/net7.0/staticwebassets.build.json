@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dvwqdmmJ6i65zjRl4UkvjqjxA3uINQ6HbfqzYvfRb6I=",
+  "Hash": "eSAvuOtOeJ5JPncuywWjn48q0QJBJ8EaHscJ6wYh6Lw=",
   "Source": "HalloDocMVC",
   "BasePath": "_content/HalloDocMVC",
   "Mode": "Default",
@@ -3313,6 +3313,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Upload\\100\\conclude_active-20240307043847.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\Upload\\106\\LesfImage-20240314014106.png",
+      "SourceId": "HalloDocMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\",
+      "BasePath": "_content/HalloDocMVC",
+      "RelativePath": "Upload/106/LesfImage-20240314014106.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\106\\LesfImage-20240314014106.png"
     },
     {
       "Identity": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\Upload\\96\\11116016_415-20240311031322.png",

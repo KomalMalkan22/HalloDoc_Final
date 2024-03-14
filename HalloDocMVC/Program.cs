@@ -5,6 +5,8 @@ using HalloDocMVC.Repositories;
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+using HalloDocMVC.Repositeries.Patient.Repository.Interface;
+using HalloDocMVC.Repositeries.Patient.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 var emailConfig = builder.Configuration
@@ -17,6 +19,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<HalloDocContext>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
+builder.Services.AddScoped<ICreateRequest, CreateRequest>();
 builder.Services.AddScoped<IAdminDashboard, AdminDashboard>();
 builder.Services.AddScoped<IActions, Actions>();
 builder.Services.AddScoped<IComboBox, ComboBox>();
@@ -45,6 +48,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Login}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=LandingPage}/{id?}");
 
 app.Run();

@@ -21,7 +21,7 @@ namespace HalloDocMVC.DBEntity.ViewModels.PatientPanel
         [RegularExpression(@"([0-9]{10})", ErrorMessage = "Please enter 10 digits for a contact number")]
         public string BUS_PhoneNumber { get; set; }
         public string BUS_Property { get; set; }
-        public string BUS_CaseNumber { get; set; }
+        public string? BUS_CaseNumber { get; set; }
         [Required(ErrorMessage = "Symptoms is required")]
         public string Symptoms { get; set; }
         [Required(ErrorMessage = "First name is required")]
@@ -43,6 +43,6 @@ namespace HalloDocMVC.DBEntity.ViewModels.PatientPanel
         public string State { get; set; }
         [Required(ErrorMessage = "Zip Code is required")]
         public string ZipCode { get; set; }
-        public string RoomSuite { get; set; }
+        public string? RoomSuite { get; set; }
     }
 }

@@ -1,0 +1,176 @@
+﻿@{
+    Layout = "../Shared/PatientLayout/_LayoutCreateRequest";
+    ViewData["Title"] = "Create Concierge Request";
+}
+
+@model HalloDocMVC.DBEntity.ViewModels.PatientPanel.CreateConciergeRequestModel
+
+<partial name="../PatientPanel/Modals/Confirmation" />
+
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column my-2 col-lg-8 col-md-10">
+        <div class="d-flex justify-content-end pe-2">
+            <a asp-controller="CreateRequest" asp-action="Index" class="btn border border-info">
+                <strong class="text-info">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+                </strong>
+            </a>
+        </div>
+        <div class="shadow bg-white rounded m-2 p-2">
+            <form asp-controller="CreateRequest" asp-action="CreateConciergeRequest" method="post">
+                <!-- Concierge Information -->
+                <strong class="fs-5 p-2">Concierge Information</strong>
+                <div class="row p-2">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="C_FirstName" type="text" class="form-control shadow-none" id="C_FirstName" placeholder="Your First Name">
+                            <label for="C_FirstName">Your First Name</label>
+                            <span asp-validation-for="C_FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="C_LastName" type="text" class="form-control shadow-none" id="C_LastName" placeholder="Your Last Name">
+                            <label for="C_LastName">Your Last Name</label>
+                            <span asp-validation-for="C_LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 phone">
+                        <div class="form-floating mb-3 h-100">
+                            <input asp-for="C_PhoneNumber" type="tel" class="form-control shadow-none" id="phone">
+                            <span asp-validation-for="C_PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="C_Email" type="email" class="form-control shadow-none" id="C_Email" placeholder="name@example.com">
+                            <label for="C_Email">Your Email</label>
+                            <span asp-validation-for="C_Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="C_Property" type="text" class="form-control shadow-none" id="C_Property" placeholder="Enter Room / Suite">
+                            <label for="C_Property">Hotel / Property Name</label>
+                            <span asp-validation-for="C_Property" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Concierge Location -->
+                <strong class="fs-5 p-2">Concierge Location</strong>
+                <div class="row p-2">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="C_Street" type="text" class="form-control shadow-none" id="C_Street" placeholder="Enter Street">
+                            <label for="C_Street">Street</label>
+                            <span asp-validation-for="C_Street" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="C_City" type="text" class="form-control shadow-none" id="C_City" placeholder="Enter City">
+                            <label for="C_City">City</label>
+                            <span asp-validation-for="C_City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="C_State" type="text" class="form-control shadow-none" id="C_State" placeholder="Enter State">
+                            <label for="C_State">State</label>
+                            <span asp-validation-for="C_State" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="C_ZipCode" type="text" class="form-control shadow-none" id="C_ZipCode" placeholder="Enter Zip Code">
+                            <label for="C_ZipCode">Zip Code</label>
+                            <span asp-validation-for="C_ZipCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Patient Information -->
+                <strong class="fs-5 p-2">Patient Information</strong>
+                <div class="row p-2">
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Symptoms" class="form-control shadow-none" placeholder="Leave a comment here" id="Symptoms" style="height: 100px"></textarea>
+                            <label for="Symptoms">Enter Brief Details Of Symptoms</label>
+                            <span asp-validation-for="Symptoms" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="FirstName" type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name">
+                            <label for="FirstName">First Name</label>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="LastName" type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name">
+                            <label for="LastName">Last Name</label>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="DateOfBirth" type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth">
+                            <label for="DateOfBirth">Date of Birth</label>
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Patient Contact Information -->
+                <strong class="fs-5 p-2">Patient Contact Information</strong>
+                <div class="row p-2">
+                    <div class="col-md-6 ">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Email" type="email" class="form-control shadow-none" id="Email" placeholder="name@example.com">
+                            <label for="Email">Email</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 phone">
+                        <div class="form-floating mb-3 h-100">
+                            <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none" id="phone1">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Patient Location -->
+                <strong class="fs-5 p-2">Patient Location</strong>
+                <div class="row p-2">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="RoomSuite" type="text" class="form-control shadow-none" id="RoomSuite" placeholder="Enter Room / Suite">
+                            <label for="RoomSuite">Room / Suite (Optional)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-info shadow-none text-white mx-2">Submit</button>
+                    <a asp-controller="CreateRequest" asp-action="Index" class="btn border border-info shadow-none text-info mx-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+
+    const phoneInputField1 = document.querySelector("#phone1");
+    const phoneInput1 = window.intlTelInput(phoneInputField1, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+
+    $(document).ready(function () {
+        $('#targetModal').modal('show');
+    });
+</script>
+<script src="~/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "../Shared/AdminLayout/_LayoutLogin";
+    ViewData["Title"] = "HalloDoc";
+}
+
+<div class="d-flex flex-column align-self-center col-md-6 col-10">
+    <a asp-controller="CreateRequest" asp-action="Index" class="btn btn-info text-white shadow-none mb-4 p-3 fs-5">
+        <strong>Submit a Request</strong>
+    </a>
+    <a asp-controller="Login" asp-action="Index" class="btn btn-primary text-white shadow-none p-3 fs-5">
+        <strong>User Login</strong>
+    </a>
+</div>

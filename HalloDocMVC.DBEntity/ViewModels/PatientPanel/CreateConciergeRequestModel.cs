@@ -42,6 +42,6 @@ namespace HalloDocMVC.DBEntity.ViewModels.PatientPanel
         [Required(ErrorMessage = "Contact number is required")]
         [RegularExpression(@"([0-9]{10})", ErrorMessage = "Please enter 10 digits for a contact number")]
         public string PhoneNumber { get; set; }
-        public string RoomSuite { get; set; }
+        public string? RoomSuite { get; set; }
     }
 }

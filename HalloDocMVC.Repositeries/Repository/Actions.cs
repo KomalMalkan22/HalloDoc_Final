@@ -286,7 +286,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         #region AssignProvider
         public async Task<bool> AssignProvider(int RequestId, int ProviderId, string notes)
         {
-
             var request = await _context.Requests.FirstOrDefaultAsync(req => req.Requestid == RequestId);
             request.Physicianid = ProviderId;
             request.Status = 2;
@@ -306,8 +305,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             _context.SaveChanges();
 
             return true;
-
-
         }
         #endregion AssignProvider
 
@@ -567,9 +564,9 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             _emailConfiguration.SendMail(res.Email, "Agreement for your request", $"<a href='{agreementUrl}'>Agree / Disagree</a>");
             return true;
         }
-        #endregion
+        #endregion SendAgreement
 
-        #region SendAgreement_accept
+        #region SendAgreement_Accept
         public Boolean SendAgreement_Accept(int RequestId)
         {
             var request = _context.Requests.Find(RequestId);
@@ -581,18 +578,15 @@ namespace HalloDocMVC.Repositories.Admin.Repository
 
                 Requeststatuslog rsl = new Requeststatuslog();
                 rsl.Requestid = RequestId;
-
                 rsl.Status = 4;
-
                 rsl.Createddate = DateTime.Now;
-
                 _context.Requeststatuslogs.Add(rsl);
                 _context.SaveChanges();
 
             }
             return true;
         }
-        #endregion
+        #endregion SendAgreement_Accept
 
         #region SendAgreement_Reject
         public Boolean SendAgreement_Reject(int RequestId, string Notes)
@@ -606,18 +600,15 @@ namespace HalloDocMVC.Repositories.Admin.Repository
 
                 Requeststatuslog rsl = new Requeststatuslog();
                 rsl.Requestid = RequestId;
-
                 rsl.Status = 7;
                 rsl.Notes = Notes;
-
                 rsl.Createddate = DateTime.Now;
-
                 _context.Requeststatuslogs.Add(rsl);
                 _context.SaveChanges();
 
             }
             return true;
         }
-        #endregion
+        #endregion SendAgreement_Reject
     }
 }

@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "../Shared/PatientLayout/_LayoutCreateRequest";
+    ViewData["Title"] = "Submit Request";
+}
+<div id="whoAmI" class="d-flex flex-column">
+    <div class="d-flex m-2">
+        <h2 style="font-weight: 900;">I am a...</h2>
+        <a asp-controller="Login" asp-action="LandingPage" class="btn border border-info backbtn shadow-none">
+            <strong class="text-info">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+            </strong>
+        </a>
+    </div>
+    <div class="m-2">
+        <a asp-controller="CreateRequest" asp-action="PatientRequest" class="btn btn-lg btnPatient shadow-none">
+            <strong class="fs-4">PATIENT</strong>
+        </a>
+    </div>
+    <div class="m-2">
+        <a asp-controller="CreateRequest" asp-action="FamilyFriendRequest" class="btn btn-lg btnFamilyFriend shadow-none">
+            <strong class="fs-4">FAMILY / FRIEND</strong>
+        </a>
+    </div>
+    <div class="m-2">
+        <a asp-controller="CreateRequest" asp-action="ConciergeRequest" class="btn btn-lg btnConcierge shadow-none">
+            <strong class="fs-4">CONCIERGE</strong>
+        </a>
+    </div>
+    <div class="m-2">
+        <a asp-controller="CreateRequest" asp-action="BusinessRequest" class="btn btn-lg btnBusinessParteners shadow-none">
+            <strong class="fs-4">BUSINESS PARTENERS</strong>
+        </a>
+    </div>
+</div>

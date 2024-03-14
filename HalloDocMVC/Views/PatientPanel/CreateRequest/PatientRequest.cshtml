@@ -1,0 +1,195 @@
+﻿@{
+    Layout = "../Shared/PatientLayout/_LayoutCreateRequest";
+    ViewData["Title"] = "Create Patient Request";
+}
+
+@model HalloDocMVC.DBEntity.ViewModels.PatientPanel.CreatePatientRequestModel
+
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column my-2 col-lg-8 col-md-10">
+        <div class="d-flex justify-content-end pe-2">
+            <a asp-controller="CreateRequest" asp-action="Index" class="btn border border-info">
+                <strong class="text-info">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+                </strong>
+            </a>
+        </div>
+        <div class="shadow bg-white rounded m-2 p-2">
+            <!-- Patient Information -->
+            <strong class="fs-5 p-2">Patient Information</strong>
+            <form method="post" asp-controller="CreateRequest" asp-action="CreatePatientRequest" enctype="multipart/form-data">
+                <div class="row p-2">
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Symptoms" class="form-control shadow-none" placeholder="Leave a comment here" id="Symptoms" style="height: 100px"></textarea>
+                            <label for="Symptoms"><small>Enter Brief Details Of Symptoms</small></label>
+                        </div>
+                        <span asp-validation-for="Symptoms" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="FirstName" type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name" autocomplete="off">
+                            <label for="FirstName">First Name</label>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="LastName" type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name" autocomplete="off">
+                            <label for="LastName">Last Name</label>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="DateOfBirth" type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth" autocomplete="off">
+                            <label for="DateOfBirth">Date of Birth</label>
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient Contact Information -->
+                <strong class="fs-5 p-2">Patient Contact Information</strong>
+
+                <div class="row p-2">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Email" type="email" id="email" class="form-control shadow-none" placeholder="name@example.com" autocomplete="off">
+                            <label for="email">Email</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 phone">
+                        <div class="form-floating mb-3 h-100">
+                            <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none" id="phone" autocomplete="off">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="password" style="display:none;">
+                        <div class="form-floating mb-3">
+                            <input asp-for="PassWord" type="password" class="form-control shadow-none" id="pwd" placeholder="Password" autocomplete="off">
+                            <label for="pwd">Password</label>
+                            <span asp-validation-for="PassWord" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="confirmPassword" style="display:none;">
+                        <div class="form-floating mb-3">
+                            <input asp-for="ConfirmPassword" type="password" class="form-control shadow-none" id="confirm_pwd" placeholder="Confirm Password" autocomplete="off">
+                            <label for="confirm_pwd">Confirm Password</label>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient Location -->
+                <strong class="fs-5 p-2">Patient Location</strong>
+
+                <div class="row p-2">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Street" type="text" class="form-control shadow-none" id="Street" placeholder="Enter Street" autocomplete="off">
+                            <label for="Street">Street</label>
+                            <span asp-validation-for="Street" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="City" type="text" class="form-control shadow-none" id="City" placeholder="Enter City" autocomplete="off">
+                            <label for="City">City</label>
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="State" type="text" class="form-control shadow-none" id="State" placeholder="Enter State" autocomplete="off">
+                            <label for="State">State</label>
+                            <span asp-validation-for="State" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="ZipCode" type="text" class="form-control shadow-none" id="ZipCode" placeholder="Enter Zip Code" autocomplete="off">
+                            <label for="ZipCode">Zip Code</label>
+                            <span asp-validation-for="ZipCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="RoomSuite" type="text" class="form-control shadow-none" id="RoomSuite" placeholder="Enter Room / Suite" autocomplete="off">
+                            <label for="RoomSuite">Room / Suite (Optional)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Photo or Document -->
+                <strong class="fs-5 p-2">Upload Photo or Document (Optional)</strong>
+
+                <div class="row p-2">
+                    <div>
+                        <div class="col-12 border rounded">
+                            <div class="d-flex justify-content-between">
+                                <span id="choosenfile" class="p-3">No file chosen</span>
+                                <a class="btn bg-info btn btn-lg" onclick="document.getElementById('files').click()">
+                                    <span for="files" class="btn text-white">
+                                        <i class="fa fa-cloud-upload"></i>
+                                        Upload
+                                    </span>
+                                </a>
+                                <input asp-for="UploadFile" id="files" type="file" class="d-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-info text-white mx-2">Submit</button>
+                    <a asp-controller="CreateRequest" asp-action="Index" class="btn border border-info text-info mx-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>
+
+<script>
+    $(function () {
+        $("#email").focusout(function () {
+            var email = $("#email").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CheckEmail", "CreateRequest")?email=' + email,
+                cache: false,
+                success: function (response) {
+                    var flag = response.isAspnetuser;
+                    if (flag) {
+                        // Show the confirm password and password fields
+                        $("#confirmPassword").show();
+                        $("#password").show();
+                    } else {
+                        $("#confirmPassword").hide();
+                        $("#password").hide();
+                    }
+                },
+                error: function () {
+                    alert("Error while checking email.");
+                }
+            });
+        });
+    });
+
+    /* Choose File */
+    $("#files").change(function () {
+        filename = this.files[0].name;
+        console.log(filename);
+        $("#choosenfile").text(filename);
+    });
+</script>
+
