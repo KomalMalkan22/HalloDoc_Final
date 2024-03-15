@@ -20,6 +20,8 @@ builder.Services.AddDbContext<HalloDocContext>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 builder.Services.AddScoped<ICreateRequest, CreateRequest>();
+builder.Services.AddScoped<IPatientDashboard, PatientDashboard>();
+builder.Services.AddScoped<IProfile,  Profile>();
 builder.Services.AddScoped<IAdminDashboard, AdminDashboard>();
 builder.Services.AddScoped<IActions, Actions>();
 builder.Services.AddScoped<IComboBox, ComboBox>();

@@ -1,0 +1,227 @@
+﻿@{
+    Layout = "../Shared/PatientLayout/_LayoutPatientDashboard";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column mb-2 col-lg-8 col-md-10 col-10">
+        <div class="d-flex justify-content-between mb-2">
+            <div>
+                <strong class="fs-4">
+                    Documents
+                </strong>
+            </div>
+            <div>
+                <a asp-controller="PatientDashboard" asp-action="Index" class="btn border border-info shadow-none">
+                    <strong class="text-info">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+                    </strong>
+                </a>
+            </div>
+        </div>
+        <div class="shadow bg-white rounded p-3">
+            <small class="text-secondary">Patient Name</small>
+            <div>
+                <strong class="text-info">@CV.UserName()</strong>
+                <span>@CV.UserID()</span>
+            </div>
+            <div class="mt-3">
+                <small class="text-secondary">
+                    Check here for any files that you or the doctors of your subsequents requestors have attached for you for review.
+                </small>
+                @foreach (var item in ViewBag.requestinfo)
+                {
+                    <form method="post" asp-controller="PatientDashboard" asp-action="UploadDocuments" enctype="multipart/form-data">
+                        <div class="d-flex justify-content-between bg-light border border-secondary rounded mt-3">
+                            <button type="button" id="choosenfile" class="col btn text-start text-secondary" onclick="document.getElementById('files').click()">
+                                Select File
+                            </button>
+                            <input id="files" type="file" class="d-none form-control doc_uploder" name="UploadFile" multiple>
+                            <input name="Requestid" value="@item.Requestid" class="d-none" />
+                            <button type="submit" class="btn btn-info text-white py-2" id="fileUploadBtn" value="Upload">
+                                <i class="fa fa-cloud-upload"></i>
+                                <span class="d-none d-sm-inline">Upload</span>
+                            </button>
+                        </div>
+                    </form>
+                }
+            </div>
+            <div class="d-flex justify-content-between mt-5">
+                <div>
+                    <strong class="fs-5">
+                        Documents
+                    </strong>
+                </div>
+                <div>
+                    <a id="downloadAll" class="d-block d-sm-none btn border border-info text-info">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                    </a>
+                    <a id="downloadAll" class="d-none d-sm-block btn border border-info text-info">
+                        Download All
+                    </a>
+                </div>
+            </div>
+
+            <!--Desktop View-->
+            <div class="d-none d-sm-block table-responsive mt-3 mb-0">
+                <table class="table mb-0">
+                    <thead class="border-0">
+                        <tr class="table-secondary">
+                            <th scope="col" class="table-text-header px-3">
+                                <div class="form-check">
+                                    <input class="form-check-input " type="checkbox" id="topflexCheckDefault">
+                                </div>
+                            </th>
+                            <th scope="col" class="table-text-header px-3">Document Name</th>
+                            <th scope="col" class="table-text-header  px-3">Uploader</th>
+                            <th scope="col" class="table-text-header">Upload date</th>
+                            <th scope="col" class="table-text-header">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item2 in ViewBag.DocList)
+                        {
+                            <tr>
+                                <td class="table-text px-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input doc-checkbox" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input RequestwisefilesId" type="hidden" value="@item2.RequestwisefilesId">
+                                    </div>
+                                </td>
+                                <td class="table-text px-3">@item2.Filename</td>
+                                <td class="table-text px-3"></td>
+                                <td class="table-text px-3">@item2.Createddate.ToString("MMM d , yyyy")</td>
+
+                                <td class="table-text text-center ">
+                                    <a class="btn btn-sm download-link btn-outline-info document-button" download href="@item2.FileName.Replace("~","")">
+                                        <i class="fa fa-cloud-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!--End Desktop View-->
+            <!--Mobile screen View-->
+            <div class="d-block d-sm-none border-top my-2">
+                @foreach (var item2 in ViewBag.DocList)
+                {
+                    <div class="border-bottom">
+                        <div class="d-inline-flex my-2">
+                            <div class="form-check">
+                                <input class="form-check-input doc-checkbox" type="checkbox" onclick="statusselectall()">
+                            </div>
+                            <div>
+                                <small>@item2.Filename</small>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <label class="text-break"><small>@item2</small></label>
+                            <label><small>@item2.Createddate.ToString("MMM d , yyyy")</small></label>
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-sm download-link btn-outline-info document-button" download href="~/Upload/@item2.Filename">
+                                <i class="fa fa-cloud-download"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!--End Mobile screen View-->
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    $("#files").change(function () {
+        filename = this.files[0].name;
+        console.log(filename);
+        $("#choosenfile").text(filename);
+    });
+
+    $('.filename').each(function () {
+        var fileName = $(this).text().trim();
+        if (fileName.endsWith('.pdf')) {
+            $(this).prepend('<i class="fa-solid fa-file-pdf" style="color: #be2323;font-size:1rem"></i> ');
+        } else if (fileName.endsWith('.doc') || fileName.endsWith('.docx')) {
+            $(this).prepend('<i class="fa-solid fa-file-doc" style="color: #74C0FC;font-size:1rem"></i> ');
+        } else if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg') || fileName.endsWith('.png') || fileName.endsWith('.gif') || fileName.endsWith('.svg')) {
+            $(this).prepend('<i class="fa-solid fa-images" style="color: #B197FC;font-size:1rem"></i> ');
+        } else {
+            $(this).prepend(' <i class="fa-solid fa-file" > </i>');
+        }
+
+    });
+
+    $("#fileUploadBtn").click(function (e) {
+        e.preventDefault();
+        if ($('#files')[0].files[0] == undefined) {
+            swal.fire({
+                title: "Oops..",
+                text: "Oops! Please Select One File ",
+                icon: "error",
+                showCancelButton: true,
+                showConfirmButton: false,
+                cancelButtonText: "Okay",
+                cancelButtonColor: "#01BBE7",
+            })
+            return;
+        } else {
+            $('#myForm').submit();
+        }
+    });
+
+    $('#downloadAll').click(function () {
+        $('tbody tr').each(function () {
+            if ($(this).find('.form-check-input').prop('checked')) {
+                var downloadLink = $(this).find('.document-button').attr('href');
+                var hiddenLink = document.createElement('a');
+                hiddenLink.href = downloadLink;
+                hiddenLink.target = '_blank';
+                hiddenLink.download = '';
+                document.body.appendChild(hiddenLink);
+                hiddenLink.click();
+                document.body.removeChild(hiddenLink);
+            }
+        });
+        $('.t-tab > .border-bottom').each(function () {
+            if ($(this).find('.form-check-input').prop('checked')) {
+                var downloadLink = $(this).find('.document-button').attr('href');
+                var hiddenLink = document.createElement('a');
+                hiddenLink.href = downloadLink;
+                hiddenLink.target = '_blank';
+                hiddenLink.download = '';
+                document.body.appendChild(hiddenLink);
+                hiddenLink.click();
+                document.body.removeChild(hiddenLink);
+            }
+        });
+    });
+
+    $('#topflexCheckDefault').change(function () {
+        $('.table tbody input[type="checkbox"]').prop('checked', $(this).is(':checked'));
+    });
+
+    // Uncheck main checkbox in header when any checkbox in table body is unchecked
+    $('.table tbody input[type="checkbox"]').change(function () {
+        if (!$(this).is(':checked')) {
+            $('#topflexCheckDefault').prop('checked', false);
+        }
+    });
+
+    // Check main checkbox in header when all checkboxes in table body are checked
+    $('.table tbody input[type="checkbox"]').change(function () {
+        var allChecked = true;
+        $('.table tbody input[type="checkbox"]').each(function () {
+            if (!$(this).is(':checked')) {
+                allChecked = false;
+                return false;
+            }
+        });
+
+        if (allChecked) {
+            $('#topflexCheckDefault').prop('checked', true);
+        }
+    });
+</script>

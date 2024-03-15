@@ -1,0 +1,105 @@
+﻿@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
+@{
+    Layout = "../Shared/PatientLayout/_LayoutPatientDashboard";
+    ViewData["Title"] = "Dashboard";
+}
+
+<partial name="../PatientPanel/Modals/CreateNewRequest"/>
+
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column mb-2 col-lg-8 col-md-10 medicalHistory">
+        <strong class="fs-4 mb-2">
+            Medical History
+        </strong>
+        <div class="shadow bg-white rounded p-2">
+            <div class="d-flex justify-content-end mb-2">
+                <i data-bs-toggle="modal" data-bs-target="#createNewRequest" class="d-block d-sm-none fa-solid fa-plus text-info border rounded border-info mx-3 mx-xs-2 my-1 p-2"></i>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#createNewRequest" class="d-none d-sm-block shadow-none btn border border-info text-info mx-3  mx-xs-2">Create New Request</button>
+            </div>
+
+            <!--Desktop View-->
+            <div class="d-none d-sm-block">
+                <table class="table">
+                    <thead style="background-color: #e9ecef;">
+                        <tr>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Current Status</th>
+                            <th scope="col">Document</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.list)
+                        {
+                            // Get the document count for the current request
+                            int docNum;
+                            ViewBag.docCount.TryGetValue(item.Requestid, out docNum);
+
+                            <tr>
+                                <td scope="row"> @item.Createddate.ToString("MMM d, yyyy")</td>
+                                <td>@Enum.GetName(typeof(Status), item.Status)</td>
+                                <td>
+                                    @{
+                                        if (ViewBag.docidlist.Contains(item.Requestid))
+                                        {
+                                            <a asp-action="ViewDocuments" asp-controller="PatientDashboard" asp-route-id="@item.Requestid" class="btn border border-info btn-sm text-info document-button shadow-none">
+                                                (@docNum) Documents
+                                            </a>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!--End Desktop View-->
+            <!--Mobile screen view-->
+            <div class="d-block d-sm-none">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    @foreach (var item in ViewBag.list)
+                    {
+                        // Get the document count for the current request
+                        int docNum;
+                        ViewBag.docCount.TryGetValue(item.Requestid, out docNum);
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-@item.Requestid" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <i class="fa-solid fa-clock pe-2 text-info"></i>
+                                    <strong>Created Date : </strong>
+                                    @item.Createddate.ToString("MMM d, yyyy")
+                                </button>
+                            </h2>
+                            <div id="flush-@item.Requestid" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="mb-3">
+                                        <i class="fa-solid fa-user text-info border border-info rounded-circle p-2"></i>
+                                        <strong class="px-1">Provider : </strong>
+                                        @*@item.Status*@
+                                    </div>
+                                    <div class="mb-3">
+                                        <i class="fa-solid fa-check text-info border border-info rounded-circle p-2"></i>
+                                        <strong class="px-1">Current Status : </strong>
+                                        @Enum.GetName(typeof(Status), item.Status)
+                                    </div>
+                                    <div>
+                                        @{
+                                            if (ViewBag.docidlist.Contains(item.Requestid))
+                                            {
+                                                <a asp-action="ViewDocuments" asp-controller="PatientDashboard" asp-route-id="@item.Requestid" class="btn btn-outline-info btn-sm document-button shadow-none col-12">
+                                                    (@docNum) Documents
+                                                </a>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!--End Mobile screen view-->
+        </div>
+    </div>
+</div>

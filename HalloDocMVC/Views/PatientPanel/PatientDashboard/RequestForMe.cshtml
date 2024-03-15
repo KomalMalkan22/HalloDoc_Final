@@ -1,0 +1,155 @@
+﻿@{
+    Layout = "../Shared/PatientLayout/_LayoutPatientDashboard";
+}
+
+@model HalloDocMVC.DBEntity.ViewModels.PatientPanel.CreatePatientRequestModel
+
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column my-2 col-lg-8 col-md-10">
+        <div class="d-flex justify-content-between pe-2 mb-2">
+            <strong class="fs-4">Submit Information</strong>
+            <a asp-controller="PatientDashboard" asp-action="Index" class="btn border border-info">
+                <strong class="text-info">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+                </strong>
+            </a>
+        </div>
+        <div class="shadow bg-white rounded m-2 p-2">
+            <!-- Patient Information -->
+            <strong class="fs-5 p-2">Patient Information</strong>
+            <form asp-controller="PatientDashboard" asp-action="CreateRequestForMe" method="post" enctype="multipart/form-data">
+                <div class="row p-2">
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Symptoms" class="form-control shadow-none" placeholder="Leave a comment here" id="Symptoms" style="height: 100px"></textarea>
+                            <label for="Symptoms">Enter Brief Details Of Symptoms</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="FirstName" type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name">
+                            <label for="FirstName">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="LastName" type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name">
+                            <label for="LastName">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="DateOfBirth" type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth">
+                            <label for="DateOfBirth">Date of Birth</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient Contact Information -->
+                <strong class="fs-5 p-2">Patient Contact Information</strong>
+
+                <div class="row p-2">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Email" type="email" id="email" class="form-control shadow-none" placeholder="name@example.com">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 phone">
+                        <div class="form-floating mb-3 h-100">
+                            <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none" id="phone">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient Location -->
+                <strong class="fs-5 p-2">Patient Location</strong>
+
+                <div class="row p-2">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Street" type="text" class="form-control shadow-none" id="Street" placeholder="Enter Street">
+                            <label for="Street">Street</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="City" type="text" class="form-control shadow-none" id="City" placeholder="Enter City">
+                            <label for="City">City</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="State" type="text" class="form-control shadow-none" id="State" placeholder="Enter State">
+                            <label for="State">State</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="ZipCode" type="text" class="form-control shadow-none" id="ZipCode" placeholder="Enter Zip Code">
+                            <label for="ZipCode">Zip Code</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="RoomSuite" type="text" class="form-control shadow-none" id="RoomSuite" placeholder="Enter Room / Suite">
+                            <label for="RoomSuite">Room / Suite (Optional)</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <button class="btn border-info text-info shadow-none" style="line-height:2.5">
+                                <i class="fa-solid fa-location-dot me-2"></i>Map
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Photo or Document -->
+                <strong class="fs-5 p-2">Upload Photo or Document (Optional)</strong>
+
+                <div class="row p-2">
+                    <div>
+                        <div class="col-12 border rounded">
+                            <div class="d-flex justify-content-between">
+                                <span id="choosenfile" class="p-3">No file chosen</span>
+                                <a class="btn bg-info btn btn-lg" onclick="document.getElementById('files').click()">
+                                    <span for="files" class="btn text-white">
+                                        <i class="fa fa-cloud-upload"></i>
+                                        Upload
+                                    </span>
+                                </a>
+                                <input asp-for="UploadFile" id="files" type="file" class="d-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-info text-white mx-2">Submit</button>
+                    <a asp-controller="PatientDashboard" asp-action="Index" class="btn border border-info text-info mx-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>
+
+<script>
+    /* Choose File */
+    $("#files").change(function () {
+        filename = this.files[0].name;
+        console.log(filename);
+        $("#choosenfile").text(filename);
+    });
+</script>

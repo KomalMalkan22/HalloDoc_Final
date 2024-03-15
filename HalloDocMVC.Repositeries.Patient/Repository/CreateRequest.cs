@@ -17,9 +17,8 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
 {
     public class CreateRequest : ICreateRequest
     {
-        private readonly HalloDocContext _context;
-
         #region Configuration
+        private readonly HalloDocContext _context;
         public CreateRequest(HalloDocContext context)
         {
             _context = context;

@@ -5,6 +5,11 @@
 
 @model HalloDocMVC.DBEntity.DataModels.Aspnetuser;
 <div class="align-self-center col-md-6 col-xs-10">
+    <a asp-controller="Login" asp-action="LandingPage" class="text-decoration-none">
+        <strong class="text-info">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+        </strong>
+    </a>
     <h3 class="py-3">Login To Your Account</h3>
     <strong class="text-danger">@ViewData["error"]</strong>
     <form asp-controller="Login" asp-action="Validate" method="post">

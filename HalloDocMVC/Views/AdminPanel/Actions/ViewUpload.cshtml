@@ -2,15 +2,6 @@
 
 @{
     Layout = "../Shared/AdminLayout/_Layout";
-    var status = "null";
-    if(TempData["Status"] == null)
-    {
-        status = "null";
-    }
-    else
-    {
-        status = TempData["Status"].ToString();
-    }
 }
 
 <div class="d-flex justify-content-center">
@@ -297,7 +288,7 @@
             $('.table tbody input[type="checkbox"]').each(function () {
                 if (!$(this).is(':checked')) {
                     allChecked = false;
-                    return false; // exit the loop early if any checkbox is unchecked
+                    return false;
                 }
             });
 

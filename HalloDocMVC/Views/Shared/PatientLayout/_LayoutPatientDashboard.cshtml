@@ -1,0 +1,85 @@
+﻿@{
+    string path = Context.Request.Path;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/main.css" />
+</head>
+<body class="bg-light">
+    <header class="bg-white shadow">
+        <div class="d-flex justify-content-between rounded-0 py-2 mx-3 border-bottom">
+            <div class="d-inline-flex">
+                <a class="text-decoration-none align-self-center" data-bs-toggle="offcanvas" href="#offcanvasExample">
+                    <i class="fa-solid fa-bars text-info border rounded border-info d-block d-sm-none my-3 p-2"></i>
+                </a>
+                <img id="halloDocLogo" class="img-fluid img-responsive p-3" src="~/images/Fig56. Patient site 1.png" />
+            </div>
+            <div class="d-inline-flex align-items-center p-3">
+                <label class="d-none d-sm-block">Welcome <strong>@CV.UserName()</strong></label>
+                <a asp-controller="Login" asp-action="Logout" class="text-decoration-none"><i class="d-block d-sm-none fa fa-solid fa-arrow-right-from-bracket text-info border rounded border-info mx-3 mx-xs-2 my-3 p-2"></i></a>
+                <a asp-controller="Login" asp-action="Logout" class="d-none d-sm-block btn border border-info text-info mx-3  mx-xs-2">Logout</a>
+                <a href=""><i class="fa fa-moon text-info border rounded border-info my-3 p-2"></i></a>
+            </div>
+        </div>
+
+        <div class="navbar px-3 navbar-expand-sm bg-white mb-3 d-none d-sm-block">
+            <div class="container-fluid">
+                <div class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link px-3 text-dark @(path.StartsWith("/PatientDashboard") ? "activeNavItem" : "")" aria-current="page" asp-action="Index" asp-controller="PatientDashboard">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3 text-dark @(path.StartsWith("/Profile") ? "activeNavItem" : "")" asp-action="Index" asp-controller="Profile">
+                                Profile
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Welcome <strong>@CV.UserName()</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a asp-controller="PatientDashboard" asp-action="Index" class="currentpage @(path.StartsWith("/PatientDashboard") ? "activeNavItemOffcanvas" : "") text-decoration-none text-dark fs-6" aria-current="page">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a asp-controller="Profile" asp-action="Index" class="@(path.StartsWith("/Profile") ? "activeNavItemOffcanvas" : "") text-decoration-none text-dark fs-6">
+                        Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container py-2 mb-5">
+        @RenderBody()
+    </div>
+    <div class="bg-dark d-flex justify-content-end p-1 text-white fixed-bottom">
+        <a href="#" class="text-white text-decoration-none m-3 h6">Terms of condition</a>
+        <a href="#" class="text-white text-decoration-none m-3 h6">Privacy Policy</a>
+    </div>
+
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    @await Component.InvokeAsync("Notyf")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

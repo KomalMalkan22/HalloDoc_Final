@@ -164,6 +164,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFBhbmVsXE1vZGFsc1xDb25maXJtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/PatientPanel/Modals/CreateNewRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFBhbmVsXE1vZGFsc1xDcmVhdGVOZXdSZXF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/PatientPanel/PatientDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFBhbmVsXFBhdGllbnREYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/PatientPanel/PatientDashboard/RequestForMe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFBhbmVsXFBhdGllbnREYXNoYm9hcmRcUmVxdWVzdEZvck1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/PatientPanel/PatientDashboard/RequestForSomeoneElse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFBhbmVsXFBhdGllbnREYXNoYm9hcmRcUmVxdWVzdEZvclNvbWVvbmVFbHNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/PatientPanel/PatientDashboard/ViewDocuments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFBhbmVsXFBhdGllbnREYXNoYm9hcmRcVmlld0RvY3VtZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/PatientPanel/Profile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFBhbmVsXFByb2ZpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/SendAgreement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VuZEFncmVlbWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -182,6 +206,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/Shared/PatientLayout/_LayoutCreateRequest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhdGllbnRMYXlvdXRcX0xheW91dENyZWF0ZVJlcXVlc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/Shared/PatientLayout/_LayoutPatientDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhdGllbnRMYXlvdXRcX0xheW91dFBhdGllbnREYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pct30/source/repos/HalloDoc_Final/HalloDocMVC/Views/Shared/_ValidationScriptsPartial.cshtml]

@@ -26,15 +26,15 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
         }
         public enum Status
         {
-            Unassigne = 1,
-            Accepted, 
-            Cancelled, 
-            MDEnRoute, 
-            MDONSite, 
-            Conclude, 
-            CancelledByPatients, 
-            Closed, 
-            Unpaid, 
+            Unassigned = 1,
+            Accepted,
+            Cancelled,
+            MDEnRoute,
+            MDONSite,
+            Conclude,
+            CancelledByPatients,
+            Closed,
+            Unpaid,
             Clear,
             Block
 
