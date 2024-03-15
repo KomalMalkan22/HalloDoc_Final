@@ -28,24 +28,24 @@ i.fa.fa-eye {
     border: 0;
 }
 
-.wrapper {
-    background-image: url('../images/11116016_415.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+@media (max-width:992px) {
+    .wrapper {
+        background-image: url("../images/11116016_415.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
-#rightDiv {
-    backdrop-filter: blur(3px) saturate(180%);
-    -webkit-backdrop-filter: blur(8px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 12px;
-    border: 1px solid rgba(209,213,219,0.3);
+    #rightDiv {
+        backdrop-filter: blur(8px) saturate(180%);
+        -webkit-backdrop-filter: blur(8px) saturate(180%);
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 12px;
+        border: 1px solid rgba(209,213,219,0.3);
+    }
 }
 
 /* Submit Request Page */
-
 #whoAmI {
     align-items: center;
 }

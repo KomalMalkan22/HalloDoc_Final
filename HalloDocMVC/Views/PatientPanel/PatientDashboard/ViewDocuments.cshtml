@@ -84,15 +84,14 @@
                                 <td class="table-text px-3">
                                     <div class="form-check">
                                         <input class="form-check-input doc-checkbox" type="checkbox" value="" id="flexCheckDefault">
-                                        <input class="form-check-input RequestwisefilesId" type="hidden" value="@item2.RequestwisefilesId">
                                     </div>
                                 </td>
-                                <td class="table-text px-3">@item2.Filename</td>
+                                <td class="table-text px-3 filename">@item2.Filename</td>
                                 <td class="table-text px-3"></td>
                                 <td class="table-text px-3">@item2.Createddate.ToString("MMM d , yyyy")</td>
 
                                 <td class="table-text text-center ">
-                                    <a class="btn btn-sm download-link btn-outline-info document-button" download href="@item2.FileName.Replace("~","")">
+                                    <a class="btn btn-sm download-link btn-outline-info document-button" download href="">
                                         <i class="fa fa-cloud-download"></i>
                                     </a>
                                 </td>
