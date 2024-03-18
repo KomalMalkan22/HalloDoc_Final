@@ -4,6 +4,7 @@ using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -610,5 +611,119 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             return true;
         }
         #endregion SendAgreement_Reject
+
+        #region GetCloseCase
+        public CloseCaseModel GetCloseCase(int RequestId)
+        {
+            CloseCaseModel request = new CloseCaseModel();
+
+            var result = from Requestwisefile in _context.Requestwisefiles
+                         join Request in _context.Requests
+                         on Requestwisefile.Requestid equals Request.Requestid
+                         join Physician in _context.Physicians
+                         on Request.Physicianid equals Physician.Physicianid into PhysicianGroup
+                         from Phys in PhysicianGroup.DefaultIfEmpty()
+                         join Admin in _context.Admins
+                         on Requestwisefile.Adminid equals Admin.Adminid into AdminGroup
+                         from Adm in AdminGroup.DefaultIfEmpty()
+                         where Request.Requestid == RequestId
+                         select new
+                         {
+                             Uploader = Requestwisefile.Physicianid != null ? Phys.Firstname : (Requestwisefile.Adminid != null ? Adm.Firstname : Request.Firstname),
+                             Requestwisefile.Filename,
+                             Requestwisefile.Createddate,
+                             Requestwisefile.Requestwisefileid
+                         };
+
+            List<Documents> documents = new List<Documents>();
+            foreach(var item in result)
+            {
+                documents.Add(new Documents
+                {
+                    CreatedDate = item.Createddate,
+                    FileName = item.Filename,
+                    Uploader = item.Uploader,
+                    RequestwiseFilesId = item.Requestwisefileid
+                });
+            }
+
+            request.documents = documents;
+
+            Request req = _context.Requests.FirstOrDefault(req => req.Requestid == RequestId);
+            request.RequestId = req.Requestid;
+            request.FirstName = req.Firstname;
+            request.LastName = req.Lastname;
+            request.ConfirmationNumber = req.Confirmationnumber;
+
+            var RequestClient = _context.Requestclients.FirstOrDefault(rc => rc.Requestid == RequestId);
+            request.Client_FirstName = RequestClient.Firstname;
+            request.Client_LastName = RequestClient.Lastname;
+            request.Client_Email = RequestClient.Email;
+            request.Client_PhoneNumber = RequestClient.Phonenumber;
+            request.Client_DateOfBirth = new DateTime((int)RequestClient.Intyear, DateTime.ParseExact(RequestClient.Strmonth, "MMMM", new CultureInfo("en-US")).Month, (int)RequestClient.Intdate);
+            return request;
+        }
+        #endregion GetCloseCase
+
+        #region EditCloseCase
+        public bool EditCloseCase(CloseCaseModel closeCase)
+        {
+            try
+            {
+                Requestclient client = _context.Requestclients.FirstOrDefault(E => E.Requestid == closeCase.RequestId);
+                if (client != null)
+                {
+                    client.Phonenumber = closeCase.Client_PhoneNumber;
+                    client.Email = closeCase.Client_Email;
+                    _context.Requestclients.Update(client);
+                    _context.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion EditCloseCase
+
+        #region CaseClosed
+        public bool CaseClosed(int RequestId)
+        {
+            try
+            {
+                var request = _context.Requests.FirstOrDefault(req => req.Requestid == RequestId);
+                if (request != null)
+                {
+
+                    request.Status = 9;
+                    request.Modifieddate = DateTime.Now;
+
+                    _context.Requests.Update(request);
+                    _context.SaveChanges();
+
+                    Requeststatuslog rsl = new Requeststatuslog
+                    {
+                        Requestid = RequestId,
+                        Status = 9,
+                        Createddate = DateTime.Now
+                    };
+                    _context.Requeststatuslogs.Add(rsl);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+        #endregion CaseClosed
     }
 }

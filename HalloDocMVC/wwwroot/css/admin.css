@@ -18,11 +18,11 @@
     height: 100px;
 }
 
-.new:hover {
+.activeTab.new, .new:hover {
     background-color: #203f9a;
     color: white;
 }
-
+    
 .pending {
     border: solid thin #0AA2C0;
     color: #0aa2c0;
@@ -30,7 +30,7 @@
     height: 100px;
 }
 
-.pending:hover {
+.pending:hover, .activeTab.pending {
     background-color: #00adef;
     color: white;
 }
@@ -42,7 +42,7 @@
     height: 100px;
 }
 
-.active:hover {
+.active:hover, .activeTab.active {
     background-color: #228c20;
     color: white;
 }
@@ -54,7 +54,7 @@
     height: 100px;
 }
 
-.conclude:hover {
+.conclude:hover, .activeTab.conclude {
     background-color: #ab296a;
     color: white;
 }
@@ -66,7 +66,7 @@
     height: 100px;
 }
 
-.toClose:hover {
+.toClose:hover, .activeTab.toClose {
     background-color: #0370d7;
     color: white;
 }
@@ -78,7 +78,7 @@
     height: 100px;
 }
 
-.unpaid:hover {
+.unpaid:hover, .activeTab.unpaid {
     background-color: #9966cd;
     color: white;
 }
@@ -87,11 +87,11 @@
     display: none;
 }
 
-.thumbnail:hover .img_1 {
+.activeTab .img_1, .thumbnail:hover .img_1 {
     display: none;
 }
 
-.thumbnail:hover .img_2 {
+.activeTab .img_2, .thumbnail:hover .img_2 {
     display: block;
 }
 
@@ -184,5 +184,79 @@
 @media (max-width : 925px) {
     .adminIcon {
         display: none;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .activeTab.a-new::after {
+        position: absolute;
+        content: '';
+        left: 42%;
+        bottom: -11px;
+        border-style: solid;
+        border-width: 0 20px 20px 20px;
+        border-color: transparent transparent #203f9a transparent;
+        transform: rotate(179deg);
+        transition: 1s;
+    }
+
+    .activeTab.a-pending::after {
+        position: absolute;
+        content: '';
+        left: 42%;
+        bottom: -11px;
+        border-style: solid;
+        border-width: 0 20px 20px 20px;
+        border-color: transparent transparent #00adef transparent;
+        transform: rotate(179deg);
+        transition: 1s;
+    }
+
+    .activeTab.a-active::after {
+        position: absolute;
+        content: '';
+        left: 42%;
+        bottom: -11px;
+        border-style: solid;
+        border-width: 0 20px 20px 20px;
+        border-color: transparent transparent #228c20 transparent;
+        transform: rotate(179deg);
+        transition: 1s;
+    }
+
+    .activeTab.a-conclude::after {
+        position: absolute;
+        content: '';
+        left: 42%;
+        bottom: -11px;
+        border-style: solid;
+        border-width: 0 20px 20px 20px;
+        border-color: transparent transparent #ab296a transparent;
+        transform: rotate(179deg);
+        transition: 1s;
+    }
+
+    .activeTab.a-toClose::after {
+        position: absolute;
+        content: '';
+        left: 42%;
+        bottom: -11px;
+        border-style: solid;
+        border-width: 0 20px 20px 20px;
+        border-color: transparent transparent #0370d7 transparent;
+        transform: rotate(179deg);
+        transition: 1s;
+    }
+
+    .activeTab.a-unpaid::after {
+        position: absolute;
+        content: '';
+        left: 42%;
+        bottom: -11px;
+        border-style: solid;
+        border-width: 0 20px 20px 20px;
+        border-color: transparent transparent #9966cd transparent;
+        transform: rotate(179deg);
+        transition: 1s;
     }
 }

@@ -59,9 +59,11 @@
                     <td><small>Admin transferred to Dr. AGOLA</small></td>
                     <td>
                         <button class="btn border border-white text-white my-2">
+                            <i class="fa-solid fa-user me-1"></i>
                             <small>Patient</small>
                         </button>
                         <button class="btn border border-white text-white my-2">
+                            <i class="fa-solid fa-user-doctor me-1"></i>
                             <small>Provider</small>
                         </button>
                     </td>
@@ -95,7 +97,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="CloseCase" asp-route-RequestId="@item.RequestId" class="dropdown-item">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Close Case
                                 </a>
