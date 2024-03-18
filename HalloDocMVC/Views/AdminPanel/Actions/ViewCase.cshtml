@@ -13,8 +13,15 @@
     <div class="card border-0">
         <div class="card-header border-0  bg-light text-end">
             <div class="text-start d-flex justify-content-between">
-                <div>
-                    <h4 class="form-title fw-bold mt-2 mx-2">New Request</h4>
+                <div class="d-inline-flex">
+                    <div>
+                        <h4 class="form-title fw-bold mt-2 mx-2">New Request</h4>
+                    </div>
+                    <div class="d-flex align-self-center">
+                        <span class="rounded-pill @Enum.GetName(typeof(RequestType), Model.RequestTypeId) ms-3 p-2 text-white">
+                            @Enum.GetName(typeof(RequestType), Model.RequestTypeId)
+                        </span>
+                    </div>
                 </div>
                 <div>
                     <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info shadow-none">
@@ -24,7 +31,6 @@
                     </a>
                 </div>
             </div>
-
         </div>
         <div class="card-body bg-white rounded shadow mb-5">
 
@@ -118,7 +124,10 @@
                 </div>
             </form>
             <div class="card-footer border-0 bg-transparent text-end">
-                <button class="btn btn-info text-white mb-2" onclick="model_Case(@Model.RequestId)" data-bs-target="#AssignCase" data-bs-toggle="modal" data-bs-requestid="@Model.RequestId">Assign Case</button>
+                @if(CV.CurrentStatus() == "1")
+                {
+                    <button class="btn btn-info text-white mb-2" onclick="model_Case(@Model.RequestId)" data-bs-target="#AssignCase" data-bs-toggle="modal" data-bs-requestid="@Model.RequestId">Assign Case</button>
+                }
                 <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@Model.RequestId" class="btn btn-info text-white btn-submit mb-2">
                     View Notes
                 </a>
@@ -156,9 +165,7 @@
         console.log(modeldata);
         document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].firstName;
         document.getElementById('RequestID_Input_ModelCancelCase').value = id;
-        //console.log(document.getElementById('RequestID_Input_ModelAssignCase').value);
         document.getElementById('RequestID_Input_ModelAssignCase').value = id;
-        //console.log(document.getElementById('RequestID_Input_ModelAssignCase').value);
     }
 
 </script>

@@ -1,4 +1,5 @@
-﻿@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.CountStatusWiseRequestModel;
+﻿@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.CountStatusWiseRequestModel;
 
 <form id="filterForm" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
       asp-action="SearchResult" asp-controller="Dashboard" novalidate="novalidate">
@@ -7,7 +8,7 @@
         <div class="row mb-3 t-tab" style="--bs-gutter-x: 0rem;">
             <div class="col-lg-2 col-4 position-relative">
                 <button type="submit" name="Status" value="1" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded new ps-2 pt-3 thumbnail a-new activeTab">
+                    <div class="p-1 rounded new ps-2 pt-3 thumbnail a-new @{if(CV.CurrentStatus()=="1"){@Html.Raw("activeTab")}}">
                         <div class="d-inline-flex fw-bold">
                             <div class="d-none d-md-block">
                                 <div class="img_1">
@@ -28,7 +29,7 @@
 
             <div class="col-lg-2 col-4 position-relative">
                 <button type="submit" name="Status" value="2" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded pending ps-2 pt-3 thumbnail a-pending">
+                    <div class="p-1 rounded pending ps-2 pt-3 thumbnail a-pending @{if(CV.CurrentStatus()=="2"){@Html.Raw("activeTab")}}">
                         <div class="d-inline-flex fw-bold">
                             <div class="d-none d-md-block">
                                 <div class="img_1">
@@ -49,7 +50,7 @@
 
             <div class="col-lg-2 col-4 position-relative">
                 <button type="submit" name="Status" value="4,5" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded active ps-2 pt-3 thumbnail a-active">
+                    <div class="p-1 rounded active ps-2 pt-3 thumbnail a-active @{if(CV.CurrentStatus()=="4,5"){@Html.Raw("activeTab")}}">
                         <div class="d-inline-flex fw-bold">
                             <div class="d-none d-md-block">
                                 <div class="img_1">
@@ -71,7 +72,7 @@
 
             <div class="col-lg-2 col-4 position-relative">
                 <button type="submit" name="Status" value="6" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded conclude ps-2 pt-3 thumbnail a-conclude">
+                    <div class="p-1 rounded conclude ps-2 pt-3 thumbnail a-conclude @{if(CV.CurrentStatus()=="6"){@Html.Raw("activeTab")}}">
                         <div class="d-inline-flex fw-bold">
                             <div class="d-none d-md-block">
                                 <div class="img_1">
@@ -93,7 +94,7 @@
 
             <div class="col-lg-2 col-4 position-relative">
                 <button type="submit" name="Status" value="3,7,8" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded toClose ps-2 pt-3 thumbnail a-toClose">
+                    <div class="p-1 rounded toClose ps-2 pt-3 thumbnail a-toClose @{if(CV.CurrentStatus()=="3,7,8"){@Html.Raw("activeTab")}}">
                         <div class="d-inline-flex fw-bold">
                             <div class="d-none d-md-block">
                                 <div class="img_1">
@@ -115,7 +116,7 @@
 
             <div class="col-lg-2 col-4 position-relative">
                 <button type="submit" name="Status" value="9" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded unpaid ps-2 pt-3 thumbnail a-unpaid">
+                    <div class="p-1 rounded unpaid ps-2 pt-3 thumbnail a-unpaid @{if(CV.CurrentStatus()=="9"){@Html.Raw("activeTab")}}">
                         <div class="d-inline-flex fw-bold">
                             <div class="d-none d-md-block">
                                 <div class="img_1">
@@ -139,7 +140,7 @@
         <!--Important links-->
         <div class="d-flex justify-content-between mx-2">
             <div>
-                <strong class="fs-6">Patients</strong> <small>@*@TempData["CurrentStatus"]*@</small>
+                <strong class="fs-6">Patients</strong> <small id="currentStatus"></small>
             </div>
             <div>
                 <button class="btn btn-info text-white shadow-none mb-2">

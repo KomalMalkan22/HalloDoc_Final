@@ -115,5 +115,10 @@ namespace HalloDocMVC.Models
             }
             return null;
         }
+        public static string? CurrentStatus()
+        {
+            string? Status = _httpContextAccessor.HttpContext.Request.Cookies["Status"];
+            return Status;
+        }
     }
 }
