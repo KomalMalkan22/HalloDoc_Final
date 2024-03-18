@@ -324,5 +324,12 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("Index", "Dashboard");
         }
         #endregion CaseClosed
+
+        #region Encounter
+        public IActionResult Encounter()
+        {
+            return View("~/Views/AdminPanel/Actions/Encounter.cshtml");
+        }
+        #endregion Encounter
     }
 }

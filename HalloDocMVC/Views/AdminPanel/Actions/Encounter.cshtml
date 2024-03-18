@@ -1,0 +1,208 @@
+﻿@{
+    Layout = "../Shared/AdminLayout/_Layout";
+    ViewData["Title"] = "Encounter";
+}
+
+<div class="d-flex justify-content-center bg-light">
+    <div class="d-flex flex-column my-2 col-lg-8 col-md-10">
+        <div class="d-flex justify-content-between px-2">
+            <div>
+                <strong class="fs-4">
+                    Encounter Form
+                </strong>
+            </div>
+            <div>
+                <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info shadow-none">
+                    <strong class="text-info">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+                    </strong>
+                </a>
+            </div>
+        </div>
+        <div class="shadow bg-white rounded m-2 p-3">
+            <div class="text-center text-info fs-3 fw-bolder mb-3">
+                Medical Report - Confidential
+            </div>
+            <form method="post" asp-controller="" asp-action="">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name" autocomplete="off">
+                            <label for="FirstName">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name" autocomplete="off">
+                            <label for="LastName">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-none" id="Location" placeholder="Enter Location" autocomplete="off">
+                            <label for="Location">Location</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth" autocomplete="off">
+                            <label for="DateOfBirth">Date of Birth</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date" autocomplete="off">
+                            <label for="Date">Date</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 phone">
+                        <div class="form-floating mb-3 h-100">
+                            <input type="tel" class="form-control shadow-none" id="phone" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="email" id="email" class="form-control shadow-none" placeholder="name@example.com" autocomplete="off">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Illness" style="height: 100px"></textarea>
+                            <label for="Illness">History Of Present Illness Or Injury</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="MedicalHistory" style="height: 100px"></textarea>
+                            <label for="MedicalHistory">Medical History</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Medications" style="height: 100px"></textarea>
+                            <label for="Medications">Medications</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Allergies" style="height: 100px"></textarea>
+                            <label for="Allergies">Allergies</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-none" id="Temp" placeholder="Enter Temp" autocomplete="off">
+                            <label for="Temp">Temp</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-none" id="HR" placeholder="Enter HR" autocomplete="off">
+                            <label for="HR">HR</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-none" id="RR" placeholder="Enter RR" autocomplete="off">
+                            <label for="RR">RR</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Heent" style="height: 100px"></textarea>
+                            <label for="Heent">Heent</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="CV" style="height: 100px"></textarea>
+                            <label for="CV">CV</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Chest" style="height: 100px"></textarea>
+                            <label for="Chest">Chest</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="ABD" style="height: 100px"></textarea>
+                            <label for="ABD">ABD</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Extr" style="height: 100px"></textarea>
+                            <label for="Extr">Extr</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Skin" style="height: 100px"></textarea>
+                            <label for="Skin">Skin</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Neuro" style="height: 100px"></textarea>
+                            <label for="Neuro">Neuro</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Other" style="height: 100px"></textarea>
+                            <label for="Other">Other</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Diagnosis" style="height: 100px"></textarea>
+                            <label for="Diagnosis">Diagnosis</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="TreatmentPlan" style="height: 100px"></textarea>
+                            <label for="TreatmentPlan">Treatment Plan</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="MedicationsDispensed" style="height: 100px"></textarea>
+                            <label for="MedicationsDispensed">Medications Dispensed</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Procedures" style="height: 100px"></textarea>
+                            <label for="Procedures">Procedures</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Followup" style="height: 100px"></textarea>
+                            <label for="Followup">Followup</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-info text-white me-2">Save Changes</button>
+                    <button type="button" class="btn text-white me-2" style="background-color:#9c27b0">Finalize</button>
+                    <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info text-info">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js"></script>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>
