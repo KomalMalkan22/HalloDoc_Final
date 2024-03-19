@@ -198,22 +198,22 @@
                     </div>
                     <div class="requestType col-lg-6 col-sm-12 d-flex justify-content-end">
                         <div class="d-flex align-self-center t-filter">
-                            <button type="submit" name="filter" value="1,2,3,4" class="btn me-2 shadow-none activeFilter">
+                            <button type="submit" name="filter" value="1,2,3,4" class="btn me-2 shadow-none @{if(CV.Filter()=="1,2,3,4"){@Html.Raw("activeFilter")}}">
                                 <small>All</small>
                             </button>
-                            <button type="submit" name="filter" value="2" class="btn me-2 shadow-none">
+                            <button type="submit" name="filter" value="2" class="btn me-2 shadow-none @{if(CV.Filter()=="2"){@Html.Raw("activeFilter")}}">
                                 <i class="fa-solid fa-circle fa-xs" style="color:#5fbc61;"></i>
                                 <small>Patient</small>
                             </button>
-                            <button type="submit" name="filter" value="3" class="btn me-2 shadow-none">
+                            <button type="submit" name="filter" value="3" class="btn me-2 shadow-none @{if(CV.Filter()=="3"){@Html.Raw("activeFilter")}}">
                                 <i class="fa-solid fa-circle fa-xs" style="color:#ed9124;"></i>
                                 <small>Family / Friend</small>
                             </button>
-                            <button type="submit" name="filter" value="1" class="btn me-2 shadow-none">
+                            <button type="submit" name="filter" value="1" class="btn me-2 shadow-none @{if(CV.Filter()=="1"){@Html.Raw("activeFilter")}}">
                                 <i class="fa-solid fa-circle fa-xs" style="color:#cd697b;"></i>
                                 <small>Business</small>
                             </button>
-                            <button type="submit" name="filter" value="4" class="btn me-2 shadow-none">
+                            <button type="submit" name="filter" value="4" class="btn me-2 shadow-none @{if(CV.Filter()=="4"){@Html.Raw("activeFilter")}}">
                                 <i class="fa-solid fa-circle fa-xs" style="color:#0a7cb9;"></i>
                                 <small>Concierge</small>
                             </button>

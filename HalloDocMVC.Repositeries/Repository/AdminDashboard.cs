@@ -61,7 +61,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                        ProviderId = req.Physicianid,
                                                        ProviderName = p.Firstname + " " + p.Lastname,
                                                        PatientPhoneNumber = rc.Phonenumber,
-                                                       Address = rc.Address + " " + rc.Street + " " + rc.City + " " + rc.State + " " + rc.Zipcode,
+                                                       Address = rc.Address,
                                                        Notes = rc.Notes,
                                                        RequestorPhoneNumber = req.Phonenumber
                                                    })

@@ -99,7 +99,8 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
                 Notes = createPatientRequest.Symptoms,
                 Strmonth = createPatientRequest.DateOfBirth.ToString("MMMM"),
                 Intdate = createPatientRequest.DateOfBirth.Day,
-                Intyear = createPatientRequest.DateOfBirth.Year
+                Intyear = createPatientRequest.DateOfBirth.Year,
+                Address = createPatientRequest.Street + " " + createPatientRequest.City + " " + createPatientRequest.State + " " + createPatientRequest.ZipCode
             };
             _context.Requestclients.Add(requestclient);
             await _context.SaveChangesAsync();
@@ -154,7 +155,8 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
                 Street = createFamilyFriendRequest.Street,
                 City = createFamilyFriendRequest.City,
                 State = createFamilyFriendRequest.State,
-                Zipcode = createFamilyFriendRequest.ZipCode
+                Zipcode = createFamilyFriendRequest.ZipCode,
+                Address = createFamilyFriendRequest.Street + " " + createFamilyFriendRequest.City + " " + createFamilyFriendRequest.State + " " + createFamilyFriendRequest.ZipCode
             };
             _context.Requestclients.Add(requestClient);
             await _context.SaveChangesAsync();
@@ -186,6 +188,7 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
                 City = createConciergeRequest.C_City,
                 State = createConciergeRequest.C_State,
                 Zipcode = createConciergeRequest.C_ZipCode,
+                Address = createConciergeRequest.C_Street + " " + createConciergeRequest.C_City + " " + createConciergeRequest.C_State + " " + createConciergeRequest.C_ZipCode,
                 Regionid = 1,
                 Createddate = DateTime.Now
             };
@@ -241,6 +244,9 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
             {
                 Name = createBusinessRequest.BUS_FirstName + " " + createBusinessRequest.BUS_LastName,
                 Phonenumber = createBusinessRequest.BUS_PhoneNumber,
+                Address1 = createBusinessRequest.Street,
+                City = createBusinessRequest.City,
+                Zipcode = createBusinessRequest.ZipCode,
                 Createddate = DateTime.Now
             };
             _context.Businesses.Add(business);
@@ -276,7 +282,8 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
                 City = createBusinessRequest.City,
                 State = createBusinessRequest.State,
                 Zipcode = createBusinessRequest.ZipCode,
-                Location = createBusinessRequest.RoomSuite
+                Location = createBusinessRequest.RoomSuite,
+                Address = createBusinessRequest.Street + " " + createBusinessRequest.City + " " + createBusinessRequest.State + " " + createBusinessRequest.ZipCode
             };
             _context.Requestclients.Add(requestClient);
             await _context.SaveChangesAsync();
