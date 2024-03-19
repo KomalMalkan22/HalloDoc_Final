@@ -24,6 +24,7 @@ builder.Services.AddScoped<IPatientDashboard, PatientDashboard>();
 builder.Services.AddScoped<IProfile,  Profile>();
 builder.Services.AddScoped<IAdminDashboard, AdminDashboard>();
 builder.Services.AddScoped<IActions, Actions>();
+builder.Services.AddScoped<IMyProfile, MyProfile>();
 builder.Services.AddScoped<IComboBox, ComboBox>();
 builder.Services.AddScoped<ILogin, Login>();
 builder.Services.AddScoped<IJwtService, JwtService>();

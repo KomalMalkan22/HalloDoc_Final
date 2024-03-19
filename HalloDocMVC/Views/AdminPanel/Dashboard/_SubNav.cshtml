@@ -11,52 +11,35 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a asp-controller="ProviderLocation" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/ProviderLocation") ? "activeNavItem" : "")">
+                        <small>Provider Location</small>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a asp-controller="MyProfile" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/MyProfile") ? "activeNavItem" : "")">
                         <small>My Profile</small>
                     </a>
+                </li>            
+                <li class="nav-item">
+                    <a asp-controller="Providers" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Providers") ? "activeNavItem" : "")">
+                        <small>Providers</small>
+                    </a>
                 </li>
-                @if (CV.role() == "1")
-                {
-                    <li class="nav-item">
-                        <a asp-controller="ProviderLocation" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/ProviderLocation") ? "activeNavItem" : "")">
-                            <small>Provider Location</small>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Providers" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Providers") ? "activeNavItem" : "")">
-                            <small>Providers</small>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Parteners" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Parteners") ? "activeNavItem" : "")">
-                            <small>Parteners</small>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Access" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Access") ? "activeNavItem" : "")">
-                            <small>Access</small>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Records" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Records") ? "activeNavItem" : "")">
-                            <small>Records</small>
-                        </a>
-                    </li>
-                }
-                
-                @if(CV.role() == "2")
-                {
-                    <li class="nav-item me-3">
-                        <a class="nav-link text-dark @(path.StartsWith("/Chat") ? "activesbnav" : "")" asp-action="" asp-controller="">Chat</a>
-                    </li>
-                    <li class="nav-item me-3">
-                        <a class="nav-link text-dark @(path.StartsWith("/Invoicing") ? "activesbnav" : "")" asp-action="" asp-controller="">Invoicing</a>
-                    </li>
-                    <li class="nav-item me-3">
-                        <a class="nav-link text-dark @(path.StartsWith("/Schedule") ? "activesbnav" : "")" asp-action="" asp-controller="">My Schedule</a>
-                    </li>
-                }
-
+                <li class="nav-item">
+                    <a asp-controller="Parteners" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Parteners") ? "activeNavItem" : "")">
+                        <small>Parteners</small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Access" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Access") ? "activeNavItem" : "")">
+                        <small>Access</small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Records" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Records") ? "activeNavItem" : "")">
+                        <small>Records</small>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

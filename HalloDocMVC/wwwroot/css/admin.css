@@ -171,6 +171,10 @@
     background-color: #0dcaf0;
 }
 
+.activeFilter {
+    border: 2px solid #0dcaf0;
+}
+
 @media (max-width : 776px){
     .navbar{
         display:none;

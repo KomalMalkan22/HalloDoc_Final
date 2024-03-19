@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace HalloDocMVC.Models
+namespace HalloDocMVC.DBEntity.ViewModels
 {
     public static class CV
     {
@@ -119,6 +119,12 @@ namespace HalloDocMVC.Models
         {
             string? Status = _httpContextAccessor.HttpContext.Request.Cookies["Status"];
             return Status;
+        }
+
+        public static string? Filter()
+        {
+            string? Filter = _httpContextAccessor.HttpContext.Request.Cookies["Filter"];
+            return Filter;
         }
     }
 }

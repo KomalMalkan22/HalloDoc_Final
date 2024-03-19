@@ -1,4 +1,5 @@
 ﻿using HalloDocMVC.DBEntity.DataContext;
+using HalloDocMVC.DBEntity.ViewModels;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Models;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
@@ -36,12 +37,14 @@ namespace HalloDocMVC.Controllers.AdminController
         #region SearchResult
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SearchResult(string Status)
+        public async Task<IActionResult> SearchResult(string Status, string Filter)
         {
             Status ??= CV.CurrentStatus();
+            Filter ??= CV.Filter();
             Response.Cookies.Append("Status", Status);
+            Response.Cookies.Append("Filter", Filter);
 
-            List<AdminDashboardList> contacts = _IAdminDashboard.GetRequests(Status);
+            List<AdminDashboardList> contacts = _IAdminDashboard.GetRequests(Status, Filter);
             
             switch (Status)
             {

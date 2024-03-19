@@ -32,9 +32,10 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 UnpaidRequest = _context.Requests.Where(r => r.Status == 9).Count()
             };
         }
-        public List<AdminDashboardList> GetRequests(string Status)
+        public List<AdminDashboardList> GetRequests(string Status, string Filter)
         {
             List<int> status = Status.Split(',').Select(int.Parse).ToList();
+            List<int> filter = Filter.Split(',').Select(int.Parse).ToList();
             List<AdminDashboardList> allData = (from req in _context.Requests
                                                     join reqClient in _context.Requestclients
                                                     on req.Requestid equals reqClient.Requestid into reqClientGroup
@@ -45,7 +46,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                     join reg in _context.Regions
                                                     on rc.Regionid equals reg.Regionid into RegGroup
                                                     from rg in RegGroup.DefaultIfEmpty()
-                                                    where status.Contains(req.Status)
+                                                    where status.Contains(req.Status) && filter.Contains(req.Requesttypeid)
                                                     orderby req.Createddate descending
                                                     select new AdminDashboardList
                                                    {
@@ -56,7 +57,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                        DateOfBirth = new DateTime((int)rc.Intyear, DateTime.ParseExact(rc.Strmonth, "MMMM", new CultureInfo("en-US")).Month, (int)rc.Intdate),
                                                        RequestedDate = req.Createddate,
                                                        Email = rc.Email,
-
                                                        Region = rg.Name,
                                                        ProviderId = req.Physicianid,
                                                        ProviderName = p.Firstname + " " + p.Lastname,

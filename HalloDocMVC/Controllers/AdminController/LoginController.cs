@@ -62,6 +62,7 @@ namespace HalloDocMVC.Controllers.AdminController
                 var jwttoken = _IJwtService.GenerateJWTAuthetication(u);
                 Response.Cookies.Append("jwt", jwttoken);
                 Response.Cookies.Append("Status", "1");
+                Response.Cookies.Append("Filter", "1,2,3,4");
                 if (u.Role == "Patient")
                 {
                     return RedirectToAction("Index", "PatientDashboard");

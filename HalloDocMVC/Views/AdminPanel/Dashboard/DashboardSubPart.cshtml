@@ -1,4 +1,5 @@
-﻿@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
+﻿@using HalloDocMVC.DBEntity.ViewModels;
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
 @using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.CountStatusWiseRequestModel;
 
 <form id="filterForm" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
@@ -196,30 +197,26 @@
                         </div>                        
                     </div>
                     <div class="requestType col-lg-6 col-sm-12 d-flex justify-content-end">
-                        <div class="d-flex align-self-center me-3">
-                            <button class="btn border border-secondary shadow-none">
-                                <span class="text-secondary">
-                                    All
-                                </span>
+                        <div class="d-flex align-self-center t-filter">
+                            <button type="submit" name="filter" value="1,2,3,4" class="btn me-2 shadow-none activeFilter">
+                                <small>All</small>
                             </button>
-                        </div>
-                        <div class="d-flex align-self-center">
-                            <div class="me-3">
+                            <button type="submit" name="filter" value="2" class="btn me-2 shadow-none">
                                 <i class="fa-solid fa-circle fa-xs" style="color:#5fbc61;"></i>
                                 <small>Patient</small>
-                            </div>
-                            <div class="me-3">
+                            </button>
+                            <button type="submit" name="filter" value="3" class="btn me-2 shadow-none">
                                 <i class="fa-solid fa-circle fa-xs" style="color:#ed9124;"></i>
                                 <small>Family / Friend</small>
-                            </div>
-                            <div class="me-3">
+                            </button>
+                            <button type="submit" name="filter" value="1" class="btn me-2 shadow-none">
                                 <i class="fa-solid fa-circle fa-xs" style="color:#cd697b;"></i>
                                 <small>Business</small>
-                            </div>
-                            <div class="me-2">
+                            </button>
+                            <button type="submit" name="filter" value="4" class="btn me-2 shadow-none">
                                 <i class="fa-solid fa-circle fa-xs" style="color:#0a7cb9;"></i>
                                 <small>Concierge</small>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>

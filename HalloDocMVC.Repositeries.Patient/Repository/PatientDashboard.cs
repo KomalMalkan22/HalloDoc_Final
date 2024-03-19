@@ -1,8 +1,8 @@
 ﻿using HalloDocMVC.DBEntity.DataContext;
 using HalloDocMVC.DBEntity.DataModels;
+using HalloDocMVC.DBEntity.ViewModels;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.DBEntity.ViewModels.PatientPanel;
-using HalloDocMVC.Models;
 using HalloDocMVC.Repositeries.Patient.Repository.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;

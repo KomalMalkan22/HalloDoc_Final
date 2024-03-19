@@ -10,6 +10,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
     public interface IAdminDashboard
     {
         public CountStatusWiseRequestModel CardData();
-        public List<AdminDashboardList> GetRequests(string Status);
+        public List<AdminDashboardList> GetRequests(string Status, string Filter);
     }
 }
