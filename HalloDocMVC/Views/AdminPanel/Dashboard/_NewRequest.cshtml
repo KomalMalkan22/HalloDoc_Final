@@ -1,4 +1,4 @@
-﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminPanel.AdminDashboardList>;
+﻿@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.PaginationModel
 @using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
 
 <!--Desktop Screen View of table-->
@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody class="bg-white mb-5">
-            @if (Model.Count == 0)
+            @if (Model.list.Count == 0)
             {
                 <tr class="text-center border-bottom border-dark ">
                     <td colspan="10">
@@ -45,7 +45,7 @@
                     </td>
                 </tr>
             }
-            @foreach (var (item, index) in Model.Select((item, index) => (item, index)))
+            @foreach (var (item, index) in Model.list.Select((item, index) => (item, index)))
             {
                 <tr class="@Enum.GetName(typeof(RequestType), item.RequestTypeId) text-white border-bottom border-white">
                     <td><small>@item.PatientName</small></td>
@@ -135,7 +135,7 @@
 <!--Mobile Screen View of table-->
 <div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
     <div class="dBlock">
-        @foreach (var item in Model)
+        @foreach (var item in Model.list)
         {
             <div class="accordion-item btn-i text-secondary">
                 <h2 class="accordion-header" id="flush-heading-@item.RequestId">
@@ -227,6 +227,27 @@
 </div>
 <!--End Mobile Screen View of table-->
 
+<nav aria-label="Page navigation example">
+    <ul class="pagination pagination-container d-flex justify-content-center">
+        @{
+            int i;
+            @for (i = 1; i <= @Model.TotalPages; i++)
+            {
+                <form id="filterForm" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
+                      asp-action="SearchResult" asp-controller="Dashboard" novalidate="novalidate">
+                    <input type="hidden" asp-for="RegionId" />
+                    <input type="hidden" asp-for="RequestType" />
+                    <input type="hidden" asp-for="SearchInput" />
+                    <input type="hidden" asp-for="CurrentPage" value="@i" />
+                    <li class="page-item">
+                        <button type="submit" class="@(i == @Model.CurrentPage ? "activePage" : "") page-link shadow-none" onclick="pagination(@i)">@i</button>
+                    </li>
+                </form>
+            }
+        }
+    </ul>
+</nav>
+
 <script>
     function model_Case(id) {
         console.log(id);
@@ -236,5 +257,20 @@
         document.getElementById('RequestID_Input_ModelAssignCase').value = modeldata[id].requestId;
         document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata[id].requestId;
         document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;    
+    }
+
+    function pagination(i) {
+        console.log("i");
+
+        $.ajax({
+            url: "@Url.Action("SearchResult", "Dashboard")",
+            type: "GET",
+            success: function (data) {
+                $("#SearchResult").html(data);
+            },
+            error: function (error) {
+                console.error("Error:", error);
+            }
+        });
     }
 </script>

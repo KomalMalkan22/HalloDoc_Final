@@ -175,6 +175,11 @@
     border: 2px solid #0dcaf0;
 }
 
+.activePage {
+    background-color: #0dcaf0;
+    color: white;
+}
+
 @media (max-width : 776px){
     .navbar{
         display:none;

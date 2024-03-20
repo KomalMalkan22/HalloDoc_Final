@@ -29,7 +29,7 @@ namespace HalloDocMVC.Controllers.AdminController
         {
             ViewBag.ComboBoxRegion = await _IComboBox.ComboBoxRegions();
             ViewBag.ComboBoxCaseReason = await _IComboBox.ComboBoxCaseReasons();
-            var countRequest = _IAdminDashboard.CardData();
+            PaginationModel countRequest = _IAdminDashboard.CardData();
             return View("~/Views/AdminPanel/Dashboard/Index.cshtml", countRequest);
         }
         #endregion Index
@@ -37,14 +37,14 @@ namespace HalloDocMVC.Controllers.AdminController
         #region SearchResult
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SearchResult(string Status, string Filter)
+        public async Task<IActionResult> SearchResult(string Status, string Filter, PaginationModel pagination)
         {
             Status ??= CV.CurrentStatus();
             Filter ??= CV.Filter();
             Response.Cookies.Append("Status", Status);
             Response.Cookies.Append("Filter", Filter);
 
-            List<AdminDashboardList> contacts = _IAdminDashboard.GetRequests(Status, Filter);
+            PaginationModel contacts = _IAdminDashboard.GetRequests(Status, Filter, pagination);
             
             switch (Status)
             {

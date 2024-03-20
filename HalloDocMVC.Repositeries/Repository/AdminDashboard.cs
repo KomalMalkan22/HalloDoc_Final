@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Globalization;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.DBEntity.DataModels;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HalloDocMVC.Repositories.Admin.Repository
 {
@@ -20,9 +21,9 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         {
             _context = context;
         }
-        public CountStatusWiseRequestModel CardData()
+        public PaginationModel CardData()
         {
-            return new CountStatusWiseRequestModel()
+            return new PaginationModel()
             {
                 NewRequest = _context.Requests.Where(r => r.Status == 1).Count(),
                 PendingRequest = _context.Requests.Where(r => r.Status == 2).Count(),
@@ -32,7 +33,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 UnpaidRequest = _context.Requests.Where(r => r.Status == 9).Count()
             };
         }
-        public List<AdminDashboardList> GetRequests(string Status, string Filter)
+        public PaginationModel GetRequests(string Status, string Filter, PaginationModel pagination)
         {
             List<int> status = Status.Split(',').Select(int.Parse).ToList();
             List<int> filter = Filter.Split(',').Select(int.Parse).ToList();
@@ -46,7 +47,13 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                     join reg in _context.Regions
                                                     on rc.Regionid equals reg.Regionid into RegGroup
                                                     from rg in RegGroup.DefaultIfEmpty()
-                                                    where status.Contains(req.Status) && filter.Contains(req.Requesttypeid)
+                                                    where status.Contains(req.Status) && filter.Contains(req.Requesttypeid) && (pagination.SearchInput == null ||
+                                                         rc.Firstname.Contains(pagination.SearchInput) || rc.Lastname.Contains(pagination.SearchInput) ||
+                                                         req.Firstname.Contains(pagination.SearchInput) || req.Lastname.Contains(pagination.SearchInput) ||
+                                                         rc.Email.Contains(pagination.SearchInput) || rc.Phonenumber.Contains(pagination.SearchInput) ||
+                                                         rc.Address.Contains(pagination.SearchInput) || rc.Notes.Contains(pagination.SearchInput) ||
+                                                         p.Firstname.Contains(pagination.SearchInput) || p.Lastname.Contains(pagination.SearchInput) ||
+                                                         rg.Name.Contains(pagination.SearchInput)) && (pagination.RegionId == null || rc.Regionid == pagination.RegionId)
                                                     orderby req.Createddate descending
                                                     select new AdminDashboardList
                                                    {
@@ -66,7 +73,19 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                                        RequestorPhoneNumber = req.Phonenumber
                                                    })
                                                    .ToList();
-            return allData;
+            int totalItemCount = allData.Count;
+            int totalPages = (int)Math.Ceiling(totalItemCount / (double)pagination.PageSize);
+            List<AdminDashboardList> list1 = allData.Skip((pagination.CurrentPage - 1) * pagination.PageSize).Take(pagination.PageSize).ToList();
+
+            PaginationModel paginatedViewModel = new PaginationModel
+            {
+                list = list1,
+                CurrentPage = pagination.CurrentPage,
+                TotalPages = totalPages,
+                PageSize = 5,
+                SearchInput = pagination.SearchInput
+            };
+            return paginatedViewModel;
         }
 
         public async Task<bool> AssignProvider(int RequestId, int ProviderId, string notes)

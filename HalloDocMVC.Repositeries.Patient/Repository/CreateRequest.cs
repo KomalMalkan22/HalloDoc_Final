@@ -38,7 +38,7 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
                 var aspnetuser = new Aspnetuser()
                 {
                     Id = g.ToString(),
-                    Username = createPatientRequest.FirstName,
+                    Username = createPatientRequest.FirstName + createPatientRequest.LastName,
                     Passwordhash = createPatientRequest.PassWord,
                     Email = createPatientRequest.Email,
                     Phonenumber = createPatientRequest.PhoneNumber,

@@ -19,4 +19,20 @@
         public string? Region { get; set; }
         public string Status { get; set; }
     }
+    public class PaginationModel
+    {
+        public List<AdminDashboardList>? list { get; set; }
+        public int NewRequest { get; set; }
+        public int PendingRequest { get; set; }
+        public int ActiveRequest { get; set; }
+        public int ConcludeRequest { get; set; }
+        public int ToCloseRequest { get; set; }
+        public int UnpaidRequest { get; set; }
+        public int CurrentPage { get; set; } = 1;
+        public int TotalPages { get; set; } = 1;
+        public int PageSize { get; set; } = 5;
+        public string? SearchInput { get; set; }
+        public int? RegionId { get; set; }
+        public int? RequestType { get; set; }
+    }
 }

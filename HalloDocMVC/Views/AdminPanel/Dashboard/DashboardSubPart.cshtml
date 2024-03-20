@@ -1,6 +1,6 @@
 ﻿@using HalloDocMVC.DBEntity.ViewModels;
 @using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
-@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.CountStatusWiseRequestModel;
+@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.PaginationModel;
 
 <form id="filterForm" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
       asp-action="SearchResult" asp-controller="Dashboard" novalidate="novalidate">
@@ -183,18 +183,18 @@
             <div class="searchBar px-2">
                 <div class="py-2 row w-100" style="--bs-gutter-x:0rem;">
                     <div class="search col-lg-3 col-sm-6 col-xs-12 mb-1">
-                        <div>
+                        <div onclick="SearchSubmit()">
                             <i class="fa fa-search"></i>
-                            <input type="text" class="form-control" placeholder="Search Patients">
-                        </div>                       
+                            <input asp-for="SearchInput" id="SearchInput" type="text" class="form-control" placeholder="Search Patients">
+                        </div>
                     </div>
                     <div class="search col-lg-3 col-sm-6 col-xs-12 mb-1">
                         <div class="ms-1">
                             <i class="fa fa-search"></i>
-                            <select asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))" class="form-select shadow-none text-secondary" id="floatingSelectGrid">
+                            <select asp-for="RegionId" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))" onchange="SearchSubmit()" class="form-select shadow-none text-secondary" id="floatingSelectGrid">
                                 <option class="text-secondary w-100">All Regions</option>
                             </select>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="requestType col-lg-6 col-sm-12 d-flex justify-content-end">
                         <div class="d-flex align-self-center t-filter">
@@ -225,3 +225,9 @@
         <!--End Filters-->
     </div>
 </form>
+
+<script>
+    function SearchSubmit() {
+        $('#filterForm').submit();
+    }
+</script>
