@@ -45,7 +45,7 @@
                     </td>
                 </tr>
             }
-            @foreach (var item in Model.list)
+            @foreach (var (item, index) in Model.list.Select((item, index) => (item, index)))
             {
                 <tr class="@Enum.GetName(typeof(RequestType), item.RequestTypeId) text-white border-bottom border-white">
                     <td><small>@item.PatientName</small></td>
@@ -86,7 +86,7 @@
                                 </a>
                             </li> 
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="ViewUpload" asp-route-id="@item.RequestId" class="dropdown-item">
                                     <i class="fa-solid fa-file-arrow-up me-2"></i>
                                     View Uploads
                                 </a>
@@ -116,13 +116,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <button onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ClearCase">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Clear Case
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="Encounter" class="dropdown-item">
                                     <i class="fa-solid fa-receipt me-2"></i>
                                     Encounter
                                 </a>
@@ -139,10 +139,10 @@
 <!--Mobile Screen View of table-->
 <div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
     <div class="dBlock">
-        @foreach (var item in Model.list)
+        @foreach (var (item, index) in Model.list.Select((item, index) => (item, index)))
         {
             <div class="accordion-item btn-i text-secondary">
-                <h2 class="accordion-header" id="flush-heading-@item.RequestId">
+                <div class="accordion-header" id="flush-heading-@item.RequestId">
                     <div class="h5 p-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-@item.RequestId" aria-expanded="false" aria-controls="collapse_@item.RequestId">
                         <div class="row w-100">
                             <div class="col-6 mb-3 h4">
@@ -163,11 +163,11 @@
                             </div>
                         </div>
                     </div>
-                </h2>
+                </div>
                 <div id="flush-@item.RequestId" class="accordion-collapse collapse mb-3 border-top" data-bs-parent="#accordionExample">
                     <div class="accordion-body container-fluid">
                         <div class="d-flex justify-content-end me-2">
-                            <a @*asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId"*@ id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
+                            <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
                                 <small>View Case</small>
                             </a>
                         </div>
@@ -197,9 +197,9 @@
                         </p>
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #e42929;">
+                                <a asp-controller="Actions" asp-action="CloseCase" asp-route-RequestId="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #e42929;">
                                     <small>Close Case</small>
-                                </button>
+                                </a>
                             </div>
                             <div class="col-6 mb-3">
                                 <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
@@ -212,17 +212,17 @@
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <a asp-controller="Actions" asp-action="ViewUpload" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>View Uploads</small>
-                                </button>
+                                </a>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <a asp-controller="Actions" asp-action="Encounter" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>Encounter</small>
-                                </button>
+                                </a>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
+                                <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#ClearCase" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
                                     <small>Clear Case</small>
                                 </button>
                             </div>
@@ -256,6 +256,10 @@
 <nav aria-label="Page navigation example">
     <div class="d-flex justify-content-between mx-2 mt-3">
         <div>
+            @if (Model.TotalPages == 0)
+            {
+                Model.CurrentPage = 0;
+            }
             Page @Model.CurrentPage / @Model.TotalPages
         </div>
         <div>
@@ -309,6 +313,11 @@
 <!--End Pagination-->
 
 <script>
+    function modal_Case(id) {
+        var modeldata = @Html.Raw(Json.Serialize(Model))
+        document.getElementById('RequestID_Input_ModalClearCase').value = modeldata.list[id].requestId;
+    }
+
     function pagination(i) {
         $.ajax({
             url: "@Url.Action("SearchResult", "Dashboard")",

@@ -127,12 +127,12 @@
             <div class="card-footer border-0 bg-transparent text-end">
                 @if(CV.CurrentStatus() == "1")
                 {
-                    <button class="btn btn-info text-white mb-2" onclick="model_Case(@Model.RequestId)" data-bs-target="#AssignCase" data-bs-toggle="modal" data-bs-requestid="@Model.RequestId">Assign Case</button>
+                    <button class="btn btn-info shadow-none text-white mb-2" onclick="model_Case(@Model.RequestId)" data-bs-target="#AssignCase" data-bs-toggle="modal" data-bs-requestid="@Model.RequestId">Assign Case</button>
                 }
-                <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@Model.RequestId" class="btn btn-info text-white btn-submit mb-2">
+                <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@Model.RequestId" class="btn btn-info text-white shadow-none mb-2">
                     View Notes
                 </a>
-                <button class="btn btn-danger btn-cancel mb-2" onclick="model_Case(@Model.RequestId)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@Model.RequestId" data-bs-firstname="@Model.FirstName">
+                <button class="btn btn-danger shadow-none mb-2" onclick="model_Case(@Model.RequestId)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@Model.RequestId" data-bs-firstname="@Model.FirstName">
                     Cancel
                 </button>
             </div>
@@ -164,7 +164,8 @@
         console.log(id);
         var modeldata = @Html.Raw(Json.Serialize(Model))
         console.log(modeldata);
-        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].firstName;
+        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata.firstName + " " +  modeldata.lastName;
+        console.log(document.getElementById('PatientName_ModelCancelCase').innerText);
         document.getElementById('RequestID_Input_ModelCancelCase').value = id;
         document.getElementById('RequestID_Input_ModelAssignCase').value = id;
     }

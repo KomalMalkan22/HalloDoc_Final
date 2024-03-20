@@ -152,10 +152,10 @@
 <!--Mobile Screen View of table-->
 <div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
     <div class="dBlock">
-        @foreach (var item in Model.list)
+        @foreach (var (item, index) in Model.list.Select((item, index) => (item, index)))
         {
             <div class="accordion-item btn-i text-secondary">
-                <h2 class="accordion-header" id="flush-heading-@item.RequestId">
+                <div class="accordion-header" id="flush-heading-@item.RequestId">
                     <div class="h5 p-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-@item.RequestId" aria-expanded="false" aria-controls="collapse_@item.RequestId">
                         <div class="row w-100">
                             <div class="col-6 mb-3 h4">
@@ -176,11 +176,11 @@
                             </div>
                         </div>
                     </div>
-                </h2>
+                </div>
                 <div id="flush-@item.RequestId" class="accordion-collapse collapse mb-3 border-top" data-bs-parent="#accordionExample">
                     <div class="accordion-body container-fluid">
                         <div class="d-flex justify-content-end me-2">
-                            <a @*asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId"*@ id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
+                            <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
                                 <small>View Case</small>
                             </a>
                         </div>
@@ -219,7 +219,7 @@
 
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
+                                <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#SendAgreement" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
                                     <small>Send Agreement</small>
                                 </button>
                             </div>
@@ -229,17 +229,17 @@
                                 </a>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #00adef;">
+                                <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#TransferRequest" data-bs-requestid="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #00adef;">
                                     <small>Transfer</small>
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <button asp-controller="Actions" asp-action="ViewUpload" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>View Uploads</small>
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
+                                <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#ClearCase" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
                                     <small>Clear Case</small>
                                 </button>
                             </div>
@@ -262,6 +262,10 @@
 <nav aria-label="Page navigation example">
     <div class="d-flex justify-content-between mx-2 mt-3">
         <div>
+            @if (Model.TotalPages == 0)
+            {
+                Model.CurrentPage = 0;
+            }
             Page @Model.CurrentPage / @Model.TotalPages
         </div>
         <div>
@@ -316,13 +320,12 @@
 
 <script>
     function modal_Case(id) {
-        var modaldata = @Html.Raw(Json.Serialize(Model))
-        console.log(modaldata);
-        document.getElementById('RequestID_Input_ModalTransferPhysician').value = modaldata[id].requestId;
-        document.getElementById('RequestID_Input_ModalClearCase').value = modaldata[id].requestId;
-        document.getElementById("RequestId_SendAgreement").value = modaldata[id].requestId;
-        document.getElementById("PhoneNumber_SendAgreement").value = modaldata[id].patientPhoneNumber;
-        document.getElementById("Email_SendAgreement").value = modaldata[id].email;
+        var modeldata = @Html.Raw(Json.Serialize(Model))
+        document.getElementById('RequestID_Input_ModalTransferPhysician').value = modeldata.list[id].requestId;
+        document.getElementById('RequestID_Input_ModalClearCase').value = modeldata.list[id].requestId;
+        document.getElementById("RequestId_SendAgreement").value = modeldata.list[id].requestId;
+        document.getElementById("PhoneNumber_SendAgreement").value = modeldata.list[id].patientPhoneNumber;
+        document.getElementById("Email_SendAgreement").value = modeldata.list[id].email;
     }
 
     function pagination(i) {

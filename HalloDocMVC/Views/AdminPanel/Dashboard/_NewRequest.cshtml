@@ -135,10 +135,10 @@
 <!--Mobile Screen View of table-->
 <div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
     <div class="dBlock">
-        @foreach (var item in Model.list)
+        @foreach (var (item, index) in Model.list.Select((item, index) => (item, index)))
         {
             <div class="accordion-item btn-i text-secondary">
-                <h2 class="accordion-header" id="flush-heading-@item.RequestId">
+                <div class="accordion-header" id="flush-heading-@item.RequestId">
                     <div class="h5 p-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-@item.RequestId" aria-expanded="false" aria-controls="collapse_@item.RequestId">
                         <div class="row w-100">
                             <div class="col-6 mb-3 h4">
@@ -159,11 +159,11 @@
                             </div>
                         </div>
                     </div>
-                </h2>
+                </div>
                 <div id="flush-@item.RequestId" class="accordion-collapse collapse mb-3 border-top" data-bs-parent="#accordionExample">
                     <div class="accordion-body container-fluid">
                         <div class="d-flex justify-content-end me-2">
-                            <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
+                            <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill shadow-none 2px">
                                 <small>View Case</small>
                             </a>
                         </div>
@@ -186,27 +186,27 @@
 
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #943db8;">
+                                <button onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#AssignCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn text-white shadow-none rounded-pill 2px w-100" style="background-color: #943db8;">
                                     <small>Assign Case</small>
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #e42929;">
+                                <button onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn btn-white text-white shadow-none rounded-pill 2px w-100" style="background-color: #e42929;">
                                     <small>Cancel Case</small>
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill shadow-none 2px w-100" style="background-color: #228b22;">
                                     <small>View Notes</small>
                                 </a>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #e42929;">
+                                <button onclick="model_Case(@index)" id="CancelCase_@item.RequestId" data-bs-toggle="modal" data-bs-target="#BlockCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn btn-white text-white shadow-none rounded-pill 2px w-100" style="background-color: #e42929;">
                                     <small>Block Patient</small>
                                 </button>
                             </div>
                             <div class="col-6 mb-3 ">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <button class="btn btn-white text-white shadow-none rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>Email</small>
                                 </button>
                             </div>
@@ -231,6 +231,10 @@
 <nav aria-label="Page navigation example">
     <div class="d-flex justify-content-between mx-2 mt-3">
         <div>
+            @if(Model.TotalPages == 0)
+            {
+                Model.CurrentPage = 0;
+            }
             Page @Model.CurrentPage / @Model.TotalPages
         </div>
         <div>
@@ -285,13 +289,12 @@
 
 <script>
     function model_Case(id) {
-        console.log(id);
         var modeldata = @Html.Raw(Json.Serialize(Model))
-        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].patientName;
-        document.getElementById('RequestID_Input_ModelCancelCase').value = modeldata[id].requestId;
-        document.getElementById('RequestID_Input_ModelAssignCase').value = modeldata[id].requestId;
-        document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata[id].requestId;
-        document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;    
+        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata.list[id].patientName;
+        document.getElementById('RequestID_Input_ModelCancelCase').value = modeldata.list[id].requestId;
+        document.getElementById('RequestID_Input_ModelAssignCase').value = modeldata.list[id].requestId;
+        document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata.list[id].requestId;
+        document.getElementById('PatientName_ModelBlockCase').innerText = modeldata.list[id].patientName;
     }
 
     function pagination(i) {
