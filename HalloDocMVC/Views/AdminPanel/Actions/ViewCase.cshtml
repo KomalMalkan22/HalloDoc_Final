@@ -46,6 +46,7 @@
                         <div class="form-floating mb-3">
                             <textarea asp-for="Notes" class="form-control shadow-none input" placeholder="Leave a comment here" id="Notes" style="height: 100px"></textarea>
                             <label for="Notes">Patient Notes</label>
+                            <span asp-validation-for="Notes" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -55,18 +56,21 @@
                         <div class="form-floating mb-3">
                             <input asp-for="FirstName" type="text" class="form-control shadow-none input" id="FirstName" placeholder="Enter First Name" autocomplete="off">
                             <label for="FirstName">First Name</label>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="form-floating mb-3">
                             <input asp-for="LastName" type="text" class="form-control shadow-none input" id="LastName" placeholder="Enter Last Name" autocomplete="off">
                             <label for="LastName">Last Name</label>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="form-floating mb-3">
                             <input asp-for="DateOfBirth" type="date" class="form-control shadow-none input" id="DateOfBirth" placeholder="Enter Date of Birth" autocomplete="off">
                             <label for="DateOfBirth">Date of Birth</label>
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -75,6 +79,7 @@
                             <div class="form-floating h-100 w-100">
                                 <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none input" id="phone" autocomplete="off">
                                 <label for="phone">Phone Number</label>
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                             </div>
                             <button class="btn border border-info text-info mx-2 " style="height:3.5rem;width:4rem">
                                 <i class="bi bi-telephone-fill"></i>
@@ -86,6 +91,7 @@
                         <div class="form-floating mb-3">
                             <input asp-for="Email" type="email" id="email" class="form-control shadow-none input" placeholder="name@example.com" autocomplete="off">
                             <label for="email">Email</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-1">
@@ -101,6 +107,7 @@
                         <div class="form-floating mb-3">
                             <input asp-for="Region" type="text" id="Region" class="form-control shadow-none input" placeholder="Enter Region" autocomplete="off">
                             <label for="Region">Region</label>
+                            <span asp-validation-for="Region" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -109,6 +116,7 @@
                             <div class="form-floating w-100">
                                 <input asp-for="Address" type="text" id="Business" class="form-control shadow-none input" placeholder="Enter Business Name / Address" autocomplete="off">
                                 <label for="Business"><small>Business Name / Address</small></label>
+                                <span asp-validation-for="Address" class="text-danger"></span>
                             </div>
                             <a class="btn border border-info mx-2 text-info map-btn p-2 " style="height:3.5rem;width:4rem" id="map-button">
                                 <i class="bi bi-geo-alt-fill mx-3"></i>
@@ -120,6 +128,7 @@
                         <div class="form-floating mb-3">
                             <input asp-for="Room" type="text" id="Room" class="form-control shadow-none input" placeholder="Enter Room" autocomplete="off">
                             <label for="Room">Room</label>
+                            <span asp-validation-for="Room" class="text-danger"></span>
                         </div>
                     </div>
                 </div>

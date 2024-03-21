@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Confirm Block</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form asp-controller="Actions" asp-action="BlockCase">
+            <form asp-controller="Actions" asp-action="BlockCase" class="needs-validation" novalidate>
                 <input type="hidden" value="" id="RequestID_Input_ModelBlockCase" name="requestid" />
                 <div class="modal-body">
                     <p class="text-secondary">
@@ -14,8 +14,11 @@
                     </p>
 
                     <div class="form-floating mb-3">
-                        <textarea id="changenote" rows="4" name="Note" class="input-outline w-100 h-100 fs-6 form-control shadow-none" type="text"></textarea>
+                        <textarea id="changenote" rows="4" name="Note" required class="input-outline w-100 h-100 fs-6 form-control shadow-none" type="text"></textarea>
                         <label class="inputs-lable inputs-lable-textarea fs-6" id="notedata">Reason For Block Request</label>
+                        <div class="invalid-feedback">
+                            Please enter valid reason!
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

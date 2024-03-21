@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="exampleModalLongTitle">Transfer Request</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form asp-controller="Actions" asp-action="TransferPhysician">
+            <form asp-controller="Actions" asp-action="TransferPhysician" class="needs-validation" novalidate>
                 <div class="modal-body">
                     <small class="text-secondary">
                         To transfer this request, search and select another Physician
@@ -14,19 +14,26 @@
                     <input type="hidden" name="requestid" id="RequestID_Input_ModalTransferPhysician" value="" />
                     <div class="form-floating my-3">
                         <select name="region" class="form-select form-control shadow-none" id="regionName" required data-allow-clear="true" tabindex="-1" onchange="GetRegion()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
-                            <option>All Region</option>
                         </select>
                         <label for="regionName">Narrow search by Region</label>
+                        <div class="invalid-feedback">
+                            Please provide a valid state!
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
                         <select name="ProviderId" class="form-select form-control shadow-none" id="providerName" required data-allow-clear="true" tabindex="-1">
-                            <option>Select Physician</option>
                         </select>
                         <label for="providerName">Select Physician</label>
+                        <div class="invalid-feedback">
+                            Please select Physician!
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea name="Note" class="form-control shadow-none" placeholder="Leave a comment here" id="Description" style="height: 100px"></textarea>
+                        <textarea name="Note" class="form-control shadow-none" required placeholder="Leave a comment here" id="Description" style="height: 100px"></textarea>
                         <label for="Description">Description</label>
+                        <div class="invalid-feedback">
+                            Please enter notes!
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

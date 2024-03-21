@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="exampleModalLongTitle">Assign Case</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form asp-controller="Actions" asp-action="AssignProvider">
+            <form asp-controller="Actions" asp-action="AssignProvider" class="needs-validation" novalidate>
                 <div class="modal-body">
                     <small class="text-secondary">
                         To assign this request, search and select another Physician
@@ -14,19 +14,28 @@
                     <input type="hidden" name="requestid" id="RequestID_Input_ModelAssignCase" />
                     <div class="form-floating my-3">
                         <select name="region" class="form-select form-control shadow-none" id="region" required data-allow-clear="true" tabindex="-1" onchange="myFunction()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
-                            <option>All Region</option>
+                            
                         </select>
                         <label for="Region">Narrow search by Region</label>
+                        <div class="invalid-feedback">
+                            Please provide a valid state!
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
                         <select name="ProviderId" class="form-select form-control shadow-none" id="provider" required data-allow-clear="true" tabindex="-1">
-                            <option>Select Physician</option>
+                            
                         </select>
                         <label for="provider">Select Physician</label>
+                        <div class="invalid-feedback">
+                            Please select Physician!
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea name="Notes" class="form-control shadow-none" placeholder="Leave a comment here" id="Description" style="height: 100px"></textarea>
+                        <textarea name="Notes" class="form-control shadow-none" required placeholder="Leave a comment here" id="Description" style="height: 100px"></textarea>
                         <label for="Description">Description</label>
+                        <div class="invalid-feedback">
+                            Please enter notes!
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -48,7 +57,7 @@
             cache: false,
             success: function (response) {
                 console.log(response);
-                var s = '<option value="-1">Please Select</option>';
+                var s = '';
                 for (var i = 0; i < response.length; i++) {
                     s += '<option value="' + response[i].physicianid + '">' + response[i].firstname + ' ' + response[i].lastname + '</option>';
                 }

@@ -14,14 +14,14 @@
     <strong class="text-danger">@ViewData["error"]</strong>
     <form asp-controller="Login" asp-action="Validate" method="post">
         <div class="form-floating mb-4 email">
-            <input asp-for="Email" type="email" class="form-control shadow-none " id="Email" placeholder="name@example.com">
+            <input asp-for="Email" type="email" class="form-control shadow-none " id="Email" placeholder="name@example.com" required pattern="[a-z0-9._%+-]+@@[a-z0-9.-]+\.[a-z]{2,4}$" title="Enter valid email">
             <label class="bg-transparent" for="Email">Email</label>
             <button type="button" class="btn btn-light">
                 <i class="icon fa-solid fa-user field-icon position-relative"></i>
             </button>
         </div>
         <div class="form-floating mb-4 password">
-            <input asp-for="Passwordhash" type="password" class="form-control shadow-none eyehide " id="Password" placeholder="Password">
+            <input asp-for="Passwordhash" type="password" class="form-control shadow-none eyehide " id="Password" placeholder="Password" required>
             <label for="Password">Password</label>
             <button type="button" class="btn btn-light" onclick="passtoggle()">
                 <i class="fa fa-eye-slash"></i>
