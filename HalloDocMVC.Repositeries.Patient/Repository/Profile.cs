@@ -29,7 +29,7 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
         public UserProfileModel GetProfile()
         {
             var userProfile = _context.Users
-                                .Where(r => r.Userid == CV.UserID())
+                                .Where(r => r.Userid == Convert.ToInt32(CV.UserID()))
                                 .Select(r => new UserProfileModel
                                 {
                                     Userid = r.Userid,

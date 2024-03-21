@@ -30,7 +30,7 @@ namespace HalloDocMVC.Controllers.PatientController
         {
             if (CV.UserID() != null)
             {
-                var UserIDForRequest = _context.Users.Where(r => r.Userid == CV.UserID()).FirstOrDefault();
+                var UserIDForRequest = _context.Users.Where(r => r.Userid == Convert.ToInt32(CV.UserID())).FirstOrDefault();
 
                 if (UserIDForRequest != null)
                 {

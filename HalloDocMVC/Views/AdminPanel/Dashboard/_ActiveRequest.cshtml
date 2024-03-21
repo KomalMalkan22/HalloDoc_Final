@@ -135,7 +135,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a asp-controller="Actions" asp-action="Encounter" class="dropdown-item">
+                                <a asp-controller="Actions" asp-action="Encounter" asp-route-id="@item.RequestId" class="dropdown-item">
                                     <i class="fa-solid fa-receipt me-2"></i>
                                     Encounter
                                 </a>
@@ -233,7 +233,7 @@
                                 </a>
                             </div>
                             <div class="col-6 mb-3">
-                                <a asp-controller="Actions" asp-action="Encounter" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <a asp-controller="Actions" asp-action="Encounter" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>Encounter</small>
                                 </a>
                             </div>

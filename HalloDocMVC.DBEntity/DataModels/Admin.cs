@@ -84,6 +84,9 @@ public partial class Admin
     public virtual ICollection<Adminregion> Adminregions { get; set; } = new List<Adminregion>();
 
     [InverseProperty("Admin")]
+    public virtual ICollection<Encounterform> Encounterforms { get; set; } = new List<Encounterform>();
+
+    [InverseProperty("Admin")]
     public virtual ICollection<Requeststatuslog> Requeststatuslogs { get; set; } = new List<Requeststatuslog>();
 
     [InverseProperty("Admin")]

@@ -141,6 +141,9 @@ public partial class Physician
     [InverseProperty("PhysicianCreatedbyNavigations")]
     public virtual Aspnetuser CreatedbyNavigation { get; set; } = null!;
 
+    [InverseProperty("Physician")]
+    public virtual ICollection<Encounterform> Encounterforms { get; set; } = new List<Encounterform>();
+
     [ForeignKey("Modifiedby")]
     [InverseProperty("PhysicianModifiedbyNavigations")]
     public virtual Aspnetuser? ModifiedbyNavigation { get; set; }

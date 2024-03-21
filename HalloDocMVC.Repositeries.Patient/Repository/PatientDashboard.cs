@@ -50,7 +50,7 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
         public CreatePatientRequestModel RequestForMe()
         {
             var patientRequest = _context.Users
-                               .Where(r => r.Userid == CV.UserID())
+                               .Where(r => r.Userid == Convert.ToInt32(CV.UserID()))
                                .Select(r => new CreatePatientRequestModel
                                {
                                    FirstName = r.Firstname,
@@ -127,7 +127,7 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
             var request = new DBEntity.DataModels.Request()
             {
                 Requesttypeid = 2,
-                Userid = CV.UserID(),
+                Userid = Convert.ToInt32(CV.UserID()),
                 Firstname = patientRequest.FirstName,
                 Lastname = patientRequest.LastName,
                 Email = patientRequest.Email,

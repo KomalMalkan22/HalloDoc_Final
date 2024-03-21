@@ -3,6 +3,8 @@
     ViewData["Title"] = "Encounter";
 }
 
+@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.EncounterModel
+
 <div class="d-flex justify-content-center bg-light">
     <div class="d-flex flex-column my-2 col-lg-8 col-md-10">
         <div class="d-flex justify-content-between px-2">
@@ -23,174 +25,208 @@
             <div class="text-center text-info fs-3 fw-bolder mb-3">
                 Medical Report - Confidential
             </div>
-            <form method="post" asp-controller="" asp-action="">
+            <form method="post" asp-controller="Actions" asp-action="EditEncounterData">
+                <input type="hidden" asp-for="RequesClientId" />
+                <input type="hidden" asp-for="RequesId" />
+                <input type="hidden" asp-for="EncounterId" />
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name" autocomplete="off">
+                            <input asp-for="FirstName" type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name" autocomplete="off">
                             <label for="FirstName">First Name</label>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name" autocomplete="off">
+                            <input asp-for="LastName" type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name" autocomplete="off">
                             <label for="LastName">Last Name</label>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control shadow-none" id="Location" placeholder="Enter Location" autocomplete="off">
+                            <input asp-for="Location" type="text" class="form-control shadow-none" id="Location" placeholder="Enter Location" autocomplete="off">
                             <label for="Location">Location</label>
+                            <span asp-validation-for="Location" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth" autocomplete="off">
+                            <input asp-for="DateOfBirth" type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth" autocomplete="off">
                             <label for="DateOfBirth">Date of Birth</label>
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date" autocomplete="off">
+                            <input asp-for="Date" type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date" autocomplete="off">
                             <label for="Date">Date</label>
+                            <span asp-validation-for="Date" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6 phone">
                         <div class="form-floating mb-3 h-100">
-                            <input type="tel" class="form-control shadow-none" id="phone" autocomplete="off">
+                            <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none" id="phone" autocomplete="off">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="email" id="email" class="form-control shadow-none" placeholder="name@example.com" autocomplete="off">
+                            <input asp-for="Email" type="email" id="email" class="form-control shadow-none" placeholder="name@example.com" autocomplete="off">
                             <label for="email">Email</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Illness" style="height: 100px"></textarea>
+                            <input asp-for="HistoryOfIllness" class="form-control shadow-none" placeholder="Leave a comment here" id="Illness" />
                             <label for="Illness">History Of Present Illness Or Injury</label>
+                            <span asp-validation-for="HistoryOfIllness" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="MedicalHistory" style="height: 100px"></textarea>
+                            <input asp-for="HistoryOfMedical" class="form-control shadow-none" placeholder="Leave a comment here" id="MedicalHistory" />
                             <label for="MedicalHistory">Medical History</label>
+                            <span asp-validation-for="HistoryOfMedical" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Medications" style="height: 100px"></textarea>
+                            <input asp-for="Medications" class="form-control shadow-none" placeholder="Leave a comment here" id="Medications" />
                             <label for="Medications">Medications</label>
+                            <span asp-validation-for="Medications" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Allergies" style="height: 100px"></textarea>
+                            <input asp-for="Allergies" class="form-control shadow-none" placeholder="Leave a comment here" id="Allergies" />
                             <label for="Allergies">Allergies</label>
+                            <span asp-validation-for="Allergies" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control shadow-none" id="Temp" placeholder="Enter Temp" autocomplete="off">
+                            <input asp-for="Temp" type="text" class="form-control shadow-none" id="Temp" placeholder="Enter Temp" autocomplete="off">
                             <label for="Temp">Temp</label>
+                            <span asp-validation-for="Temp" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control shadow-none" id="HR" placeholder="Enter HR" autocomplete="off">
+                            <input asp-for="Hr" type="text" class="form-control shadow-none" id="HR" placeholder="Enter HR" autocomplete="off">
                             <label for="HR">HR</label>
+                            <span asp-validation-for="Hr" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control shadow-none" id="RR" placeholder="Enter RR" autocomplete="off">
+                            <input asp-for="Rr" type="text" class="form-control shadow-none" id="RR" placeholder="Enter RR" autocomplete="off">
                             <label for="RR">RR</label>
+                            <span asp-validation-for="Rr" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Heent" style="height: 100px"></textarea>
+                            <input asp-for="Heent" class="form-control shadow-none" placeholder="Leave a comment here" id="Heent" />
                             <label for="Heent">Heent</label>
+                            <span asp-validation-for="Heent" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="CV" style="height: 100px"></textarea>
+                            <input asp-for="CV" class="form-control shadow-none" placeholder="Leave a comment here" id="CV" />
                             <label for="CV">CV</label>
+                            <span asp-validation-for="CV" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Chest" style="height: 100px"></textarea>
+                            <input asp-for="Chest" class="form-control shadow-none" placeholder="Leave a comment here" id="Chest" />
                             <label for="Chest">Chest</label>
+                            <span asp-validation-for="Chest" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="ABD" style="height: 100px"></textarea>
+                            <input asp-for="ABD" class="form-control shadow-none" placeholder="Leave a comment here" id="ABD" />
                             <label for="ABD">ABD</label>
+                            <span asp-validation-for="ABD" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Extr" style="height: 100px"></textarea>
+                            <input asp-for="Extr" class="form-control shadow-none" placeholder="Leave a comment here" id="Extr" />
                             <label for="Extr">Extr</label>
+                            <span asp-validation-for="Extr" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Skin" style="height: 100px"></textarea>
+                            <input asp-for="Skin" class="form-control shadow-none" placeholder="Leave a comment here" id="Skin" />
                             <label for="Skin">Skin</label>
+                            <span asp-validation-for="Skin" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Neuro" style="height: 100px"></textarea>
+                            <input asp-for="Neuro" class="form-control shadow-none" placeholder="Leave a comment here" id="Neuro" />
                             <label for="Neuro">Neuro</label>
+                            <span asp-validation-for="Neuro" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Other" style="height: 100px"></textarea>
+                            <input asp-for="Other" class="form-control shadow-none" placeholder="Leave a comment here" id="Other" />
                             <label for="Other">Other</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Diagnosis" style="height: 100px"></textarea>
+                            <input asp-for="Diagnosis" class="form-control shadow-none" placeholder="Leave a comment here" id="Diagnosis" />
                             <label for="Diagnosis">Diagnosis</label>
+                            <span asp-validation-for="Diagnosis" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="TreatmentPlan" style="height: 100px"></textarea>
+                            <input asp-for="Treatment" class="form-control shadow-none" placeholder="Leave a comment here" id="TreatmentPlan" />
                             <label for="TreatmentPlan">Treatment Plan</label>
+                            <span asp-validation-for="Treatment" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="MedicationsDispensed" style="height: 100px"></textarea>
+                            <input asp-for="MedicationsDispensed" class="form-control shadow-none" placeholder="Leave a comment here" id="MedicationsDispensed" />
                             <label for="MedicationsDispensed">Medications Dispensed</label>
+                            <span asp-validation-for="MedicationsDispensed" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Procedures" style="height: 100px"></textarea>
+                            <input asp-for="Procedures" class="form-control shadow-none" placeholder="Leave a comment here" id="Procedures" />
                             <label for="Procedures">Procedures</label>
+                            <span asp-validation-for="Procedures" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="Followup" style="height: 100px"></textarea>
+                            <input asp-for="Followup" class="form-control shadow-none" placeholder="Leave a comment here" id="Followup"/>
                             <label for="Followup">Followup</label>
+                            <span asp-validation-for="Followup" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-info text-white me-2">Save Changes</button>
-                    <button type="button" class="btn text-white me-2" style="background-color:#9c27b0">Finalize</button>
-                    <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info text-info">Cancel</a>
+                    <button type="submit" class="btn btn-info text-white shadow-none me-2">Save Changes</button>
+                    @{
+                        if (Model.Isfinalize == false)
+                        {
+                            <button type="submit" value="Finalize" asp-action="Finalize" asp-controller="SubmitForm" class="btn btn-danger btn-cancel me-2" style="background-color:#9c27b0">Finalize</button>
+                        }
+                    }
+                    <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info text-info shadow-none">Cancel</a>
                 </div>
             </form>
         </div>

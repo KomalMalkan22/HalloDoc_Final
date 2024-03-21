@@ -17,11 +17,11 @@ public partial class Physicianlocation
     public int Physicianid { get; set; }
 
     [Column("latitude")]
-    [Precision(9, 0)]
+    [Precision(9, 5)]
     public decimal? Latitude { get; set; }
 
     [Column("longitude")]
-    [Precision(9, 0)]
+    [Precision(9, 5)]
     public decimal? Longitude { get; set; }
 
     [Column("createddate", TypeName = "timestamp without time zone")]
