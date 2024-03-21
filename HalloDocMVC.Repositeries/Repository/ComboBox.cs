@@ -97,5 +97,18 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             return data;
         }
         #endregion ProfessionByType
+
+        #region ComboBoxUserRole
+        public async Task<List<ComboBoxUserRole>> ComboBoxUserRole()
+        {
+            return await _context.Aspnetroles.Select(role => new ComboBoxUserRole()
+            {
+                RoleId = role.Id,
+                RoleName = role.Name
+            })
+            .OrderBy(role => role.RoleName) 
+            .ToListAsync();
+        }
+        #endregion ComboBoxUserRole
     }
 }

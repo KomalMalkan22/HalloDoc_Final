@@ -39,5 +39,11 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
             Block
 
         }
+        public enum AdminStatus
+        {
+            Active = 1,
+            Pending, 
+            NotActive
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using HalloDocMVC.DBEntity.DataContext;
+using HalloDocMVC.DBEntity.DataModels;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -65,5 +67,121 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             return profile;
         }
         #endregion GetProfile
+
+        #region ResetPassword
+        public async Task<bool> ResetPassword(string Password, int AdminId)
+        {
+            var request = await _context.Admins.Where(a => a.Adminid == AdminId ).FirstOrDefaultAsync();
+            Aspnetuser? user = await _context.Aspnetusers.FirstOrDefaultAsync(u => u.Id == request.Aspnetuserid);
+
+            if (user != null)
+            {
+                user.Passwordhash = Password;
+                _context.Aspnetusers.Update(user);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        #endregion ResetPassword
+
+        #region EditAdministratorInformation
+        public async Task<bool> EditAdministratorInformation(AdminProfile profile)
+        {
+            try
+            {
+                if (profile == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    var DataForChange = await _context.Admins.Where(W => W.Adminid == profile.AdminId).FirstOrDefaultAsync();
+                    if (DataForChange != null)
+                    {
+                        DataForChange.Email = profile.Email;
+                        DataForChange.Firstname = profile.FirstName;
+                        DataForChange.Lastname = profile.LastName;
+                        DataForChange.Mobile = profile.PhoneNumber;
+                        _context.Admins.Update(DataForChange);
+                        _context.SaveChanges();
+                        List<int> regions = await _context.Adminregions.Where(r => r.Adminid == profile.AdminId).Select(req => req.Regionid).ToListAsync();
+                        List<int> priceList = profile.RegionsId.Split(',').Select(int.Parse).ToList();
+                        foreach (var item in priceList)
+                        {
+                            if (regions.Contains(item))
+                            {
+                                regions.Remove(item);
+                            }
+                            else
+                            {
+                                Adminregion ar = new()
+                                {
+                                    Regionid = item,
+                                    Adminid = (int)profile.AdminId
+                                };
+                                _context.Adminregions.Update(ar);
+                                await _context.SaveChangesAsync();
+                                regions.Remove(item);
+                            }
+                        }
+                        if (regions.Count > 0)
+                        {
+                            foreach (var item in regions)
+                            {
+                                Adminregion ar = await _context.Adminregions.Where(r => r.Adminid == profile.AdminId && r.Regionid == item).FirstAsync();
+                                _context.Adminregions.Remove(ar);
+                                await _context.SaveChangesAsync();
+                            }
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion EditAdministratorInformation
+
+        #region BillingInfoEdit
+        public async Task<bool> EditBillingInformation(AdminProfile profile)
+        {
+            try
+            {
+                if (profile == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    var DataForChange = await _context.Admins.Where(W => W.Adminid == profile.AdminId).FirstOrDefaultAsync();
+                    if (DataForChange != null)
+                    {
+                        DataForChange.Address1 = profile.Address1;
+                        DataForChange.Address2 = profile.Address2;
+                        DataForChange.City = profile.City;
+                        DataForChange.Mobile = profile.PhoneNumber;
+                        _context.Admins.Update(DataForChange);
+                        _context.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }
