@@ -16,11 +16,9 @@ namespace HalloDocMVC.Repositories.Admin.Repository
     public class JwtService : IJwtService
     {
         #region Constructor
-        private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IConfiguration Configuration;
-        public JwtService(IConfiguration Configuration, IHttpContextAccessor httpContextAccessor)
+        public JwtService(IConfiguration Configuration)
         {
-            this.httpContextAccessor = httpContextAccessor;
             this.Configuration = Configuration;
         }
         #endregion

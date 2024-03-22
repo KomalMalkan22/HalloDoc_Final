@@ -11,24 +11,11 @@ namespace HalloDocMVC.Controllers.AdminController
     public class LoginController : Controller
     {
         #region Configuration
-        private readonly IActions _IActions;
-        private readonly IComboBox _IComboBox;
-        private readonly INotyfService _INotyfService;
-        private readonly ILogger<ActionsController> _logger;
         private readonly ILogin _ILogin;
         private readonly IJwtService _IJwtService;
 
-        public LoginController(ILogger<ActionsController> logger,
-                                      IComboBox ComboBox,
-                                      IActions Actions,
-                                      INotyfService NotyfService,
-                                      ILogin Login,
-                                      IJwtService JwtService)
+        public LoginController(ILogin Login, IJwtService JwtService)
         {
-            _IComboBox = ComboBox;
-            _IActions = Actions;
-            _INotyfService = NotyfService;
-            _logger = logger;
             _ILogin = Login;
             _IJwtService = JwtService;
         }

@@ -229,7 +229,7 @@ namespace HalloDocMVC.Controllers.AdminController
         {
             List<ComboBoxHealthProfessionalType> hpt = await _IComboBox.ComboBoxHealthProfessionalType();
             ViewBag.ProfessionType = hpt;
-            SendOrderModel data = new SendOrderModel
+            SendOrderModel data = new()
             {
                 RequestId = id
             };
@@ -254,13 +254,13 @@ namespace HalloDocMVC.Controllers.AdminController
                 bool data = _IActions.SendOrders(som);
                 if (data)
                 {
-                    _INotyfService.Success("Order Created  successfully...");
-                    //_INotyfService.Information("Mail is sended to Vendor successfully...");
+                    _INotyfService.Success("Order Created successfully.");
+                    _INotyfService.Information("Mail is sent to Vendor successfully.");
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
-                    _INotyfService.Error("Order Not Created...");
+                    _INotyfService.Error("Order Not Created.");
                     return View("../Actions/Orders", som);
                 }
             }

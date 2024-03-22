@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.ViewUploadModel;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HalloDocMVC.Repositories.Admin.Repository
 {
@@ -22,12 +23,10 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         #region Configuration
         private readonly HalloDocContext _context;
         private readonly EmailConfiguration _emailConfiguration;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public Actions(HalloDocContext context, EmailConfiguration emailConfiguration, IHttpContextAccessor httpContextAccessor)
+        public Actions(HalloDocContext context, EmailConfiguration emailConfiguration)
         {
             _context = context;
             _emailConfiguration = emailConfiguration;
-            _httpContextAccessor = httpContextAccessor;
         }
         #endregion Configuration
 
@@ -144,9 +143,11 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             // notes : Admin and Provider Notes
             var notes = _context.Requestnotes.FirstOrDefault(rsl => rsl.Requestid == id);
 
-            ViewNotesModel vdm = new ViewNotesModel();
-            vdm.RequestId = id;
-            vdm.PatientNotes = symptoms.Notes;
+            ViewNotesModel vdm = new()
+            {
+                RequestId = id,
+                PatientNotes = symptoms.Notes
+            };
 
             if (notes == null)
             {
@@ -161,7 +162,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 vdm.AdminNotes = notes.Adminnotes ?? "-";
             }
 
-            List<TransferNotesModel> trans = new List<TransferNotesModel>();
+            List<TransferNotesModel> trans = new();
             foreach(var item in transfer)
             {
                 trans.Add(new TransferNotesModel
@@ -181,7 +182,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             }
             vdm.transfernotes = trans;
 
-            List<TransferNotesModel> cancelProvider = new List<TransferNotesModel>();
+            List<TransferNotesModel> cancelProvider = new();
             foreach(var item in cbp)
             {
                 cancelProvider.Add(new TransferNotesModel
@@ -198,7 +199,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             }
             vdm.cancelbyphysician = cancelProvider;
 
-            List<TransferNotesModel> cancelRequest = new List<TransferNotesModel>();
+            List<TransferNotesModel> cancelRequest = new();
             foreach(var item in cap)
             {
                 cancelRequest.Add(new TransferNotesModel
@@ -264,7 +265,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 }
                 else
                 {
-                    Requestnote requestnote = new Requestnote
+                    Requestnote requestnote = new()
                     {
                         Requestid = RequestId,
                         Adminnotes = AdminNotes,
@@ -321,7 +322,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     requestData.Status = 3;
                     _context.Requests.Update(requestData);
                     _context.SaveChanges();
-                    Requeststatuslog rsl = new Requeststatuslog
+                    Requeststatuslog rsl = new()
                     {
                         Requestid = RequestId,
                         Notes = Note,
@@ -352,7 +353,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     requestData.Status = 11;
                     _context.Requests.Update(requestData);
                     _context.SaveChanges();
-                    Blockrequest blc = new Blockrequest
+                    Blockrequest blc = new()
                     {
                         Requestid = requestData.Requestid.ToString(),
                         Phonenumber = requestData.Phonenumber,
@@ -441,11 +442,13 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         {
             var req = _context.Requests.FirstOrDefault(r => r.Requestid == id);
             var reqClient = _context.Requestclients.FirstOrDefault(rc => rc.Requestid == id);
-            ViewUploadModel upload = new ViewUploadModel();
-            upload.ConfirmationNumber = req.Confirmationnumber;
-            upload.RequestId = req.Requestid;
-            upload.FirstName = reqClient.Firstname;
-            upload.LastName = reqClient.Lastname;           
+            ViewUploadModel upload = new()
+            {
+                ConfirmationNumber = req.Confirmationnumber,
+                RequestId = req.Requestid,
+                FirstName = reqClient.Firstname,
+                LastName = reqClient.Lastname
+            };
 
             var result = from requestWiseFile in _context.Requestwisefiles
                          join request in _context.Requests on requestWiseFile.Requestid equals request.Requestid
@@ -463,7 +466,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                              CreatedDate = requestWiseFile.Createddate,
                              filename = requestWiseFile.Filename,
                          };
-                        List<Documents> doclist = new List<Documents>();
+                        List<Documents> doclist = new();
                         foreach (var item in result)
                         {
                             doclist.Add(new Documents
@@ -482,7 +485,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         #endregion GetDocuments
 
         #region UploadDocuments
-        public Boolean UploadDocuments(int Requestid, IFormFile file)
+        public bool UploadDocuments(int Requestid, IFormFile file)
         {
             string upload = SaveFileModel.UploadDocument(file, Requestid);
             var requestwisefile = new Requestwisefile
@@ -533,7 +536,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         {
             try
             {
-                Orderdetail od = new Orderdetail
+                Orderdetail od = new()
                 {
                     Requestid = sendOrder.RequestId,
                     Vendorid = sendOrder.VendorId,
@@ -548,6 +551,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 _context.Orderdetails.Add(od);
                 _context.SaveChanges(true);
                 var req = _context.Requests.FirstOrDefault(e => e.Requestid == sendOrder.RequestId);
+                _emailConfiguration.SendMail(od.Email, "New Order arrived", "Prescription : " + od.Prescription + " Requestor name : " + req.Firstname);
                 return true;
             }
             catch (Exception ex)
@@ -558,7 +562,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         #endregion
 
         #region SendAgreement
-        public Boolean SendAgreement(int requestid)
+        public bool SendAgreement(int requestid)
         {
             var res = _context.Requestclients.FirstOrDefault(e => e.Requestid == requestid);
             var agreementUrl = "https://localhost:44362/SendAgreement?RequestID=" + requestid;
@@ -568,7 +572,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         #endregion SendAgreement
 
         #region SendAgreement_Accept
-        public Boolean SendAgreement_Accept(int RequestId)
+        public bool SendAgreement_Accept(int RequestId)
         {
             var request = _context.Requests.Find(RequestId);
             if (request != null)
@@ -577,10 +581,12 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 _context.Requests.Update(request);
                 _context.SaveChanges();
 
-                Requeststatuslog rsl = new Requeststatuslog();
-                rsl.Requestid = RequestId;
-                rsl.Status = 4;
-                rsl.Createddate = DateTime.Now;
+                Requeststatuslog rsl = new()
+                {
+                    Requestid = RequestId,
+                    Status = 4,
+                    Createddate = DateTime.Now
+                };
                 _context.Requeststatuslogs.Add(rsl);
                 _context.SaveChanges();
 
@@ -590,7 +596,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         #endregion SendAgreement_Accept
 
         #region SendAgreement_Reject
-        public Boolean SendAgreement_Reject(int RequestId, string Notes)
+        public bool SendAgreement_Reject(int RequestId, string Notes)
         {
             var request = _context.Requests.Find(RequestId);
             if (request != null)
@@ -599,11 +605,13 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 _context.Requests.Update(request);
                 _context.SaveChanges();
 
-                Requeststatuslog rsl = new Requeststatuslog();
-                rsl.Requestid = RequestId;
-                rsl.Status = 7;
-                rsl.Notes = Notes;
-                rsl.Createddate = DateTime.Now;
+                Requeststatuslog rsl = new()
+                {
+                    Requestid = RequestId,
+                    Status = 7,
+                    Notes = Notes,
+                    Createddate = DateTime.Now
+                };
                 _context.Requeststatuslogs.Add(rsl);
                 _context.SaveChanges();
 
@@ -615,7 +623,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         #region GetCloseCase
         public CloseCaseModel GetCloseCase(int RequestId)
         {
-            CloseCaseModel request = new CloseCaseModel();
+            CloseCaseModel request = new();
 
             var result = from Requestwisefile in _context.Requestwisefiles
                          join Request in _context.Requests
@@ -635,7 +643,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                              Requestwisefile.Requestwisefileid
                          };
 
-            List<Documents> documents = new List<Documents>();
+            List<Documents> documents = new();
             foreach(var item in result)
             {
                 documents.Add(new Documents
@@ -706,7 +714,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     _context.Requests.Update(request);
                     _context.SaveChanges();
 
-                    Requeststatuslog rsl = new Requeststatuslog
+                    Requeststatuslog rsl = new()
                     {
                         Requestid = RequestId,
                         Status = 9,
@@ -734,7 +742,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             DateTime? fd = new DateTime((int)datareq.Intyear, DateTime.ParseExact(datareq.Strmonth, "MMMM", new CultureInfo("en-US")).Month, (int)datareq.Intdate);
             if (Data != null)
             {
-                EncounterModel enc = new EncounterModel
+                EncounterModel enc = new()
                 {
                     ABD = Data.Abd,
                     EncounterId = Data.Encounterformid,
@@ -777,7 +785,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             {
                 if (datareq != null)
                 {
-                    EncounterModel enc = new EncounterModel
+                    EncounterModel enc = new()
                     {
                         FirstName = datareq.Firstname,
                         PhoneNumber = datareq.Phonenumber,
@@ -806,7 +814,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 var admindata = _context.Admins.FirstOrDefault(e => e.Aspnetuserid == id);
                 if (Data.EncounterId == 0)
                 {
-                    Encounterform enc = new Encounterform
+                    Encounterform enc = new()
                     {
                         Abd = Data.ABD,
                         Encounterformid = (int)Data.EncounterId,

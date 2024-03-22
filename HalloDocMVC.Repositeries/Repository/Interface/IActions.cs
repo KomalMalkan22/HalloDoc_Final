@@ -21,13 +21,13 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
         public Task<bool> TransferPhysician(int RequestId, int ProviderId, string Note);
         public bool ClearCase(int RequestID);
         Task<ViewUploadModel> GetDocuments(int? id);
-        public Boolean UploadDocuments(int Requestid, IFormFile file);
+        public bool UploadDocuments(int Requestid, IFormFile file);
         Task<bool> DeleteDocuments(string ids);
         public Healthprofessional SelectProfessionalById(int VendorId);
         public bool SendOrders(SendOrderModel sendOrder);
-        public Boolean SendAgreement(int requestid);
-        public Boolean SendAgreement_Accept(int RequestId);
-        public Boolean SendAgreement_Reject(int RequestId, string Notes);
+        public bool SendAgreement(int requestid);
+        public bool SendAgreement_Accept(int RequestId);
+        public bool SendAgreement_Reject(int RequestId, string Notes);
         CloseCaseModel GetCloseCase(int RequestId);
         bool EditCloseCase(CloseCaseModel closeCase);
         bool CaseClosed(int RequestId);

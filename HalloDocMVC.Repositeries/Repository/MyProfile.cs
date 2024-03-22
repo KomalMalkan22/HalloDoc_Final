@@ -55,7 +55,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                          })
                                          .FirstOrDefaultAsync();
 
-            List<Regions> regions = new List<Regions>();
+            List<Regions> regions = new();
             regions = await _context.Adminregions
                   .Where(r => r.Adminid == UserId)
                   .Select(req => new Regions()

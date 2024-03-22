@@ -16,11 +16,9 @@ namespace HalloDocMVC.Repositories.Admin.Repository
     public class Login : ILogin
     {
         #region Configuration
-        private readonly IHttpContextAccessor httpContextAccessor;
         private readonly HalloDocContext _context;
-        public Login(HalloDocContext context, IHttpContextAccessor httpContextAccessor)
+        public Login(HalloDocContext context)
         {
-            this.httpContextAccessor = httpContextAccessor;
             _context = context;
         }
         #endregion Configuration
@@ -29,14 +27,14 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         public async Task<UserInformation> CheckAccessLogin(Aspnetuser aspNetUser)
         {
             var user = await _context.Aspnetusers.FirstOrDefaultAsync(u => u.Email == aspNetUser.Email && u.Passwordhash == aspNetUser.Passwordhash);
-            UserInformation admin = new UserInformation();
+            UserInformation admin = new();
             if (user != null)
             {
                 var data = _context.Aspnetuserroles.FirstOrDefault(E => E.Userid == user.Id);
                 var datarole = _context.Aspnetroles.FirstOrDefault(e => e.Id == data.Roleid);
                 admin.UserName = user.Username;
-                admin.FirstName = admin.FirstName ?? string.Empty;
-                admin.LastName = admin.LastName ?? string.Empty;
+                admin.FirstName ??= string.Empty;
+                admin.LastName ??= string.Empty;
                 admin.Role = datarole.Name;
                 admin.AspNetUserId = user.Id;
                 if (admin.Role == "Admin")
