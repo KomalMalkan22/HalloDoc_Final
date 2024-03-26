@@ -24,19 +24,19 @@
                     <div class="row p-2">
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input asp-for="FirstName" type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name">
+                                <input asp-for="FirstName" type="text" class="form-control shadow-none input" id="FirstName" placeholder="Enter First Name">
                                 <label for="FirstName">First Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input asp-for="LastName" type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name">
+                                <input asp-for="LastName" type="text" class="form-control shadow-none input" id="LastName" placeholder="Enter Last Name">
                                 <label for="LastName">Last Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input asp-for="DateOfBirth" type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth">
+                                <input asp-for="DateOfBirth" type="date" class="form-control shadow-none input" id="DateOfBirth" placeholder="Enter Date of Birth">
                                 <label for="DateOfBirth">Date of Birth</label>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
 
                     <div class="row p-2">
                         <div class="form-floating col-md-2 mb-3">
-                            <select class="form-select form-control shadow-none" id="ContactType">
+                            <select class="form-select form-control shadow-none input" id="ContactType">
                                 <option selected>Phone</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="col-md-4 phone">
                             <div class="form-floating mb-3 h-100">
-                                <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none" id="phone">
+                                <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none input" id="phone">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -74,25 +74,25 @@
                     <div class="row p-2">
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input asp-for="Street" type="text" class="form-control shadow-none" id="Street" placeholder="Enter Street">
+                                <input asp-for="Street" type="text" class="form-control shadow-none input" id="Street" placeholder="Enter Street">
                                 <label for="Street">Street</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input asp-for="City" type="text" class="form-control shadow-none" id="City" placeholder="Enter City">
+                                <input asp-for="City" type="text" class="form-control shadow-none input" id="City" placeholder="Enter City">
                                 <label for="City">City</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input asp-for="State" type="text" class="form-control shadow-none" id="State" placeholder="Enter State">
+                                <input asp-for="State" type="text" class="form-control shadow-none input" id="State" placeholder="Enter State">
                                 <label for="State">State</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating mb-3">
-                                <input asp-for="ZipCode" type="text" class="form-control shadow-none" id="ZipCode" placeholder="Enter Zip Code">
+                                <input asp-for="ZipCode" type="text" class="form-control shadow-none input" id="ZipCode" placeholder="Enter Zip Code">
                                 <label for="ZipCode">Zip Code</label>
                             </div>
                         </div>
@@ -106,8 +106,8 @@
                     </div>
 
                     <div class="d-flex justify-content-end mt-3">
-                        <a id="editprofile" onclick="enable_disable()" class="col-1 btn btn-info text-white rounded p-2">Edit</a>
-                        <input type="submit" id="submit" class="col-1 btn bg-info text-white rounded p-2" value="Save">
+                        <a id="edit" onclick="toggleFormElements()" class="col-1 btn btn-info text-white rounded p-2">Edit</a>
+                        <input type="submit" id="save" class="col-1 btn bg-info text-white rounded p-2" value="Save">
                     </div>
                 </form>
             </div>
@@ -117,31 +117,31 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-
     const phoneInputField = document.querySelector("#phone");
     const phoneInput = window.intlTelInput(phoneInputField, {
         utilsScript:
             "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
-
-    function enable_disable() {
-        $("input").prop("readonly", false);
-        $("select").prop("readonly", false);
-        $("#submit").prop("readonly", false);
-        $("#submit").css("display", "block");
-        $("#editprofile").css("display", "none");
-        $("input").css("background-color", "transparent");
-        $("select").css("background-color", "transparent");
-    }
 </script>
 
 <script>
-    $(document).ready(function () {
-
-        $("input").prop("readonly", true);
-        $("select").prop("readonly", true);
-        $("input").css("background-color", "#e9ecef");
-        $("select").css("background-color", "#e9ecef");
-        $("#submit").css("display", "none");
-    });
+    window.onload = function (e) {
+        toggleFormElements('true')
+    }
+    function toggleFormElements(bDisabled) {
+        var inputs = document.getElementsByClassName("input");
+        var submit = document.getElementById("save");
+        var editprofile = document.getElementById("edit");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = !inputs[i].disabled;
+        }
+        if (inputs[0].disabled) {
+            submit.style.display = "none";
+            editprofile.style.display = "block";
+        } else {
+            submit.style.display = "block";
+            editprofile.style.display = "none";
+        }
+        document.getElementById("email").disabled = (1 == 1);
+    }
 </script>

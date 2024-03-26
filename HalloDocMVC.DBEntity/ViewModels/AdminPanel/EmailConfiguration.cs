@@ -16,7 +16,7 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
         public string Password { get; set; }
 
         #region SendMail
-        public async Task<bool> SendMail(String To, String Subject, String Body)
+        public async Task<bool> SendMail(string To, string Subject, string Body)
         {
             try
             {
@@ -35,13 +35,57 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
                 await client.DisconnectAsync(true);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
-            return false;
         }
-        #endregion
+        #endregion SendMail
+
+        #region SendMailWithAttachments
+        public async Task<bool> SendMailWithAttachments(string To, string Subject, string Body, List<string> Attachments)
+        {
+            MimeMessage message = new();
+            message.From.Add(new MailboxAddress("", From));
+            message.To.Add(new MailboxAddress("", To));
+            message.Subject = Subject;
+
+            var multipart = new Multipart("mixed");
+
+            var bodyPart = new TextPart("html")
+            {
+                Text = Body
+            };
+            multipart.Add(bodyPart);
+
+            if (Attachments != null)
+            {
+                foreach (string attachmentPath in Attachments)
+                {
+                    if (!string.IsNullOrEmpty(attachmentPath) && File.Exists(attachmentPath))
+                    {
+                        var attachment = new MimePart()
+                        {
+                            Content = new MimeContent(File.OpenRead(attachmentPath), ContentEncoding.Default),
+                            ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                            ContentTransferEncoding = ContentEncoding.Base64,
+                            FileName = Path.GetFileName(attachmentPath)
+                        };
+                        multipart.Add(attachment);
+                    }
+                }
+            }
+
+            message.Body = multipart;
+
+            using var client = new MailKit.Net.Smtp.SmtpClient();
+            await client.ConnectAsync(SmtpServer, Port, false);
+            await client.AuthenticateAsync(UserName, Password);
+            await client.SendAsync(message);
+            await client.DisconnectAsync(true);
+            return true;
+        }
+        #endregion SendMailWithAttachments
 
         #region Encode
         public static string Encode(string encodeMe)

@@ -57,7 +57,6 @@ namespace HalloDocMVC.Repositeries.Patient.Repository
             userToUpdate.Firstname = userprofile.FirstName;
             userToUpdate.Lastname = userprofile.LastName;
             userToUpdate.Mobile = userprofile.PhoneNumber;
-            userToUpdate.Email = userprofile.Email;
             userToUpdate.State = userprofile.State;
             userToUpdate.Street = userprofile.Street;
             userToUpdate.City = userprofile.City;

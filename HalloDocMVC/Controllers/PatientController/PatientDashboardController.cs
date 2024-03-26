@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using HalloDocMVC.Controllers.AdminController;
 using HalloDocMVC.DBEntity.DataContext;
 using HalloDocMVC.DBEntity.DataModels;
 using HalloDocMVC.DBEntity.ViewModels;
@@ -25,8 +26,9 @@ namespace HalloDocMVC.Controllers.PatientController
         }
         #endregion Configuration
 
+        [CheckProviderAccess("Patient")]
         #region Dashboard
-        public async Task<IActionResult> Index()
+        public Task<IActionResult> Index()
         {
             if (CV.UserID() != null)
             {
@@ -59,11 +61,11 @@ namespace HalloDocMVC.Controllers.PatientController
                     ViewBag.docCount = docCount;
 
                 }
-                return View("../PatientPanel/PatientDashboard/Index");
+                return Task.FromResult<IActionResult>(View("../PatientPanel/PatientDashboard/Index"));
             }
             else
             {
-                return View("../Login/Index");
+                return Task.FromResult<IActionResult>(View("../Login/Index"));
             }
 
         }

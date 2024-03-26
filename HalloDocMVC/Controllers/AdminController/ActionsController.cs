@@ -274,26 +274,26 @@ namespace HalloDocMVC.Controllers.AdminController
         #region SendAgreement
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendAgreementMail(int requestid)
+        public Task<IActionResult> SendAgreementMail(int requestid)
         {
             if (_IActions.SendAgreement(requestid))
             {
                 _INotyfService.Success("Mail Sent Successfully.");
             }
-            return RedirectToAction("Index", "Dashboard");
+            return Task.FromResult<IActionResult>(RedirectToAction("Index", "Dashboard"));
         }
         #endregion
 
         #region CloseCase
-        public async Task<IActionResult> CloseCase(int RequestId)
+        public Task<IActionResult> CloseCase(int RequestId)
         {
             CloseCaseModel model = _IActions.GetCloseCase(RequestId);
-            return View("~/Views/AdminPanel/Actions/CloseCase.cshtml", model);
+            return Task.FromResult<IActionResult>(View("~/Views/AdminPanel/Actions/CloseCase.cshtml", model));
         }
         #endregion CloseCase
 
         #region EditCloseCase
-        public async Task<IActionResult> EditCloseCase(CloseCaseModel model)
+        public Task<IActionResult> EditCloseCase(CloseCaseModel model)
         {
             bool result = _IActions.EditCloseCase(model);
             if (result)
@@ -304,7 +304,7 @@ namespace HalloDocMVC.Controllers.AdminController
             {
                 _INotyfService.Error("Case not Edited Successfully.");
             }
-            return RedirectToAction("CloseCase", new {model.RequestId});
+            return Task.FromResult<IActionResult>(RedirectToAction("CloseCase", new {model.RequestId}));
         }
         #endregion EditCloseCase
 

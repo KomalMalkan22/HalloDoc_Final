@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using HalloDocMVC.Controllers.AdminController;
 using HalloDocMVC.DBEntity.DataContext;
 using HalloDocMVC.DBEntity.ViewModels.PatientPanel;
 using HalloDocMVC.Repositeries.Patient.Repository;
@@ -19,6 +20,8 @@ namespace HalloDocMVC.Controllers.PatientController
             _INotyfService = iNotyfService;
         }
         #endregion Configuration
+
+        [CheckProviderAccess("Patient")]
 
         #region GetProfile
         public IActionResult Index()

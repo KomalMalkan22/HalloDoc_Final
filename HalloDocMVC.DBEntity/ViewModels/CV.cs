@@ -12,7 +12,7 @@ namespace HalloDocMVC.DBEntity.ViewModels
             _httpContextAccessor = new HttpContextAccessor();
         }
 
-        public static string? role()
+        public static string? Role()
         {
             string cookieValue;
             string role = null;

@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input asp-for="ConfirmEmail" type="email" id="ConfirmEmail" class="form-control shadow-none input" placeholder="name@example.com" autocomplete="off">
+                            <input asp-for="Email" type="email" id="ConfirmEmail" class="form-control shadow-none input" placeholder="name@example.com" autocomplete="off">
                             <label for="ConfirmEmail">Confirm Email</label>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                     </div>
                     <div class="d-flex justify-content-end">
                         <input type="button" value="Save" id="save" class="btn btn-info text-white" />
-                        <button class="btn btn-info text-white" id="edit" onclick="toggleFormElements()">Edit</button>
+                        <button type="button" class="btn btn-info text-white" id="edit" onclick="toggleFormElements()">Edit</button>
                     </div>
                 </div>
             </form>

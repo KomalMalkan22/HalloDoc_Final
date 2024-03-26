@@ -23,19 +23,19 @@ namespace HalloDocMVC.Controllers.AdminController
 
         public IActionResult Index()
         {
-            return View("../../Views/AdminPanel/Login/Index");
+            return View("../AdminPanel/Login/Index");
         }
         public IActionResult LandingPage()
         {
-            return View("../../Views/AdminPanel/Login/LandingPage");
+            return View("../AdminPanel/Login/LandingPage");
         }
         public IActionResult ForgotPassword()
         {
-            return View("../../Views/AdminPanel/Login/ForgotPassword");
+            return View("../AdminPanel/Login/ForgotPassword");
         }
         public IActionResult ResetPassword()
         {
-            return View("../../Views/AdminPanel/Login/ResetPassword");
+            return View("../AdminPanel/Login/ResetPassword");
         }
         
         [HttpPost]
@@ -63,10 +63,12 @@ namespace HalloDocMVC.Controllers.AdminController
             }
         }
         #region Logout
-        public async Task<IActionResult> Logout()
+        public Task<IActionResult> Logout()
         {
             Response.Cookies.Delete("jwt");
-            return RedirectToAction("Index", "Login");
+            Response.Cookies.Delete("Status");
+            Response.Cookies.Delete("Filter");
+            return Task.FromResult<IActionResult>(RedirectToAction("Index", "Login"));
         }
         #endregion Logout
         public IActionResult AuthError()

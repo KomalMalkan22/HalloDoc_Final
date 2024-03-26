@@ -32,42 +32,42 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input asp-for="FirstName" type="text" class="form-control shadow-none" id="FirstName" placeholder="Enter First Name" autocomplete="off">
+                            <input asp-for="FirstName" type="text" class="form-control shadow-none input" id="FirstName" placeholder="Enter First Name" autocomplete="off">
                             <label for="FirstName">First Name</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input asp-for="LastName" type="text" class="form-control shadow-none" id="LastName" placeholder="Enter Last Name" autocomplete="off">
+                            <input asp-for="LastName" type="text" class="form-control shadow-none input" id="LastName" placeholder="Enter Last Name" autocomplete="off">
                             <label for="LastName">Last Name</label>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-floating mb-3">
-                            <input asp-for="Location" type="text" class="form-control shadow-none" id="Location" placeholder="Enter Location" autocomplete="off">
+                            <input asp-for="Location" type="text" class="form-control shadow-none input" id="Location" placeholder="Enter Location" autocomplete="off">
                             <label for="Location">Location</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input asp-for="DateOfBirth" type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date of Birth" autocomplete="off">
+                            <input asp-for="DateOfBirth" type="date" class="form-control shadow-none input" id="DateOfBirth" placeholder="Enter Date of Birth" autocomplete="off">
                             <label for="DateOfBirth">Date of Birth</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input asp-for="Date" type="date" class="form-control shadow-none" id="DateOfBirth" placeholder="Enter Date" autocomplete="off">
+                            <input asp-for="Date" type="date" class="form-control shadow-none input" id="DateOfBirth" placeholder="Enter Date" autocomplete="off">
                             <label for="Date">Date</label>
                         </div>
                     </div>
                     <div class="col-md-6 phone">
                         <div class="form-floating mb-3 h-100">
-                            <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none" id="phone" autocomplete="off">
+                            <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none input" id="phone" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input asp-for="Email" type="email" id="email" class="form-control shadow-none" placeholder="name@example.com" autocomplete="off">
+                            <input asp-for="Email" type="email" id="email" class="form-control shadow-none input" placeholder="name@example.com" autocomplete="off">
                             <label for="email">Email</label>
                         </div>
                     </div>
@@ -111,6 +111,30 @@
                         <div class="form-floating mb-3">
                             <input asp-for="Rr" type="text" class="form-control shadow-none" id="RR" placeholder="Enter RR" autocomplete="off">
                             <label for="RR">RR</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-floating mb-3">
+                            <input asp-for="BloodPressureS" type="text" class="form-control shadow-none" id="BloodPressureS" placeholder="Enter BloodPressureS" autocomplete="off">
+                            <label for="BloodPressureS"><small>BloodPressure(Systolic)</small></label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-floating mb-3">
+                            <input asp-for="BloodPressureD" type="text" class="form-control shadow-none" id="BloodPressureD" placeholder="Enter BloodPressureD" autocomplete="off">
+                            <label for="BloodPressureD"><small>BloodPressure(Diastolic)</small></label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input asp-for="O2" type="text" class="form-control shadow-none" id="O2" placeholder="Enter O2" autocomplete="off">
+                            <label for="O2">O2</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Pain" type="text" class="form-control shadow-none" id="Pain" placeholder="Enter Pain" autocomplete="off">
+                            <label for="Pain">Pain</label>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -215,4 +239,14 @@
         utilsScript:
             "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
+
+    window.onload = function (e) {
+        toggleFormElements('true')
+    }
+    function toggleFormElements(bDisabled) {
+        var inputs = document.getElementsByClassName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = !inputs[i].disabled;
+        }
+    }
 </script>

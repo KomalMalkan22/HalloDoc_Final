@@ -122,7 +122,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                                 };
                                 _context.Adminregions.Update(ar);
                                 await _context.SaveChangesAsync();
-                                regions.Remove(item);
                             }
                         }
                         if (regions.Count > 0)

@@ -12,13 +12,14 @@
     </a>
     <h3 class="py-3">Login To Your Account</h3>
     <strong class="text-danger">@ViewData["error"]</strong>
-    <form asp-controller="Login" asp-action="Validate" method="post">
+    <form id="LoginForm" asp-controller="Login" asp-action="Validate" method="post">
         <div class="form-floating mb-4 email">
-            <input asp-for="Email" type="email" class="form-control shadow-none " id="Email" placeholder="name@example.com" required pattern="[a-z0-9._%+-]+@@[a-z0-9.-]+\.[a-z]{2,4}$" title="Enter valid email">
+            <input asp-for="Email" type="email" class="form-control shadow-none " id="Email" placeholder="name@example.com">
             <label class="bg-transparent" for="Email">Email</label>
             <button type="button" class="btn btn-light">
                 <i class="icon fa-solid fa-user field-icon position-relative"></i>
             </button>
+            <span class="text-danger emailerror" style="display:none;">Enter valid email address</span>
         </div>
         <div class="form-floating mb-4 password">
             <input asp-for="Passwordhash" type="password" class="form-control shadow-none eyehide " id="Password" placeholder="Password" required>
@@ -28,7 +29,7 @@
                 <i class="showImg fa fa-eye"></i>
             </button>
         </div>
-        <button type="submit" class="btn btn-info text-white w-100 mb-4 p-2 shadow-none" role="button">
+        <button type="button" class="btn btn-info text-white w-100 mb-4 p-2 shadow-none" role="button" onclick="CheckLoginValidation()">
             Login
         </button>
     </form>
@@ -51,4 +52,31 @@
             document.querySelectorAll("i.fa.fa-eye-slash").forEach(i => i.style.display = "none");
         }
     }
+
+    
 </script>
+
+<script>
+    function CheckLoginValidation() {
+        var password = $("#Password").val();
+        var email = $("#Email").val();
+
+        if (password != null && email != null) {
+            if (ValidateEmail(email) == true) {
+                $('#LoginForm').submit();
+            }
+            else {
+                $('.emailerror').show();
+            }
+        }
+        else {
+            $('.emailerror').show();
+        }
+    }
+    function ValidateEmail(email) {
+        var allowed = /^([a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$)/;
+        return allowed.test(email);
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
