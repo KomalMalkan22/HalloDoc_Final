@@ -193,10 +193,6 @@
       "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\main.js",
-      "PackagePath": "staticwebassets\\js\\main.js"
-    },
-    {
       "Id": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

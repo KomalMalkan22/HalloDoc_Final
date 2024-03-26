@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "obdRZ816MP1MknemxtnZh5jUBgH3QbuSaohSoMdmZQo=",
+  "Hash": "CHMacSV1vt6Po633tY3b/HbifiUxq4h+hH/7DWQHmm0=",
   "Source": "HalloDocMVC",
   "BasePath": "_content/HalloDocMVC",
   "Mode": "Default",
@@ -457,23 +457,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.bundle.min.js.map"
-    },
-    {
-      "Identity": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\main.js",
-      "SourceId": "HalloDocMVC",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\",
-      "BasePath": "_content/HalloDocMVC",
-      "RelativePath": "js/main.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\main.js"
     },
     {
       "Identity": "C:\\Users\\pct30\\source\\repos\\HalloDoc_Final\\HalloDocMVC\\wwwroot\\js\\site.js",

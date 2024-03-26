@@ -348,5 +348,18 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("Encounter", new { id = model.RequesId });
         }
         #endregion
+
+        #region SendAgreement
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public Task<IActionResult> SendLink(string FirstName, string LastName, string Email, string PhoneNumber)
+        {
+            if (_IActions.SendLink(FirstName, LastName, Email, PhoneNumber))
+            {
+                _INotyfService.Success("Mail Sent Successfully.");
+            }
+            return Task.FromResult<IActionResult>(RedirectToAction("Index", "Dashboard"));
+        }
+        #endregion
     }
 }

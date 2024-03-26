@@ -13,6 +13,7 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
         public int AdminId { get; set; }
         public string? AspnetuserId { get; set; }
         public string? UserName { get; set; }
+        [Required(ErrorMessage ="Password is required.")]
         public string? Password { get; set; }
         public short? Status { get; set; }
         public int? RoleId { get; set; }

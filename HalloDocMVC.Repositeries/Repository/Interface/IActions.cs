@@ -33,5 +33,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
         bool CaseClosed(int RequestId);
         EncounterModel GetEncounterData(int RequestId);
         bool EditEncounterData(EncounterModel Data, string id);
+        bool SendLink(string FirstName, string LastName, string Email, string PhoneNumber);
     }
 }

@@ -21,12 +21,14 @@ namespace HalloDocMVC.Repositories.Admin.Repository
     public class Actions : IActions
     {
         #region Configuration
+        private readonly IHttpContextAccessor httpContextAccessor;
         private readonly HalloDocContext _context;
         private readonly EmailConfiguration _emailConfiguration;
-        public Actions(HalloDocContext context, EmailConfiguration emailConfiguration)
+        public Actions(HalloDocContext context, EmailConfiguration emailConfiguration, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _emailConfiguration = emailConfiguration;
+            this.httpContextAccessor = httpContextAccessor;
         }
         #endregion Configuration
 
@@ -900,5 +902,14 @@ namespace HalloDocMVC.Repositories.Admin.Repository
 
         }
         #endregion EditEncounterData
+
+        #region SendLink
+        public bool SendLink(string FirstName, string LastName, string Email, string PhoneNumber)
+        {
+            var baseUrl = "https://localhost:44362/CreateRequest/Index";
+            _emailConfiguration.SendMail(Email, "Create New Request", FirstName + " " + LastName + " " + PhoneNumber + "  " + $"<a href='{baseUrl}'>Create New Request</a>");
+            return true;
+        }
+        #endregion SendLink
     }
 }
