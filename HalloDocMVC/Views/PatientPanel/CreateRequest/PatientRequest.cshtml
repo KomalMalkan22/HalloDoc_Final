@@ -129,14 +129,14 @@
                     <div>
                         <div class="col-12 border rounded">
                             <div class="d-flex justify-content-between">
-                                <span id="choosenfile" class="p-3">No file chosen</span>
+                                <span id="fileName" class="p-3">No file chosen</span>
                                 <a class="btn bg-info btn btn-lg" onclick="document.getElementById('files').click()">
                                     <span for="files" class="btn text-white">
                                         <i class="fa fa-cloud-upload"></i>
                                         Upload
                                     </span>
                                 </a>
-                                <input asp-for="UploadFile" id="files" type="file" class="d-none">
+                                <input asp-for="UploadFile" id="files" type="file" class="d-none" onchange="DisplayFileName()">
                             </div>
                         </div>
                     </div>
@@ -151,13 +151,7 @@
     </div>
 </div>
 
-<script>
-    const phoneInputField = document.querySelector("#phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-        utilsScript:
-            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
     $(function () {
@@ -183,13 +177,6 @@
                 }
             });
         });
-    });
-
-    /* Choose File */
-    $("#files").change(function () {
-        filename = this.files[0].name;
-        console.log(filename);
-        $("#choosenfile").text(filename);
     });
 </script>
 

@@ -95,7 +95,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -280,7 +280,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -337,7 +337,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 }
                 else { return false; }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -373,7 +373,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -432,7 +432,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -553,10 +553,10 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 _context.Orderdetails.Add(od);
                 _context.SaveChanges(true);
                 var req = _context.Requests.FirstOrDefault(e => e.Requestid == sendOrder.RequestId);
-                _emailConfiguration.SendMail(od.Email, "New Order arrived", "Prescription : " + od.Prescription + " Requestor name : " + req.Firstname);
+                Task<bool> task = _emailConfiguration.SendMail(od.Email, "New Order arrived", "Prescription : " + od.Prescription + " Requestor name : " + req.Firstname);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -694,7 +694,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -728,7 +728,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 }
                 else { return false; }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -907,7 +907,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         public bool SendLink(string FirstName, string LastName, string Email, string PhoneNumber)
         {
             var baseUrl = "https://localhost:44362/CreateRequest/Index";
-            _emailConfiguration.SendMail(Email, "Create New Request", FirstName + " " + LastName + " " + PhoneNumber + "  " + $"<a href='{baseUrl}'>Create New Request</a>");
+            _emailConfiguration.SendMail(Email, "Create New Request", FirstName + " " + LastName + "  " + $"<a href='{baseUrl}'>Create New Request</a>");
             return true;
         }
         #endregion SendLink

@@ -24,9 +24,9 @@
         <div class="form-floating mb-4 password">
             <input asp-for="Passwordhash" type="password" class="form-control shadow-none eyehide " id="Password" placeholder="Password" required>
             <label for="Password">Password</label>
-            <button type="button" class="btn btn-light" onclick="passtoggle()">
+            <button type="button" class="btn btn-light" onclick="passtoggle('Password')">
                 <i class="fa fa-eye-slash"></i>
-                <i class="showImg fa fa-eye"></i>
+                <i class="fa fa-eye" style="display:none"></i>
             </button>
         </div>
         <button type="button" class="btn btn-info text-white w-100 mb-4 p-2 shadow-none" role="button" onclick="CheckLoginValidation()">
@@ -37,46 +37,3 @@
         <strong class="text-info">Forgot Password?</strong>
     </a>
 </div>
-
-<script>
-    function passtoggle() {
-        var x = document.getElementById("Password");
-        if (x.type == "password") {
-            x.type = "text";
-            document.querySelectorAll("i.fa.fa-eye").forEach(i => i.style.display = "none");
-            document.querySelectorAll("i.fa.fa-eye-slash").forEach(i => i.style.display = "block");
-        }
-        else {
-            x.type = "password";
-            document.querySelectorAll("i.fa.fa-eye").forEach(i => i.style.display = "block");
-            document.querySelectorAll("i.fa.fa-eye-slash").forEach(i => i.style.display = "none");
-        }
-    }
-
-    
-</script>
-
-<script>
-    function CheckLoginValidation() {
-        var password = $("#Password").val();
-        var email = $("#Email").val();
-
-        if (password != null && email != null) {
-            if (ValidateEmail(email) == true) {
-                $('#LoginForm').submit();
-            }
-            else {
-                $('.emailerror').show();
-            }
-        }
-        else {
-            $('.emailerror').show();
-        }
-    }
-    function ValidateEmail(email) {
-        var allowed = /^([a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$)/;
-        return allowed.test(email);
-    }
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

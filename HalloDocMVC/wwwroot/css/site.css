@@ -5,7 +5,7 @@
 }
 
 /* Patient Login Page and Reset Password Page*/
-i.fa.fa-eye-slash {
+/*i.fa.fa-eye-slash {
     display: block;
 }
 
@@ -13,7 +13,7 @@ i.fa.fa-eye {
     display: none;
     height: 16px;
     width: 16px;
-}
+}*/
 
 .eyehide::-ms-reveal, .eyehide::-ms-clear {
     display: none;

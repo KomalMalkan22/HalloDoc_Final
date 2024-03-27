@@ -27,7 +27,6 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
         public string? Address { get; set; }
         [Required(ErrorMessage = "Region is required")]
         public string? Region { get; set; }
-        [Required(ErrorMessage = "Room is required")]
         public string? Room { get; set; }
         [Required(ErrorMessage = "Contact number is required")]
         [RegularExpression(@"([0-9]{10})", ErrorMessage = "Please enter 10 digits for a contact number")]

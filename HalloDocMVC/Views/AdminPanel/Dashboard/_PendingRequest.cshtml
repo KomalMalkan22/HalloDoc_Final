@@ -123,19 +123,19 @@
                                 </a>
                             </li>
                             <li>
-                                <button onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#TransferRequest" data-bs-requestid="@item.RequestId">
+                                <button onclick="model_Pending(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#TransferRequest" data-bs-requestid="@item.RequestId">
                                     <i class="fa-regular fa-rectangle-list me-1"></i>
                                     Transfer
                                 </button>
                             </li>
                             <li>
-                                <button onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ClearCase">
+                                <button onclick="model_Pending(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ClearCase">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Clear Case
                                 </button>
                             </li>
                             <li>
-                                <button onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SendAgreement">
+                                <button onclick="model_Pending(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SendAgreement">
                                     <i class="fa-regular fa-pen-to-square me-1"></i>
                                     Send Agreement
                                 </button>
@@ -219,7 +219,7 @@
 
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#SendAgreement" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
+                                <button onclick="model_Pending(@index)" data-bs-toggle="modal" data-bs-target="#SendAgreement" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
                                     <small>Send Agreement</small>
                                 </button>
                             </div>
@@ -229,7 +229,7 @@
                                 </a>
                             </div>
                             <div class="col-6 mb-3">
-                                <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#TransferRequest" data-bs-requestid="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #00adef;">
+                                <button onclick="model_Pending(@index)" data-bs-toggle="modal" data-bs-target="#TransferRequest" data-bs-requestid="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #00adef;">
                                     <small>Transfer</small>
                                 </button>
                             </div>
@@ -239,7 +239,7 @@
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#ClearCase" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
+                                <button onclick="model_Pending(@index)" data-bs-toggle="modal" data-bs-target="#ClearCase" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
                                     <small>Clear Case</small>
                                 </button>
                             </div>
@@ -319,40 +319,5 @@
 <!--End Pagination-->
 
 <script>
-    function modal_Case(id) {
-        var modeldata = @Html.Raw(Json.Serialize(Model))
-        document.getElementById('RequestID_Input_ModalTransferPhysician').value = modeldata.list[id].requestId;
-        document.getElementById('RequestID_Input_ModalClearCase').value = modeldata.list[id].requestId;
-        document.getElementById("RequestId_SendAgreement").value = modeldata.list[id].requestId;
-        document.getElementById("PhoneNumber_SendAgreement").value = modeldata.list[id].patientPhoneNumber;
-        document.getElementById("Email_SendAgreement").value = modeldata.list[id].email;
-    }
-
-    function pagination(i) {
-        $.ajax({
-            url: "@Url.Action("SearchResult", "Dashboard")",
-            type: "GET",
-            success: function (data) {
-                $("#SearchResult").html(data);
-            },
-            error: function (error) {
-                console.error("Error:", error);
-            }
-        });
-    }
-
-    function setpagenumber(e) {
-        if (e == 'previous') {
-            var cp = @Model.CurrentPage-1;
-            $('#currentpagevalue').val(cp);
-        }
-        else if (e == 'next') {
-            var cp = @Model.CurrentPage + 1;
-            $('#currentpagevalue').val(cp);
-        }
-        else {
-            $('#currentpagevalue').val(e);
-        }
-        $("#paginationform").submit();
-    }
+    modeldata = @Html.Raw(Json.Serialize(Model))
 </script>

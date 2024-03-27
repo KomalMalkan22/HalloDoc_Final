@@ -50,7 +50,7 @@
                     </div>
                 }                
                 <!--Physician Notes-->
-                <div class="col-sm-6 col-xs-12 mb-3" id="PhysicianNotes">
+                <div class="col-sm-6 col-xs-12 mb-3" id="PhysicianNotes" onclick="setupNoteButtons()">
                     <div class="d-flex p-2 bg-white shadow">
                         <div class="p-2">
                             <i class="fa-solid fa-user-doctor"></i>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <!--Admin Notes-->
-                <div class="col-sm-6 col-xs-12 mb-3" id="AdminNotes">
+                <div class="col-sm-6 col-xs-12 mb-3" id="AdminNotes" onclick="setupNoteButtons()">
                     <div class="d-flex p-2 bg-white shadow">
                         <div class="p-2">
                             <i class="fa-solid fa-user-tie"></i>
@@ -137,21 +137,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $("#PhysicianNotes").click(function () {
-            var text = $('#PhysicianTxt').html().trim();
-            $("#ChangeNotes").val(text);
-            $("#ChangeNotes").attr("name", "physiciannotes");
-            $("#DataNote").html("Physician Note");
-        })
-        $("#AdminNotes").click(function () {
-            var text = $('#AdminTxt').html().trim();
-            console.log(text);
-            $("#ChangeNotes").val(text);
-            $("#ChangeNotes").attr("name", "adminnotes");
-            $("#DataNote").html("Admin Note");
-        })
-    });
-</script>

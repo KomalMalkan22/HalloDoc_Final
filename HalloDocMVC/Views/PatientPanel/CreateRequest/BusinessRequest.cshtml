@@ -10,7 +10,7 @@
 <div class="d-flex justify-content-center">
     <div class="d-flex flex-column my-2 col-lg-8 col-md-10">
         <div class="d-flex justify-content-end pe-2">
-            <a asp-controller="CreateRequest" asp-action="SubmitRequestScreen" class="btn border border-info">
+            <a asp-controller="CreateRequest" asp-action="Index" class="btn border border-info">
                 <strong class="text-info">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
                 </strong>
@@ -158,21 +158,10 @@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
-    const phoneInputField = document.querySelector("#phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-        utilsScript:
-            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
-
-    const phoneInputField1 = document.querySelector("#phone1");
-    const phoneInput1 = window.intlTelInput(phoneInputField1, {
-        utilsScript:
-            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
-
     $(document).ready(function () {
         $('#targetModal').modal('show');
     });
 </script>
-<script src="~/js/bootstrap.bundle.min.js"></script>

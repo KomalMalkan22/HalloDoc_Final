@@ -230,23 +230,3 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js"></script>
-
-<script>
-    const phoneInputField = document.querySelector("#phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-        utilsScript:
-            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
-
-    window.onload = function (e) {
-        toggleFormElements('true')
-    }
-    function toggleFormElements(bDisabled) {
-        var inputs = document.getElementsByClassName("input");
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].disabled = !inputs[i].disabled;
-        }
-    }
-</script>

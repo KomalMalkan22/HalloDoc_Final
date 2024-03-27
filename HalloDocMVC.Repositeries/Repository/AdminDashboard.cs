@@ -77,7 +77,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             int totalPages = (int)Math.Ceiling(totalItemCount / (double)pagination.PageSize);
             List<AdminDashboardList> list1 = allData.Skip((pagination.CurrentPage - 1) * pagination.PageSize).Take(pagination.PageSize).ToList();
 
-            PaginationModel paginatedViewModel = new PaginationModel
+            PaginationModel paginatedViewModel = new()
             {
                 list = list1,
                 CurrentPage = pagination.CurrentPage,

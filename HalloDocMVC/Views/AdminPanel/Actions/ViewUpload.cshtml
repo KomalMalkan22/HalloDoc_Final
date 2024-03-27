@@ -35,9 +35,9 @@
                 <form id="myForm" method="post" asp-controller="Actions" asp-action="UploadDocuments" enctype="multipart/form-data">
                     <div class="d-flex justify-content-between bg-light border border-secondary rounded mt-3">
                         <button type="button" id="choosenfile" class="col btn text-start text-secondary" onclick="document.getElementById('files').click()">
-                            Select File
+                            <span id="fileName">Select File</span>
                         </button>
-                        <input id="files" type="file" class="d-none form-control doc_uploder" name="file">
+                        <input id="files" type="file" class="d-none form-control doc_uploder" name="file" onchange="DisplayFileName()">
                         <input type="hidden" name="Requestid" value="@Model.RequestId" />
                         <button type="submit" class="btn btn-info text-white py-2" id="fileUploadBtn" value="Upload">
                             <i class="fa fa-cloud-upload"></i>
@@ -161,13 +161,6 @@
 
 </div>
 
-<script>
-    $("#files").change(function () {
-        filename = this.files[0].name;
-        console.log(filename);
-        $("#choosenfile").text(filename);
-    });
-</script>
 <script>
     $(function () {
 

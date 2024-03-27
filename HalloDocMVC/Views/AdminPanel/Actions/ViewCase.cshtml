@@ -76,9 +76,8 @@
 
                     <div class="col-md-6">
                         <div class="mb-3 d-flex">
-                            <div class="form-floating h-100 w-100">
+                            <div class="form-floating w-100 phone">
                                 <input asp-for="PhoneNumber" type="tel" class="form-control shadow-none input" id="phone" autocomplete="off">
-                                <label for="phone">Phone Number</label>
                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                             </div>
                             <button class="btn border border-info text-info mx-2 " style="height:3.5rem;width:4rem">
@@ -95,7 +94,7 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <a id="edit" onclick=" toggleFormElements('true')" style=" height:3.5rem;width:4rem" class="btn btn-info text-white rounded ">Edit</a>
+                        <a id="edit" onclick="toggleFormElementsViewCase('true')" style=" height:3.5rem;width:4rem" class="btn btn-info text-white rounded ">Edit</a>
                         <input type="submit" value="Save" id="save" style=" height:3.5rem;width:4rem" class="btn btn-info text-white rounded">
                     </div>
                 </div>
@@ -128,7 +127,6 @@
                         <div class="form-floating mb-3">
                             <input asp-for="Room" type="text" id="Room" class="form-control shadow-none input" placeholder="Enter Room" autocomplete="off">
                             <label for="Room">Room</label>
-                            <span asp-validation-for="Room" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -136,12 +134,12 @@
             <div class="card-footer border-0 bg-transparent text-end">
                 @if(CV.CurrentStatus() == "1")
                 {
-                    <button class="btn btn-info shadow-none text-white mb-2" onclick="model_Case(@Model.RequestId)" data-bs-target="#AssignCase" data-bs-toggle="modal" data-bs-requestid="@Model.RequestId">Assign Case</button>
+                    <button class="btn btn-info shadow-none text-white mb-2" onclick="model_ViewCase(@Model.RequestId)" data-bs-target="#AssignCase" data-bs-toggle="modal" data-bs-requestid="@Model.RequestId">Assign Case</button>
                 }
                 <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@Model.RequestId" class="btn btn-info text-white shadow-none mb-2">
                     View Notes
                 </a>
-                <button class="btn btn-danger shadow-none mb-2" onclick="model_Case(@Model.RequestId)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@Model.RequestId" data-bs-firstname="@Model.FirstName">
+                <button class="btn btn-danger shadow-none mb-2" onclick="model_ViewCase(@Model.RequestId)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@Model.RequestId" data-bs-firstname="@Model.FirstName">
                     Cancel
                 </button>
             </div>
@@ -149,36 +147,6 @@
     </div>
 </div>
 
-<script>
-    window.onload = function (e) {
-        toggleFormElements('true')
-    }
-    function toggleFormElements(bDisabled) {
-        var inputs = document.getElementsByClassName("input");
-        var submit = document.getElementById("save");
-        var editprofile = document.getElementById("edit");
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].disabled = !inputs[i].disabled;
-        }
-        if (inputs[0].disabled) {
-            submit.style.display = "none";
-            editprofile.style.display = "block";
-        } else {
-            submit.style.display = "block";
-            editprofile.style.display = "none";
-        }
-    }
-
-    function model_Case(id) {
-        console.log(id);
-        var modeldata = @Html.Raw(Json.Serialize(Model))
-        console.log(modeldata);
-        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata.firstName + " " +  modeldata.lastName;
-        console.log(document.getElementById('PatientName_ModelCancelCase').innerText);
-        document.getElementById('RequestID_Input_ModelCancelCase').value = id;
-        document.getElementById('RequestID_Input_ModelAssignCase').value = id;
-    }
-
+<script type="text/javascript">
+    var modelViewCase = @Html.Raw(Json.Serialize(Model));
 </script>
-
-<script src="~/js/bootstrap.bundle.min.js"></script>

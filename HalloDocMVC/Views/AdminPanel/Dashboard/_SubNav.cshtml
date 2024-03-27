@@ -21,9 +21,28 @@
                     </a>
                 </li>            
                 <li class="nav-item">
-                    <a asp-controller="Providers" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Providers") ? "activeNavItem" : "")">
-                        <small>Providers</small>
-                    </a>
+                    <div class="dropdown">
+                        <button data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link px-3 text-dark btn shadow-none @(path.StartsWith("/Providers") ? "activeNavItem" : "")">
+                            <small>Providers</small>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a asp-controller="" asp-action="" class="dropdown-item">
+                                    Provider
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="" asp-action="" class="dropdown-item">
+                                    Scheduling
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="" asp-action="" class="dropdown-item">
+                                    Invoicing
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a asp-controller="Parteners" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Parteners") ? "activeNavItem" : "")">

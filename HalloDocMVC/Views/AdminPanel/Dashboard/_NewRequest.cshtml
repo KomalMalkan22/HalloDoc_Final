@@ -95,13 +95,13 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#AssignCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
+                                <a class="dropdown-item" onclick="model_New(@index)" data-bs-toggle="modal" data-bs-target="#AssignCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
                                     <i class="fa-solid fa-file-circle-check me-1"></i>
                                     Assign Case
                                 </a>
                             </li>
                             <li>
-                                <button class="dropdown-item " onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
+                                <button class="dropdown-item " onclick="model_New(@index)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Cancel Case
                                 </button>
@@ -119,7 +119,7 @@
                                 </a>
                             </li>
                             <li>
-                                <button class="dropdown-item " onclick="model_Case(@index)" id="CancelCase_@item.RequestId" data-bs-toggle="modal" data-bs-target="#BlockCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
+                                <button class="dropdown-item " onclick="model_New(@index)" id="CancelCase_@item.RequestId" data-bs-toggle="modal" data-bs-target="#BlockCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
                                     <i class="bi bi-ban me-1"></i>
                                     Block Patient
                                 </button>
@@ -186,12 +186,12 @@
 
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <button onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#AssignCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn text-white shadow-none rounded-pill 2px w-100" style="background-color: #943db8;">
+                                <button onclick="model_New(@index)" data-bs-toggle="modal" data-bs-target="#AssignCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn text-white shadow-none rounded-pill 2px w-100" style="background-color: #943db8;">
                                     <small>Assign Case</small>
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn btn-white text-white shadow-none rounded-pill 2px w-100" style="background-color: #e42929;">
+                                <button onclick="model_New(@index)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn btn-white text-white shadow-none rounded-pill 2px w-100" style="background-color: #e42929;">
                                     <small>Cancel Case</small>
                                 </button>
                             </div>
@@ -201,7 +201,7 @@
                                 </a>
                             </div>
                             <div class="col-6 mb-3">
-                                <button onclick="model_Case(@index)" id="CancelCase_@item.RequestId" data-bs-toggle="modal" data-bs-target="#BlockCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn btn-white text-white shadow-none rounded-pill 2px w-100" style="background-color: #e42929;">
+                                <button onclick="model_New(@index)" id="CancelCase_@item.RequestId" data-bs-toggle="modal" data-bs-target="#BlockCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName" class="btn btn-white text-white shadow-none rounded-pill 2px w-100" style="background-color: #e42929;">
                                     <small>Block Patient</small>
                                 </button>
                             </div>
@@ -288,40 +288,5 @@
 <!--End Pagination-->
 
 <script>
-    function model_Case(id) {
-        var modeldata = @Html.Raw(Json.Serialize(Model))
-        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata.list[id].patientName;
-        document.getElementById('RequestID_Input_ModelCancelCase').value = modeldata.list[id].requestId;
-        document.getElementById('RequestID_Input_ModelAssignCase').value = modeldata.list[id].requestId;
-        document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata.list[id].requestId;
-        document.getElementById('PatientName_ModelBlockCase').innerText = modeldata.list[id].patientName;
-    }
-
-    function pagination(i) {
-        $.ajax({
-            url: "@Url.Action("SearchResult", "Dashboard")",
-            type: "GET",
-            success: function (data) {
-                $("#SearchResult").html(data);
-            },
-            error: function (error) {
-                console.error("Error:", error);
-            }
-        });
-    }
-
-    function setpagenumber(e) {
-        if (e == 'previous') {
-            var cp = @Model.CurrentPage-1;
-            $('#currentpagevalue').val(cp);
-        }
-        else if (e == 'next') {
-            var cp = @Model.CurrentPage + 1;
-            $('#currentpagevalue').val(cp);
-        }
-        else {
-            $('#currentpagevalue').val(e);
-        }
-        $("#paginationform").submit();
-    }
+    modeldata = @Html.Raw(Json.Serialize(Model))
 </script>

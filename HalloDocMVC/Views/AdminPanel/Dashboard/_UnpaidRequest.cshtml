@@ -266,31 +266,5 @@
 <!--End Pagination-->
 
 <script>
-    function pagination(i) {
-        $.ajax({
-            url: "@Url.Action("SearchResult", "Dashboard")",
-            type: "GET",
-            success: function (data) {
-                $("#SearchResult").html(data);
-            },
-            error: function (error) {
-                console.error("Error:", error);
-            }
-        });
-    }
-
-    function setpagenumber(e) {
-        if (e == 'previous') {
-            var cp = @Model.CurrentPage-1;
-            $('#currentpagevalue').val(cp);
-        }
-        else if (e == 'next') {
-            var cp = @Model.CurrentPage + 1;
-            $('#currentpagevalue').val(cp);
-        }
-        else {
-            $('#currentpagevalue').val(e);
-        }
-        $("#paginationform").submit();
-    }
+    modeldata = @Html.Raw(Json.Serialize(Model))
 </script>

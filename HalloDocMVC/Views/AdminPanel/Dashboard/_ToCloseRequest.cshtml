@@ -116,7 +116,7 @@
                                 </a>
                             </li>
                             <li>
-                                <button onclick="modal_Case(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ClearCase">
+                                <button onclick="model_ToClose(@index)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ClearCase">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Clear Case
                                 </button>
@@ -222,7 +222,7 @@
                                 </a>
                             </div>
                             <div class="col-6 mb-3">
-                                <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#ClearCase" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
+                                <button onclick="model_ToClose(@index)" data-bs-toggle="modal" data-bs-target="#ClearCase" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
                                     <small>Clear Case</small>
                                 </button>
                             </div>
@@ -313,36 +313,5 @@
 <!--End Pagination-->
 
 <script>
-    function modal_Case(id) {
-        var modeldata = @Html.Raw(Json.Serialize(Model))
-        document.getElementById('RequestID_Input_ModalClearCase').value = modeldata.list[id].requestId;
-    }
-
-    function pagination(i) {
-        $.ajax({
-            url: "@Url.Action("SearchResult", "Dashboard")",
-            type: "GET",
-            success: function (data) {
-                $("#SearchResult").html(data);
-            },
-            error: function (error) {
-                console.error("Error:", error);
-            }
-        });
-    }
-
-    function setpagenumber(e) {
-        if (e == 'previous') {
-            var cp = @Model.CurrentPage-1;
-            $('#currentpagevalue').val(cp);
-        }
-        else if (e == 'next') {
-            var cp = @Model.CurrentPage + 1;
-            $('#currentpagevalue').val(cp);
-        }
-        else {
-            $('#currentpagevalue').val(e);
-        }
-        $("#paginationform").submit();
-    }
+    modeldata = @Html.Raw(Json.Serialize(Model))
 </script>

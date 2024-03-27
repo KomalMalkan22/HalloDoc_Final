@@ -6,24 +6,24 @@
                 <h5 class="modal-title" id="exampleModalLongTitle">Transfer Request</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form asp-controller="Actions" asp-action="TransferPhysician" class="needs-validation" novalidate>
+            <form id="TransferForm" asp-controller="Actions" asp-action="TransferPhysician" class="needs-validation" novalidate>
                 <div class="modal-body">
                     <small class="text-secondary">
                         To transfer this request, search and select another Physician
                     </small>
                     <input type="hidden" name="requestid" id="RequestID_Input_ModalTransferPhysician" value="" />
                     <div class="form-floating my-3">
-                        <select name="region" class="form-select form-control shadow-none" id="regionName" required data-allow-clear="true" tabindex="-1" onchange="GetRegion()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
+                        <select name="region" class="form-select form-control shadow-none region" id="region" required data-allow-clear="true" tabindex="-1" onchange="LoadPhysician('TransferForm')" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
                         </select>
-                        <label for="regionName">Narrow search by Region</label>
+                        <label for="Region">Narrow search by Region</label>
                         <div class="invalid-feedback">
                             Please provide a valid state!
                         </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <select name="ProviderId" class="form-select form-control shadow-none" id="providerName" required data-allow-clear="true" tabindex="-1">
+                        <select name="ProviderId" class="form-select form-control shadow-none provider" id="provider" required data-allow-clear="true" tabindex="-1">
                         </select>
-                        <label for="providerName">Select Physician</label>
+                        <label for="provider">Select Physician</label>
                         <div class="invalid-feedback">
                             Please select Physician!
                         </div>
@@ -44,26 +44,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function GetRegion() {
-        var region = $("#regionName").val();
-        console.log(region);
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("ProviderbyRegion", "Actions")?Regionid=' + region,
-            cache: false,
-            success: function (response) {
-                console.log(response);
-                var s = '<option value="-1">Please Select</option>';
-                for (var i = 0; i < response.length; i++) {
-                    s += '<option value="' + response[i].physicianid + '">' + response[i].firstname + ' ' + response[i].lastname + '</option>';
-                }
-                $("#providerName").html(s);
-            },
-            error: function () {
-                alert("Error while checking Physician.");
-            }
-        });
-    }
-</script>

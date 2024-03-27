@@ -141,7 +141,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -176,7 +176,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

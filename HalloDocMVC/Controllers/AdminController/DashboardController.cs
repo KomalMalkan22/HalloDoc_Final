@@ -57,7 +57,5 @@ namespace HalloDocMVC.Controllers.AdminController
             };
         }
         #endregion SearchResult
-
-
     }
 }
